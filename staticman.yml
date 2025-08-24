@@ -1,14 +1,57 @@
+# Staticman v3 – config para criar PRs de avaliações
+# Endpoint usado no site: https://staticman3.onrender.com/v3/entry/github/:user/:repo/:branch/:property
+# A "property" abaixo é "comments" (igual ao options[slug] do formulário)
+
 comments:
-  allowedFields: ["id","rating","name","comment","photos","date","approved"]
-  requiredFields: ["rating","comment","date"]
+  # segurança / CORS (adicione outros domínios de espelho se precisar)
+  allowedOrigins:
+    - "https://sonodabelezaoficial.com"
+    - "https://franknascimento1993.github.io"
+    - "http://localhost:3000"
+    - "http://127.0.0.1:5500"
+
+  # branch de destino e onde salvar os arquivos criados pelo Staticman
   branch: "main"
+  path: "reviews/{options.slug}"     # resultará em: reviews/comments/
+  filename: "{@timestamp}-{fields.id}.json"
   format: "json"
-  path: "reviews"
-  filename: "rev-{@timestamp}"
-  moderation: true
+
+  # fluxo de moderação
+  moderation: true                   # mantém PENDENTE até você revisar no GitHub
+  pullRequest: true                  # cria PR ao invés de commitar direto
+
+  # campos aceitos vindos do formulário
+  allowedFields:
+    - id
+    - rating
+    - name
+    - comment
+    - photos
+    - date
+    - approved
+  requiredFields:
+    - id
+    - rating
+    - comment
+    - date
+
   transforms:
-    comment: "trim"
+    name: trim
+    comment: trim
+
   generatedFields:
-    approved:
-      type: "boolean"
-      value: false
+    _timestamp:
+      type: date
+      options:
+        format: iso8601
+
+  # mensagem de commit/PR
+  commitMessage: "chore(reviews): nova avaliação por {fields.name|Cliente}"
+  # título do PR
+  pullRequestTitle: "Nova avaliação – {fields.name|Cliente}"
+
+  # Se quiser reCAPTCHA depois:
+  # reCaptcha:
+  #   enabled: false
+  #   siteKey: ""
+  #   secret: ""
