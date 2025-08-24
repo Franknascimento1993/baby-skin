@@ -67,12 +67,12 @@
     .h2::after{content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 16px rgba(228,71,122,.30)}
     .note{color:var(--muted);font-size:15px;line-height:1.7}
 
-    /* ===== Centralização global de textos ===== */
+    /* ===== Centralização global ===== */
     .center-all, .center-all *:not(code):not(pre){ text-align:center; }
     .panel .note, .panel p, .panel ul, .panel li, .faq .faq-a, .faq .faq-q span, .company-info{ text-align:center !important; }
     ul{ list-style-position: inside; padding-left:0; }
 
-    /* --- Quebra de cores (alternância de tons) --- */
+    /* --- Quebra de cores (tons alternados) --- */
     .section.tone-a{
       background:
         linear-gradient(180deg,rgba(22,12,30,.66),rgba(22,12,30,.38)),
@@ -199,7 +199,7 @@
     .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
     .flag.boleto{background:linear-gradient(180deg,#444,#222)}
 
-    /* --- Selos de segurança --- */
+    /* --- Selos de segurança (rodapé) --- */
     .trust-seals{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
     .seal{
       display:inline-flex;align-items:center;gap:10px;
@@ -237,25 +237,23 @@
     .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
     .review .admin-actions .btn{padding:8px 12px;font-size:12px;text-transform:none}
 
-    /* estrelas no formulário (menores) */
-    .review-stars{display:inline-flex;flex-direction:row-reverse;gap:6px}
+    /* Estrelas – menores no mobile */
+    .review-stars{display:inline-flex;flex-direction:row-reverse;gap:8px}
     .review-stars input{display:none}
     .review-stars label{cursor:pointer;display:grid;place-items:center}
-    .review-stars svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2}
+    .review-stars svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2}
     .review-stars label:hover svg,
     .review-stars label:hover ~ label svg{fill:#FFD166;stroke:#FFD166}
     .review-stars input:checked ~ label svg{fill:#FFD166;stroke:#FFD166}
-
-    /* estrelas renderizadas nas avaliações aprovadas */
-    .stars{display:flex;gap:6px;justify-content:center;margin-bottom:6px}
-    .stars svg{width:18px;height:18px}
+    @media (max-width:680px){
+      .review-stars svg{width:18px;height:18px}
+    }
 
     /* Fotos na avaliação */
     .photo-input-hint{font-size:12px;color:rgba(255,255,255,.75)}
     .photo-previews{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
     .thumb{width:96px;height:96px;border-radius:10px;border:1px solid rgba(255,255,255,.18);overflow:hidden;background:rgba(255,255,255,.06)}
     .thumb img{width:100%;height:100%;object-fit:cover}
-
     .photo-grid{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
     .photo-grid .thumb{width:90px;height:90px;cursor:pointer}
 
@@ -309,24 +307,6 @@
     details.pp > summary.pp-summary{list-style:none;cursor:pointer;user-select:none;margin:10px 0 12px;display:inline-block;border:0;background:transparent;padding:0}
     details.pp > summary.pp-summary::-webkit-details-marker{display:none}
 
-    /* Selo de Qualidade + 15 dias (abaixo das avaliações) */
-    .quality{
-      display:flex;align-items:center;gap:16px;justify-content:center;
-      border:1.5px solid rgba(255,255,255,.18);
-      background:linear-gradient(180deg,rgba(25,18,33,.75),rgba(25,18,33,.45));
-      border-radius:18px;padding:16px 18px;margin-top:20px;
-      box-shadow:0 12px 36px rgba(131,58,180,.18)
-    }
-    .quality .badge{
-      min-width:88px;aspect-ratio:1/1;border-radius:16px;display:grid;place-items:center;
-      background:radial-gradient(70% 70% at 30% 30%,rgba(225,48,108,.22),rgba(131,58,180,.24));
-      border:1.5px solid rgba(255,255,255,.22)
-    }
-    .quality .badge svg{width:42px;height:42px;stroke:#fff;stroke-width:2;fill:none;
-      filter:drop-shadow(0 6px 18px rgba(228,71,122,.35))}
-    .quality .title{font-weight:900;font-size:16px;margin-bottom:4px}
-    .quality .sub{font-size:13px;color:#ffe2ef}
-
     @media (max-width:1024px){.grid-3{grid-template-columns:repeat(2,1fr)}.ingredients,.plans{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:680px){
       .grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}
@@ -334,7 +314,6 @@
       .panel{padding:18px}.hero-banners{padding:18px;min-height:76px}
       .compare{aspect-ratio:3/4}
       .hearts-field{height:130px}
-      .quality{flex-direction:row}
     }
     @media (max-width:520px){
       .announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}
@@ -345,6 +324,25 @@
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important;transition:none!important}
     }
+
+    /* --- Selo de Qualidade/15 dias (abaixo das avaliações) --- */
+    .qualidade{
+      display:flex;align-items:center;gap:16px;justify-content:center;
+      border:1.5px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg,rgba(25,18,33,.75),rgba(25,18,33,.45));
+      border-radius:18px;padding:16px 18px;margin:16px auto 0;
+      box-shadow:0 12px 36px rgba(131,58,180,.18);max-width:900px
+    }
+    .qualidade .badge{
+      min-width:88px;aspect-ratio:1/1;border-radius:16px;display:grid;place-items:center;
+      background:radial-gradient(70% 70% at 30% 30%,rgba(225,48,108,.22),rgba(131,58,180,.24));
+      border:1.5px solid rgba(255,255,255,.22)
+    }
+    .qualidade .badge svg{width:42px;height:42px;stroke:#fff;stroke-width:2;fill:none;
+      filter:drop-shadow(0 6px 18px rgba(228,71,122,.35))}
+    .qualidade .title{font-weight:900;font-size:16px;margin-bottom:4px}
+    .qualidade .sub{font-size:13px;color:#ffe2ef}
+    @media(max-width:680px){.qualidade{flex-direction:column}}
   </style>
 </head>
 <body>
@@ -397,8 +395,8 @@
 
       <div class="ribbon"><div class="ribbon-track">
         <span class="chip"><i></i> Frete Grátis (lote atual)</span>
-        <span class="chip"><i></i> Colágeno hidrlisado + Vitamina C</span>
-        <span class="chip"><i></i> Trans resveratrol</span>
+        <span class="chip"><i></i> Colágeno hidrolisado + Vitamina C</span>
+        <span class="chip"><i></i> Trans-resveratrol</span>
         <span class="chip"><i></i> Ácido Hialurônico</span>
         <span class="chip"><i></i> Uso com água</span>
         <span class="chip"><i></i> Sabor maracujá relaxante</span>
@@ -560,7 +558,7 @@
           </div>
         </div>
 
-        <!-- Bandeiras -->
+        <!-- Formas de pagamento -->
         <div class="payments" aria-label="Formas de pagamento aceitas">
           <span class="flag visa">VISA</span>
           <span class="flag mastercard">MASTERCARD</span>
@@ -576,14 +574,13 @@
           <h2 class="h2">Avaliações</h2>
           <p class="note" style="max-width:860px;margin:6px auto 12px">Compartilhe sua experiência com o Baby Skin 💬</p>
 
-          <!-- Admin bar (link para PRs do GitHub) -->
+          <!-- Admin bar (só no modo admin) -->
           <div class="admin-bar" id="adminBar">
-            <span class="info">Modo admin ativo • Aprove PRs no GitHub para publicar avaliações</span>
-            <a class="btn" id="openPRs" target="_blank" rel="noopener">Abrir fila no GitHub</a>
+            <span class="info">Modo admin ativo • Aprove ou remova avaliações</span>
             <button class="btn" id="logoutAdmin" type="button">Sair do modo admin</button>
           </div>
 
-          <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações">
+          <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações" novalidate>
             <!-- Estrelas -->
             <div class="review-stars" role="radiogroup" aria-label="Nota">
               <input type="radio" id="star5" name="rating" value="5" checked>
@@ -621,15 +618,21 @@
             <button class="btn" type="submit">Enviar</button>
           </form>
 
+          <!-- Listas -->
+          <div id="pendingWrap" style="display:none">
+            <h3 class="h2" style="margin-top:10px">Pendentes de aprovação</h3>
+            <div class="review-list" id="pendingList"></div>
+          </div>
+
           <div style="margin-top:10px">
             <h3 class="h2">Avaliações dos clientes</h3>
             <div class="review-list" id="approvedList" aria-live="polite"></div>
           </div>
 
-          <!-- Selo Qualidade + 15 dias -->
-          <div class="quality" id="seloQualidade">
-            <div class="badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.1 4.7.7-3.4 3.4.8 4.6L12 12.9 7.5 14.8l.8-4.6L5 6.8l4.7-.7L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+          <!-- Selo de Qualidade / 15 dias -->
+          <div class="qualidade" aria-label="Selo de Qualidade">
+            <div class="badge">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
             </div>
             <div>
               <div class="title">Selo de Qualidade • Sono da Beleza</div>
@@ -650,7 +653,7 @@
       </div>
     </section>
 
-    <!-- HISTÓRIA -->
+    <!-- HISTÓRIA DA MARCA -->
     <section id="historia" class="section center fade-up tone-a">
       <div class="panel">
         <h2 class="h2">Nossa história</h2>
@@ -742,26 +745,21 @@
 
       <!-- Selos de segurança -->
       <div class="trust-seals" aria-label="Selos de segurança do site">
-        <span class="seal">
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          </span> SITE SEGURO • SSL
-        </span>
-        <span class="seal">
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
-          </span> PAGAMENTO PROTEGIDO
-        </span>
-        <span class="seal">
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3"/></svg>
-          </span> CARTÕES & PIX
-        </span>
-        <span class="seal">
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 5c4 0 7 2 7 5v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5c0-3 3-5 7-5z"/><path d="M9 12h6"/></svg>
-          </span> PRIVACIDADE • LGPD
-        </span>
+        <span class="seal"><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        </span> SITE SEGURO • SSL</span>
+
+        <span class="seal"><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
+        </span> PAGAMENTO PROTEGIDO</span>
+
+        <span class="seal"><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3"/></svg>
+        </span> CARTÕES & PIX</span>
+
+        <span class="seal"><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 5c4 0 7 2 7 5v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5c0-3 3-5 7-5z"/><path d="M9 12h6"/></svg>
+        </span> PRIVACIDADE • LGPD</span>
       </div>
 
       <!-- Espaço editável para informações da empresa -->
@@ -793,17 +791,15 @@
     <img id="lbImg" alt="Foto da avaliação">
   </div>
 
-  <!-- ====== CONFIG GITHUB/STATICMAN ====== -->
   <script>
-    const GH_USER = "Franknascimento1993";
-    const GH_REPO = "baby-skin";
-    const GH_BRANCH = "main";
-    // Se tiver seu próprio servidor Staticman, troque a URL abaixo:
-    const STATICMAN_BASE = "https://staticman3.onrender.com";
-  </script>
+    // ====== CONFIG STATICMAN (para PRs no GitHub) ======
+    // Ajuste se quiser usar sua própria instância/branch:
+    const GH_USER   = 'Franknascimento1993';
+    const GH_REPO   = 'baby-skin';
+    const GH_BRANCH = 'main';
+    const STATICMAN_BASE = 'https://staticman3.onrender.com'; // instância pública (pode oscilar)
 
-  <script>
-    // Fallback para imagens com data-fallbacks
+    // ===== Fallback para imagens com data-fallbacks
     (function(){
       document.querySelectorAll('img[data-fallbacks]').forEach(function(img){
         const list=(img.getAttribute('data-fallbacks')||'').split(',').map(s=>s.trim()).filter(Boolean);
@@ -878,53 +874,31 @@
       const isMobile = window.matchMedia('(max-width: 680px)').matches;
       const COUNT = isMobile ? 10 : 16;
       const H = parseInt(getComputedStyle(field).height,10) || (isMobile?130:160);
-
       function rnd(min,max){ return Math.random()*(max-min)+min; }
 
-      function spawn(count,height){
-        for(let k=0;k<count;k++){
-          const el = document.createElement('span');
-          el.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
-          const x = rnd(4,96);
-          const y = rnd(12, height-12);
-          const fs = rnd(isMobile?16:18, isMobile?26:32);
-          const d1 = rnd(7.5, 11.5);
-          const d2 = rnd(6.0, 10.0);
-          const delay1 = rnd(0, 2.5);
-          const delay2 = rnd(0, 2.0);
-          const delay3 = rnd(0, 1.6);
-          const blur = rnd(1.5, 3.5);
-
-          el.style.left = x + '%';
-          el.style.top = y + 'px';
-          el.style.setProperty('--fs', fs + 'px');
-          el.style.setProperty('--dur', d1 + 's');
-          el.style.setProperty('--dur2', d2 + 's');
-          if(el.classList.contains('soft')) el.style.setProperty('--blur', blur + 'px');
-          el.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
+      function generate(N,HH){
+        field.innerHTML='';
+        for(let k=0;k<N;k++){
+          const el=document.createElement('span');
+          el.className='heart'+(Math.random()<0.38?' soft':'');
+          const x=rnd(4,96), y=rnd(12,HH-12), fs=rnd(isMobile?16:18,isMobile?26:32);
+          const d1=rnd(7.5,11.5), d2=rnd(6.0,10.0), delay1=rnd(0,2.5), delay2=rnd(0,2.0), delay3=rnd(0,1.6), blur=rnd(1.5,3.5);
+          el.style.left=x+'%'; el.style.top=y+'px'; el.style.setProperty('--fs',fs+'px'); el.style.setProperty('--dur',d1+'s'); el.style.setProperty('--dur2',d2+'s');
+          if(el.classList.contains('soft')) el.style.setProperty('--blur',blur+'px');
+          el.style.animationDelay=`${delay1}s, ${delay2}s, ${delay3}s`;
           field.appendChild(el);
         }
       }
-
-      spawn(COUNT, H);
-
-      let to;
-      window.addEventListener('resize', ()=>{
-        clearTimeout(to);
-        to = setTimeout(()=>{
-          field.innerHTML = '';
-          const mobile = window.matchMedia('(max-width: 680px)').matches;
-          const HH = parseInt(getComputedStyle(field).height,10) || (mobile?130:160);
-          const C = mobile ? 10 : 16;
-          spawn(C, HH);
-        }, 160);
-      }, {passive:true});
+      generate(COUNT,H);
+      let to; addEventListener('resize',()=>{ clearTimeout(to); to=setTimeout(()=>{ const mob=matchMedia('(max-width:680px)').matches; generate(mob?10:16, parseInt(getComputedStyle(field).height,10)||(mob?130:160)); },160) },{passive:true});
     })();
 
-    // ===== Avaliações: GitHub (Staticman) + cache local =====
+    // ===== Avaliações: aprovação manual + fotos + fila offline =====
     (function(){
       const form = document.getElementById('reviewForm');
       const approvedList = document.getElementById('approvedList');
+      const pendingList = document.getElementById('pendingList');
+      const pendingWrap = document.getElementById('pendingWrap');
       const adminBar = document.getElementById('adminBar');
       const logoutAdmin = document.getElementById('logoutAdmin');
       const fileInput = document.getElementById('fotos');
@@ -933,198 +907,202 @@
       const lbImg = document.getElementById('lbImg');
       const lbClose = document.getElementById('lbClose');
 
-      const CACHE_KEY = 'sdb_reviews_cache_v3';
+      const KEY = 'sdb_reviews_v2';
+      const QUEUE_KEY = 'sdb_reviews_queue_v1';
       const ADMIN_KEY = 'sdb_admin_on';
-      const ADMIN_PIN = '4321'; // mude se quiser
+      const ADMIN_PIN = '4321'; // <<< altere se quiser
 
-      // Link de PRs
-      document.getElementById('openPRs')?.setAttribute(
-        'href',
-        `https://github.com/${GH_USER}/${GH_REPO}/pulls?q=is%3Apr+is%3Aopen+Staticman`
-      );
-
+      // --- Admin helpers ---
       function isAdmin(){ return localStorage.getItem(ADMIN_KEY) === '1'; }
-      function enableAdmin(){ localStorage.setItem(ADMIN_KEY, '1'); render(); }
+      function enableAdmin(){ localStorage.setItem(ADMIN_KEY,'1'); render(); }
       function disableAdmin(){ localStorage.removeItem(ADMIN_KEY); render(); }
 
-      // Entrar em admin via query/hash ou atalho
+      // Entrar em admin via URL ou atalho
       function tryAdminFromURL(){
         const qp = new URLSearchParams(location.search);
         if (qp.get('admin') === '1' || location.hash === '#admin') {
           const pin = prompt('Digite o PIN do admin:');
-          if (pin === ADMIN_PIN) enableAdmin();
-          else alert('PIN incorreto');
+          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
         }
       }
-      window.addEventListener('keydown', (e)=>{
-        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
-          const pin = prompt('PIN admin:');
-          if (pin === ADMIN_PIN) enableAdmin();
-          else alert('PIN incorreto');
+      window.addEventListener('keydown',(e)=>{
+        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='a'){
+          const pin = prompt('PIN admin:'); if(pin===ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
         }
       });
 
       // Lightbox
-      function openLB(src){ lbImg.src = src; lightbox.classList.add('open'); }
+      function openLB(src){ lbImg.src=src; lightbox.classList.add('open'); }
       function closeLB(){ lightbox.classList.remove('open'); lbImg.removeAttribute('src'); }
       lbClose.addEventListener('click', closeLB);
-      lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLB(); });
-      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
+      lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeLB(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
 
-      // Helpers cache
-      function loadCache(){ try{ return JSON.parse(localStorage.getItem(CACHE_KEY)||'[]'); }catch(e){ return []; } }
-      function saveCache(arr){ try{ localStorage.setItem(CACHE_KEY, JSON.stringify(arr)); }catch(_){} }
-      function fmtDate(d){ return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
+      // Storage
+      function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+      function save(arr){ try{ localStorage.setItem(KEY, JSON.stringify(arr)); return true; }catch(e){ console.warn('localStorage cheio/negado', e); return false; } }
+
+      function loadQueue(){ try{ return JSON.parse(localStorage.getItem(QUEUE_KEY)||'[]'); }catch(e){ return []; } }
+      function saveQueue(arr){ try{ localStorage.setItem(QUEUE_KEY, JSON.stringify(arr)); return true; }catch(e){ return false; } }
+
+      function fmtDate(d){ return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'}); }
       function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+
       function starSVG(filled){
         return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" ${filled?'fill="#FFD166" stroke="#FFD166"':'fill="none" stroke="#fff"'} stroke-width="2"/></svg>`;
       }
 
-      /* ---- Remote (GitHub + Staticman) ---- */
-      async function remoteLoad(){
-        try{
-          const listURL = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/reviews?ref=${GH_BRANCH}`;
-          const res = await fetch(listURL, { headers: { 'Accept': 'application/vnd.github+json' }});
-          if(!res.ok) return null;
-          const files = await res.json();
-          if(!Array.isArray(files)) return null;
-
-          const items = [];
-          for(const f of files){
-            if(!f.download_url || !/\.json$/i.test(f.name)) continue;
-            const r = await fetch(f.download_url, { cache: 'no-store' });
-            if(!r.ok) continue;
-            const j = await r.json();
-            if(j && typeof j === 'object') items.push(j);
-          }
-          return items;
-        }catch(_){ return null; }
-      }
-
+      // Remote (Staticman) — resiliente a CORS
       async function remoteAppend(item){
-        try{
-          const form = new FormData();
-          form.append('options[redirect]', location.href);
-          form.append('options[slug]', 'comments');
-          form.append('fields[id]', item.id);
-          form.append('fields[rating]', String(item.rating));
-          form.append('fields[name]', item.name || '');
-          form.append('fields[comment]', item.comment || '');
-          // Enviando fotos como dataURL (compactadas) — aparecem após aprovação
-          form.append('fields[photos]', JSON.stringify(item.photos || []));
-          form.append('fields[date]', item.date);
-          form.append('fields[approved]', 'false');
+        const url = `${STATICMAN_BASE}/v3/entry/github/${GH_USER}/${GH_REPO}/${GH_BRANCH}/comments`;
+        const form = new FormData();
+        form.append('options[redirect]', location.href);
+        form.append('options[slug]', 'comments');
+        form.append('fields[id]', item.id);
+        form.append('fields[rating]', String(item.rating));
+        form.append('fields[name]', item.name || '');
+        form.append('fields[comment]', item.comment || '');
+        form.append('fields[photos]', JSON.stringify(item.photos || []));
+        form.append('fields[date]', item.date);
+        form.append('fields[approved]', 'false');
 
-          const url = `${STATICMAN_BASE}/v3/entry/github/${GH_USER}/${GH_REPO}/${GH_BRANCH}/comments`;
-          const res = await fetch(url, { method: 'POST', body: form });
-          return res.ok;
-        }catch(_){ return false; }
+        // 1) tenta CORS normal
+        try{
+          const res = await fetch(url, { method:'POST', body:form, mode:'cors', redirect:'follow' });
+          if(res.ok) return true;
+          console.warn('[Staticman] HTTP', res.status, await res.text());
+        }catch(err){ console.warn('[Staticman] erro CORS', err); }
+
+        // 2) fallback: no-cors (não há status; tratamos como sucesso)
+        try{
+          await fetch(url, { method:'POST', body:form, mode:'no-cors' });
+          console.info('[Staticman] fallback no-cors acionado');
+          return true;
+        }catch(err){ console.error('[Staticman] fallback no-cors falhou', err); return false; }
       }
 
-      // Estado em memória
-      const STATE = {
-        approved: loadCache() // cache local para render imediato/offline
-      };
+      // Sincroniza fila offline
+      async function syncQueue(){
+        let q = loadQueue(); if(!q.length) return;
+        const keep=[];
+        for(const it of q){
+          const ok = await remoteAppend(it);
+          if(!ok) keep.push(it);
+        }
+        saveQueue(keep);
+        if(q.length!==keep.length) console.info('[reviews] fila sincronizada:', q.length-keep.length,'itens enviados');
+      }
+      addEventListener('online', syncQueue);
+      setTimeout(syncQueue, 2000);
 
-      function reviewCard(item){
-        const card = document.createElement('div');
-        card.className = 'review';
-        const stars = Array.from({length:5}, (_,i)=> starSVG(i < item.rating));
-        const fotos = (item.photos||[]);
-        const nameSafe = escapeHTML(item.name || 'Cliente');
-        const msgSafe = escapeHTML(item.comment || '');
+      // Render
+      function render(){
+        const data = load();
+        const admin = isAdmin();
+        adminBar.classList.toggle('active', admin);
+        pendingWrap.style.display = admin ? '' : 'none';
+        approvedList.innerHTML=''; pendingList.innerHTML='';
 
-        let fotosHTML = '';
+        const approved = data.filter(x=>x.approved);
+        const pending  = data.filter(x=>!x.approved);
+
+        if(admin){
+          if(!pending.length){ pendingList.innerHTML = `<p class="note">Sem itens pendentes.</p>`; }
+          pending.slice().reverse().forEach(item=> pendingList.appendChild(reviewCard(item,true)));
+        }
+        if(!approved.length){
+          approvedList.innerHTML = `<p class="note">Ainda não há avaliações.</p>`;
+        }else{
+          approved.slice().reverse().forEach(item=> approvedList.appendChild(reviewCard(item,false)));
+        }
+      }
+
+      function reviewCard(item, isPending){
+        const card=document.createElement('div');
+        card.className='review';
+        const stars = Array.from({length:5},(_,i)=>starSVG(i<item.rating));
+        const fotos = item.photos||[];
+        const nameSafe = escapeHTML(item.name||'Cliente');
+        const msgSafe = escapeHTML(item.comment||'');
+
+        let fotosHTML='';
         if(fotos.length){
-          fotosHTML = `<div class="photo-grid">` +
-            fotos.map(src=>`<div class="thumb"><img alt="Foto enviada" src="${src}"></div>`).join('') +
+          fotosHTML = `<div class="photo-grid">`+
+            fotos.map(src=>`<div class="thumb"><img alt="Foto enviada" src="${src}"></div>`).join('')+
             `</div>`;
         }
-
         card.innerHTML = `
           <div class="meta">${nameSafe} • ${fmtDate(new Date(item.date))}</div>
-          <div class="stars" aria-label="${item.rating} de 5 estrelas">
+          <div class="stars" aria-label="${item.rating} de 5 estrelas" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
             ${stars.reverse().join('')}
           </div>
           <div class="msg">${msgSafe}</div>
           ${fotosHTML}
         `;
+        card.querySelectorAll('.photo-grid img').forEach(img=> img.addEventListener('click',()=>openLB(img.src)));
 
-        card.querySelectorAll('.photo-grid img').forEach(img=>{
-          img.addEventListener('click', ()=> openLB(img.src));
-        });
-
+        if(isAdmin()){
+          const actions=document.createElement('div'); actions.className='admin-actions';
+          if(isPending){
+            const approveBtn=document.createElement('button'); approveBtn.className='btn'; approveBtn.type='button'; approveBtn.textContent='Aprovar';
+            approveBtn.addEventListener('click',()=>approve(item.id)); actions.appendChild(approveBtn);
+          }else{
+            const unBtn=document.createElement('button'); unBtn.className='btn'; unBtn.type='button'; unBtn.textContent='Retirar aprovação';
+            unBtn.addEventListener('click',()=>unapprove(item.id)); actions.appendChild(unBtn);
+          }
+          const delBtn=document.createElement('button'); delBtn.className='btn'; delBtn.type='button'; delBtn.textContent='Excluir';
+          delBtn.addEventListener('click',()=>remove(item.id)); actions.appendChild(delBtn);
+          card.appendChild(actions);
+        }
         return card;
       }
 
-      function render(){
-        // Admin bar visível somente no modo admin (nenhuma lista "pendente" local)
-        adminBar.classList.toggle('active', isAdmin());
-
-        // Limpa
-        approvedList.innerHTML = '';
-
-        const approved = (STATE.approved||[]).filter(x=> String(x.approved) === 'true' || x.approved === true);
-        if(!approved.length){
-          approvedList.innerHTML = `<p class="note">Ainda não há avaliações.</p>`;
-        } else {
-          approved.slice().reverse().forEach(item=>{
-            approvedList.appendChild(reviewCard(item));
-          });
-        }
+      function approve(id){
+        const data=load(); const it=data.find(x=>x.id===id); if(!it) return;
+        it.approved=true; save(data); render();
+      }
+      function unapprove(id){
+        const data=load(); const it=data.find(x=>x.id===id); if(!it) return;
+        it.approved=false; save(data); render();
+      }
+      function remove(id){
+        if(!confirm('Excluir esta avaliação?')) return;
+        const data=load().filter(x=>x.id!==id); save(data); render();
       }
 
-      // Compressão de imagens (para caber no PR)
+      // Compressão de imagens
       async function compressImage(file, maxDim=1200, quality=0.8){
-        const dataUrl = await new Promise((res,rej)=>{
-          const fr = new FileReader();
-          fr.onload = ()=> res(fr.result);
-          fr.onerror = rej;
-          fr.readAsDataURL(file);
-        });
-        const img = await new Promise((res,rej)=>{
-          const im = new Image();
-          im.onload = ()=> res(im);
-          im.onerror = rej;
-          im.src = dataUrl;
-        });
-        const canvas = document.createElement('canvas');
-        let {width, height} = img;
-        const ratio = width/height;
-        if(width > height && width > maxDim){ width = maxDim; height = Math.round(width/ratio); }
-        else if(height >= width && height > maxDim){ height = maxDim; width = Math.round(height*ratio); }
-        canvas.width = width; canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, width, height);
-        return canvas.toDataURL('image/jpeg', quality);
+        const dataUrl = await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file); });
+        const img = await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=dataUrl; });
+        const canvas=document.createElement('canvas'); let {width,height}=img; const ratio=width/height;
+        if(width>height && width>maxDim){ width=maxDim; height=Math.round(width/ratio); }
+        else if(height>=width && height>maxDim){ height=maxDim; width=Math.round(height*ratio); }
+        canvas.width=width; canvas.height=height;
+        const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,width,height);
+        return canvas.toDataURL('image/jpeg',quality);
       }
 
       // Pré-visualização das fotos
-      let selectedFiles = [];
+      let selectedFiles=[];
       fileInput.addEventListener('change', ()=>{
         selectedFiles = Array.from(fileInput.files||[]).slice(0,3);
-        previewBox.innerHTML = '';
-        selectedFiles.forEach(f=>{
-          const p = document.createElement('div'); p.className='thumb';
-          const img = document.createElement('img'); img.alt = f.name; img.src = URL.createObjectURL(f);
-          p.appendChild(img); previewBox.appendChild(p);
-        });
+        previewBox.innerHTML=''; selectedFiles.forEach(f=>{ const p=document.createElement('div'); p.className='thumb'; const im=document.createElement('img'); im.alt=f.name; im.src=URL.createObjectURL(f); p.appendChild(im); previewBox.appendChild(p); });
       });
 
-      // Submit
+      // Submissão
       if(form){
         form.addEventListener('submit', async (e)=>{
           e.preventDefault();
           const rating = Number((form.querySelector('input[name="rating"]:checked')||{}).value||5);
-          const name = (document.getElementById('nome')||{}).value?.trim();
-          const comment = (document.getElementById('comentario')||{}).value?.trim();
+          const name   = (document.getElementById('nome')||{}).value?.trim();
+          const comment= (document.getElementById('comentario')||{}).value?.trim();
           if(!comment){ alert('Por favor, escreva sua avaliação.'); return; }
 
-          let photos = [];
-          try{
+          // Fotos
+          let photos=[]; try{
             for(const f of selectedFiles.slice(0,3)){
               if(f.size > 8*1024*1024) continue;
-              const dataURL = await compressImage(f, 1200, 0.8);
+              const dataURL = await compressImage(f, 1200, 0.82);
               photos.push(dataURL);
             }
           }catch(_){}
@@ -1136,33 +1114,44 @@
             approved: false
           };
 
-          const ok = await remoteAppend(item);
-          if(ok){
-            alert('Avaliação enviada para aprovação. Obrigado!');
-            form.reset(); selectedFiles = []; previewBox.innerHTML='';
-            const defaultStar = document.getElementById('star5'); if(defaultStar) defaultStar.checked = true;
-          }else{
-            alert('Não foi possível enviar agora. Tente novamente em instantes.');
+          // Salva local (pendente) para o modo admin do próprio site
+          const db = load(); db.push(item); save(db);
+
+          // Cartão fantasma “enviado para aprovação”
+          const ghost=document.createElement('div');
+          ghost.className='review';
+          ghost.innerHTML=`
+            <div class="meta">${escapeHTML(name||'Cliente')} • ${fmtDate(new Date())}</div>
+            <div class="stars" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
+              ${Array.from({length:5},(_,i)=> i<rating
+                ? '<svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" fill="#FFD166" stroke="#FFD166" stroke-width="2"/></svg>'
+                : '<svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" fill="none" stroke="#fff" stroke-width="2"/></svg>'
+              ).reverse().join('')}
+            </div>
+            <div class="msg">${escapeHTML(comment)}</div>
+            <p class="note" style="margin-top:6px">✅ Enviado para aprovação</p>`;
+          approvedList.prepend(ghost);
+
+          // Enfileira para envio remoto e tenta enviar agora
+          let ok=false;
+          try{ ok = await remoteAppend(item); }catch(_){ ok=false; }
+          if(!ok){
+            const q=loadQueue(); q.push(item); saveQueue(q);
+            console.warn('[reviews] não foi possível enviar agora, item enfileirado');
           }
+
+          // Limpa UI
+          form.reset(); selectedFiles=[]; previewBox.innerHTML='';
+          const defaultStar=document.getElementById('star5'); if(defaultStar) defaultStar.checked=true;
+          render();
         });
       }
 
-      // Admin logout
+      // Logout admin
       logoutAdmin.addEventListener('click', disableAdmin);
 
-      // Inicializa
       tryAdminFromURL();
       render();
-
-      // Carrega do GitHub (com cache para mobile/desktop)
-      (async ()=>{
-        const remote = await remoteLoad();
-        if(remote && Array.isArray(remote)){
-          STATE.approved = remote;
-          saveCache(remote);
-          render();
-        }
-      })();
     })();
   </script>
 </body>
