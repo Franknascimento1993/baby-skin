@@ -199,7 +199,7 @@
     .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
     .flag.boleto{background:linear-gradient(180deg,#444,#222)}
 
-    /* --- Selo de garantia --- */
+    /* --- Selo de garantia (CSS disponível caso queira renderizar o bloco no checkout) --- */
     .guarantee{
       display:flex;align-items:center;gap:16px;
       border:1.5px solid rgba(255,255,255,.18);
@@ -254,13 +254,21 @@
     .review .msg{color:var(--muted)}
     .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
     .review .admin-actions .btn{padding:8px 12px;font-size:12px;text-transform:none}
+
+    /* Estrelas (formulário e cards) — tamanhos ajustados */
     .review-stars{display:inline-flex;flex-direction:row-reverse;gap:8px}
     .review-stars input{display:none}
     .review-stars label{cursor:pointer;display:grid;place-items:center}
-    .review-stars svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2}
+    .review-stars svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.6}
+    .review .stars svg{width:18px;height:18px}
     .review-stars label:hover svg,
     .review-stars label:hover ~ label svg{fill:#FFD166;stroke:#FFD166}
     .review-stars input:checked ~ label svg{fill:#FFD166;stroke:#FFD166}
+
+    @media (max-width: 680px){
+      .review-stars svg{width:18px;height:18px}
+      .review .stars svg{width:16px;height:16px}
+    }
 
     /* Fotos na avaliação */
     .photo-input-hint{font-size:12px;color:rgba(255,255,255,.75)}
@@ -320,6 +328,10 @@
     details.pp{max-width:900px;margin:8px auto}
     details.pp > summary.pp-summary{list-style:none;cursor:pointer;user-select:none;margin:10px 0 12px;display:inline-block;border:0;background:transparent;padding:0}
     details.pp > summary.pp-summary::-webkit-details-marker{display:none}
+
+    /* Visibilidade dos pendentes: escondido no site normal */
+    #pendingWrap{display:none;}
+    .admin-on #pendingWrap{display:block;}
 
     @media (max-width:1024px){.grid-3{grid-template-columns:repeat(2,1fr)}.ingredients,.plans{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:680px){
@@ -616,7 +628,7 @@
           </form>
 
           <!-- Listas -->
-          <div id="pendingWrap" style="display:none">
+          <div id="pendingWrap">
             <h3 class="h2" style="margin-top:10px">Pendentes de aprovação</h3>
             <div class="review-list" id="pendingList"></div>
           </div>
@@ -859,7 +871,7 @@
       if(!field || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       const isMobile = window.matchMedia('(max-width: 680px)').matches;
-      const COUNT = isMobile ? 10 : 16;  // quantidade
+      const COUNT = isMobile ? 10 : 16;
       const H = parseInt(getComputedStyle(field).height,10) || (isMobile?130:160);
 
       function rnd(min,max){ return Math.random()*(max-min)+min; }
@@ -924,26 +936,40 @@
       const lbClose = document.getElementById('lbClose');
 
       const KEY = 'sdb_reviews_v2';
-      const ADMIN_KEY = 'sdb_admin_on';
-      const ADMIN_PIN = '4321'; // <<< altere o PIN aqui se quiser
+      const ADMIN_KEY = 'sdb_admin_on'; // sessão
+      const ADMIN_PIN = '4321'; // <<< altere o PIN se quiser
 
-      function isAdmin(){ return localStorage.getItem(ADMIN_KEY) === '1'; }
+      // Admin por sessão
+      function isAdmin(){ return sessionStorage.getItem(ADMIN_KEY) === '1'; }
       function enableAdmin(){
-        localStorage.setItem(ADMIN_KEY, '1');
+        sessionStorage.setItem(ADMIN_KEY, '1');
+        document.documentElement.classList.add('admin-on');
         render();
       }
       function disableAdmin(){
-        localStorage.removeItem(ADMIN_KEY);
+        sessionStorage.removeItem(ADMIN_KEY);
+        document.documentElement.classList.remove('admin-on');
         render();
       }
 
       // Entrar em admin via query/hash ou atalho
+      function cleanAdminHints(){
+        const url = new URL(location.href);
+        if (url.searchParams.has('admin')) {
+          url.searchParams.delete('admin');
+          history.replaceState(null, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + (location.hash && location.hash !== '#admin' ? location.hash : ''));
+        }
+        if (location.hash === '#admin') {
+          history.replaceState(null, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : ''));
+        }
+      }
       function tryAdminFromURL(){
         const qp = new URLSearchParams(location.search);
         if (qp.get('admin') === '1' || location.hash === '#admin') {
           const pin = prompt('Digite o PIN do admin:');
           if (pin === ADMIN_PIN) enableAdmin();
           else alert('PIN incorreto');
+          cleanAdminHints();
         }
       }
       // Atalho: Ctrl+Shift+A
@@ -969,8 +995,9 @@
       function fmtDate(d){ return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
       function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
 
+      // Estrela SVG para cards (stroke mais fino)
       function starSVG(filled){
-        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" ${filled?'fill="#FFD166" stroke="#FFD166"':'fill="none" stroke="#fff"'} stroke-width="2"/></svg>`;
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" ${filled?'fill="#FFD166" stroke="#FFD166"':'fill="none" stroke="#fff"'} stroke-width="1.6"/></svg>`;
       }
 
       // Renderização
@@ -978,8 +1005,10 @@
         const data = load();
         const admin = isAdmin();
 
-        // Admin bar
+        // Classe global + barra admin + pendentes
+        document.documentElement.classList.toggle('admin-on', admin);
         adminBar.classList.toggle('active', admin);
+        pendingWrap.hidden = !admin;
         pendingWrap.style.display = admin ? '' : 'none';
 
         // Limpa listas
@@ -990,7 +1019,7 @@
         const approved = data.filter(x=>x.approved);
         const pending = data.filter(x=>!x.approved);
 
-        // PENDENTES
+        // PENDENTES (somente admin)
         if(admin){
           if(!pending.length){ pendingList.innerHTML = `<p class="note">Sem itens pendentes.</p>`; }
           pending.slice().reverse().forEach(item=>{
@@ -1091,18 +1120,8 @@
 
       // Compressão de imagens (para caber no localStorage)
       async function compressImage(file, maxDim=1200, quality=0.8){
-        const dataUrl = await new Promise((res,rej)=>{
-          const fr = new FileReader();
-          fr.onload = ()=> res(fr.result);
-          fr.onerror = rej;
-          fr.readAsDataURL(file);
-        });
-        const img = await new Promise((res,rej)=>{
-          const im = new Image();
-          im.onload = ()=> res(im);
-          im.onerror = rej;
-          im.src = dataUrl;
-        });
+        const dataUrl = await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file); });
+        const img = await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=dataUrl; });
         const canvas = document.createElement('canvas');
         let {width, height} = img;
         const ratio = width/height;
@@ -1139,7 +1158,6 @@
           let photos = [];
           try{
             for(const f of selectedFiles.slice(0,3)){
-              // evita encher o localStorage: ignora arquivos > 8MB
               if(f.size > 8*1024*1024) continue;
               const dataURL = await compressImage(f, 1200, 0.82);
               photos.push(dataURL);
@@ -1161,13 +1179,16 @@
 
           form.reset(); selectedFiles = []; previewBox.innerHTML='';
           const defaultStar = document.getElementById('star5'); if(defaultStar) defaultStar.checked = true;
-          alert('Avaliação enviada. Obrigado!');
+          alert('Avaliação enviada para aprovação. Obrigado!');
           render();
         });
       }
 
       // Logout admin
       logoutAdmin.addEventListener('click', disableAdmin);
+
+      // Aplica classe se a sessão já tiver admin
+      if (isAdmin()) document.documentElement.classList.add('admin-on');
 
       tryAdminFromURL();
       render();
