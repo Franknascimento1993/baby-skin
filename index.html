@@ -70,7 +70,7 @@
     "brand":{"@type":"Brand","name":"Sono da Beleza"},
     "description":"Suplemento de hidratação noturna com peptídeos de colágeno, ácido hialurônico, vitamina C e antioxidantes premium.",
     "image":[
-      "https://sonodabelezaoficial.com/baby-skin-hero-1920.jpg",
+      "https://sonodabelezaoficial.com/assets/baby-skin-hero-1920.jpg",
       "https://sonodabelezaoficial.com/og-image.jpg"
     ],
     "url":"https://sonodabelezaoficial.com/",
@@ -92,7 +92,7 @@
       --purple:#833AB4; --lilas:#eec4ff; --stroke:rgba(255,255,255,.12);
       --glow: rgba(228,71,122,.45);
     }
-    html{scroll-behavior:smooth}
+    html{ scroll-behavior:smooth; }
     *{box-sizing:border-box}
     html,body{
       margin:0;color:var(--ink);
@@ -104,6 +104,7 @@
     }
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%;height:auto}
+
     .wrap{max-width:1060px;margin:0 auto;padding:22px}
     header{display:flex;align-items:center;justify-content:center;padding:10px 0}
     .section{padding:clamp(56px,7vw,92px) 0}
@@ -111,23 +112,51 @@
     h1,h2,h3,p,ul{margin:0}
     .h2{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(22px,3vw,30px);margin-bottom:14px}
     .note{color:var(--muted);font-size:15px;line-height:1.7}
+
+    /* Logo */
     .brand-logo{display:inline-block;width:48px;opacity:.95;filter:drop-shadow(0 6px 18px rgba(131,58,180,.25))}
     .brand-logo img{width:100%;border-radius:10px}
 
-    .announce{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--stroke);padding:10px 12px;overflow:hidden;backdrop-filter:blur(12px) saturate(140%)}
-    .ann-track{display:flex;gap:24px;align-items:center;flex:1 1 auto;white-space:nowrap;animation:annScroll 40s linear infinite}
+    /* Banner rotativo (chips) fixo */
+    .announce{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,.06);
+      border-bottom:1px solid var(--stroke);
+      padding:10px 12px; overflow:hidden;
+      backdrop-filter:blur(12px) saturate(140%);
+    }
+    .ann-track{
+      display:flex; gap:24px; align-items:center; flex:1 1 auto;
+      white-space:nowrap;
+      animation:annScroll 40s linear infinite;
+    }
     .announce .chip{white-space:nowrap}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);font-weight:700}
     .chip i{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:inline-block}
-    @keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes annScroll{from{transform:translateX(0)}to{transform:translateX(-50%)} }
     body{padding-top:64px}
 
-    .kicker{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border-radius:999px;background:linear-gradient(90deg, rgba(131,58,180,.18), var(--pink-soft));color:#ffe9ff;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.9px}
+    /* Hero */
+    .kicker{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border-radius:999px;
+      background:linear-gradient(90deg, rgba(131,58,180,.18), var(--pink-soft));color:#ffe9ff;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.9px}
     h1{font-family:"Playfair Display",serif;font-weight:800;line-height:1.04;font-size:clamp(32px,6vw,62px);max-width:860px;margin:12px auto 10px}
-    h1.lux em.ink-grad{background:linear-gradient(135deg, var(--pink) 8%, var(--purple) 92%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;letter-spacing:.6px;font-style:normal}
+    h1.lux em.ink-grad{
+      background: linear-gradient(135deg, var(--pink) 8%, var(--purple) 92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      font-style: normal;
+    }
     .sub{color:var(--muted);font-size:18px;line-height:1.75;max-width:820px;margin:0 auto clamp(18px,3vw,26px)}
 
-    .hero-banners{position:relative;background:linear-gradient(180deg,rgba(131,58,180,.22),rgba(225,48,108,.18));border:1px solid var(--stroke);border-radius:20px;padding:26px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);margin:16px 0;min-height:84px}
+    /* Banners (mensagens do hero) */
+    .hero-banners{
+      position:relative;background:linear-gradient(180deg,rgba(131,58,180,.22),rgba(225,48,108,.18));
+      border:1px solid var(--stroke);border-radius:20px;padding:26px;overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);margin:16px 0;min-height:84px;
+    }
     .hero-banner{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:translateY(8px);transition:opacity .8s ease,transform .8s ease}
     .hero-banner.active{opacity:1;transform:translateY(0)}
     .hero-text{font-weight:800;font-size:clamp(18px,3.4vw,26px);letter-spacing:.2px}
@@ -135,13 +164,16 @@
     .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);transition:transform .25s,background .25s}
     .dot.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
 
+    /* Ribbon de chips */
     .ribbon{margin:16px 0;background:rgba(255,255,255,.06);border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
     .ribbon-track{display:flex;gap:22px;align-items:center;white-space:nowrap;animation:scroll 28s linear infinite;padding:12px}
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+    /* Imagem destaque */
     .image-slot{width:100%;aspect-ratio:16/9;border:1px dashed var(--stroke);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));box-shadow:0 30px 90px rgba(0,0,0,.38);margin:18px 0}
     .image-slot img{width:100%;height:100%;object-fit:cover}
 
+    /* Painéis e grids */
     .panel{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px;margin-bottom:clamp(28px,4vw,44px)}
     .panel.dark{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border-color:var(--stroke)}
     .grid-3{display:grid;gap:clamp(16px,3vw,26px);grid-template-columns:repeat(3,1fr)}
@@ -149,12 +181,14 @@
     .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px;transition:transform .35s,border-color .35s}
     .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
 
+    /* Ingredientes */
     .ingredients{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
     .ing{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px;text-align:left;transition:transform .3s ease,border-color .3s}
     .ing:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
     .ing .name{font-weight:900;margin-bottom:6px}
     .ing .desc{color:#efd7e6;font-size:14px;line-height:1.7}
 
+    /* Planos */
     .plans{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
     .plan{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border:1px solid var(--stroke);border-radius:22px;padding:22px;text-align:center;transition:transform .35s,box-shadow .35s;cursor:pointer}
     .plan:hover{transform:translateY(-6px);box-shadow:0 22px 80px rgba(131,58,180,.25)}
@@ -167,60 +201,128 @@
     .price-install{font-size:28px;font-weight:900}
     .price-cash{font-size:14px;color:#ffe2ef}
 
+    /* Bandeiras de pagamento */
     .payments{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:14px}
     .flag{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:900;letter-spacing:.3px;background:rgba(255,255,255,.06);color:#fff}
-    .flag.visa{background:linear-gradient(180deg,#1a1f71,#3a48a4)}
-    .flag.mastercard{background:linear-gradient(90deg,#ff5f00 0 35%,#eb001b 35% 67%,#f79e1b 67% 100%)}
-    .flag.elo{background:linear-gradient(180deg,#111,#2a2a2a)}
-    .flag.hipercard{background:linear-gradient(180deg,#8b1c2e,#a42539)}
-    .flag.amex{background:linear-gradient(180deg,#2e77bb,#1d5f9e)}
-    .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
-    .flag.boleto{background:linear-gradient(180deg,#444,#222)}
+    .flag.visa{ background:linear-gradient(180deg,#1a1f71,#3a48a4) }
+    .flag.mastercard{ background:linear-gradient(90deg,#ff5f00 0 35%,#eb001b 35% 67%,#f79e1b 67% 100%) }
+    .flag.elo{ background:linear-gradient(180deg,#111,#2a2a2a) }
+    .flag.hipercard{ background:linear-gradient(180deg,#8b1c2e,#a42539) }
+    .flag.amex{ background:linear-gradient(180deg,#2e77bb,#1d5f9e) }
+    .flag.pix{ background:linear-gradient(135deg,#36c996,#25a57e); color:#052d22 }
+    .flag.boleto{ background:linear-gradient(180deg,#444,#222) }
 
-    .btn,.buy{position:relative;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-weight:900;padding:12px 20px;border-radius:999px;box-shadow:0 6px 18px var(--pink-soft);text-transform:uppercase;letter-spacing:.4px;font-size:14px;line-height:1.2;white-space:nowrap;display:inline-block;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;transition:transform .18s ease, box-shadow .25s ease, filter .25s ease;animation:btn-float 4.5s ease-in-out infinite;overflow:hidden}
-    .btn::before,.buy::before{content:"";position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 var(--glow),0 0 24px 6px rgba(131,58,180,.18);animation:btn-glow 3.6s ease-in-out infinite}
-    .btn::after,.buy::after{content:"";position:absolute;top:0;left:-120%;width:120%;height:100%;background:linear-gradient(100deg,transparent 0 60%,rgba(255,255,255,.25) 75%,transparent 95%);transform:skewX(-12deg);animation:btn-shine 8s linear infinite}
-    .btn:hover,.buy:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 32px rgba(228,71,122,.42),0 0 0 2px rgba(255,255,255,.06) inset;filter:saturate(1.05)}
-    .btn:focus-visible,.buy:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.2),0 0 0 6px rgba(131,58,180,.35)}
-    @keyframes btn-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-    @keyframes btn-glow{0%,100%{box-shadow:0 0 0 0 var(--glow),0 0 20px 4px rgba(131,58,180,.16)}50%{box-shadow:0 0 0 2px rgba(228,71,122,.25),0 0 28px 8px rgba(131,58,180,.28)}}
-    @keyframes btn-shine{0%{left:-120%}100%{left:120%}}
-    .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    /* BOTÕES – animação sutil e iluminada */
+    .btn, .buy{
+      position:relative;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color:#fff;font-weight:900;padding:12px 20px;border-radius:999px;
+      box-shadow:0 6px 18px var(--pink-soft);
+      text-transform:uppercase;letter-spacing:.4px;font-size:14px;line-height:1.2;
+      white-space:nowrap;display:inline-block;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;
+      transition:transform .18s ease, box-shadow .25s ease, filter .25s ease;
+      animation:btn-float 4.5s ease-in-out infinite;
+      overflow:hidden;
+    }
+    .btn::before, .buy::before{
+      content:""; position:absolute; inset:-2px;
+      border-radius:inherit; pointer-events:none;
+      box-shadow:0 0 0 0 var(--glow), 0 0 24px 6px rgba(131,58,180,.18);
+      animation:btn-glow 3.6s ease-in-out infinite;
+    }
+    .btn::after, .buy::after{
+      content:""; position:absolute; top:0; left:-120%;
+      width:120%; height:100%;
+      background:linear-gradient(100deg, transparent 0 60%, rgba(255,255,255,.25) 75%, transparent 95%);
+      transform:skewX(-12deg);
+      animation:btn-shine 8s linear infinite;
+    }
+    .btn:hover, .buy:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 12px 32px rgba(228,71,122,.42), 0 0 0 2px rgba(255,255,255,.06) inset; filter:saturate(1.05); }
+    .btn:focus-visible, .buy:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(255,255,255,.2), 0 0 0 6px rgba(131,58,180,.35); }
+    @keyframes btn-float { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
+    @keyframes btn-glow { 0%,100%{ box-shadow:0 0 0 0 var(--glow), 0 0 20px 4px rgba(131,58,180,.16) } 50%{ box-shadow:0 0 0 2px rgba(228,71,122,.25), 0 0 28px 8px rgba(131,58,180,.28) } }
+    @keyframes btn-shine { 0%{ left:-120% } 100%{ left:120% } }
 
-    .carousel{position:relative;margin-top:18px}
-    .carousel-viewport{display:flex;gap:16px;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;border:1px solid var(--stroke);border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25))}
-    .slide{min-width:100%;scroll-snap-align:center;display:grid;place-items:center;padding:6px}
-    .carousel-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px}
-    .nav{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);cursor:pointer;user-select:none}
-    .nav svg{width:18px;height:18px}
-    .dots2{display:flex;gap:8px;align-items:center}
-    .dot2.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
-    .dot2{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28)}
+    .btn-row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px }
 
-    .compare{position:relative;width:100%;max-width:920px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0e0a13;border:1px solid var(--stroke);box-shadow:0 30px 90px rgba(0,0,0,.38)}
-    .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .compare .after{clip-path:inset(0 0 0 50%);transition:clip-path .1s linear}
-    .compare .label{position:absolute;top:12px;left:12px;z-index:3;font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18)}
-    .compare .label.right{left:auto;right:12px}
-    .compare .handle{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.5%,rgba(255,255,255,.6) 50%,transparent 50.5%)}
-    .compare input[type="range"]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
+    /* CARROSSEL Antes & Depois */
+    .carousel{ position:relative; margin-top:18px }
+    .carousel-viewport{
+      display:flex; gap:16px; overflow:hidden; scroll-behavior:smooth;
+      scroll-snap-type:x mandatory; border:1px solid var(--stroke); border-radius:20px; padding:16px;
+      background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));
+    }
+    .slide{ min-width:100%; scroll-snap-align:center; display:grid; place-items:center; padding:6px }
+    .carousel-controls{ display:flex; justify-content:center; align-items:center; gap:10px; margin-top:12px; }
+    .nav{
+      display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px;
+      border-radius:999px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06);
+      cursor:pointer; user-select:none;
+    }
+    .nav svg{ width:18px; height:18px }
+    .dots2{ display:flex; gap:8px; align-items:center }
+    .dot2.active{ background:linear-gradient(135deg,var(--purple),var(--pink)); transform:scale(1.2) }
+    .dot2{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.28) }
 
+    /* Comparador */
+    .compare{
+      position:relative; width:100%; max-width:920px; aspect-ratio:16/9;
+      border-radius:16px; overflow:hidden; background:#0e0a13; border:1px solid var(--stroke); box-shadow:0 30px 90px rgba(0,0,0,.38);
+    }
+    .compare img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .compare .after{ clip-path:inset(0 0 0 50%); transition:clip-path .1s linear; }
+    .compare .label{
+      position:absolute; top:12px; left:12px; z-index:3; font-weight:900; font-size:12px;
+      padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.18)
+    }
+    .compare .label.right{ left:auto; right:12px }
+    .compare .handle{
+      position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,.6) 50%, transparent 50.5%);
+    }
+    .compare input[type="range"]{ position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; }
+
+    /* Créditos */
     .credit{display:grid;place-items:center;gap:6px;margin:16px 0 28px}
     .credit .credit-title{font-family:"Playfair Display",serif;font-weight:800;letter-spacing:.4px;line-height:1.25;text-align:center}
     .credit-logo img{width:64px;border-radius:10px;filter:drop-shadow(0 10px 30px rgba(131,58,180,.25))}
 
+    /* Reveal */
     .fade-up{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
     .in-view{opacity:1;transform:translateY(0)}
 
-    @media (max-width:1024px){.grid-3{grid-template-columns:repeat(2,1fr)}.ingredients,.plans{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:680px){.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.ingredients,.plans{grid-template-columns:1fr}.panel{padding:18px}.hero-banners{padding:18px;min-height:76px}}
-    @media (max-width:520px){.announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}body{padding-top:48px}.btn-row{flex-direction:column;gap:12px;align-items:stretch}.btn-row a{width:100%;max-width:none;flex:0 0 auto;padding:12px 14px}.brand-logo{width:40px}.credit-logo img{width:56px}}
-    @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+    /* Mobile tweaks */
+    @media (max-width:1024px){
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .ingredients,.plans{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:680px){
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .ingredients,.plans{grid-template-columns:1fr}
+      .panel{padding:18px}
+      .hero-banners{padding:18px;min-height:76px}
+    }
+    @media (max-width:520px){
+      .announce{padding:6px 8px; font-size:12px}
+      .chip{padding:4px 10px; font-size:12px}
+      body{padding-top:48px}
+      .btn-row{ flex-direction:column; gap:12px; align-items:stretch; }
+      .btn-row a{ width:100%; max-width:none; flex:0 0 auto; padding:12px 14px; }
+      .brand-logo{width:40px}
+      .credit-logo img{width:56px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important;transition:none !important}
+    }
   </style>
 </head>
+
 <body>
+  <!-- GTM noscript -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPHSWFDQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+  <!-- Banner rotativo fixo -->
   <div class="announce" aria-label="Mensagens e destaques">
     <div class="ann-track">
       <span class="chip"><i></i> Frete Grátis no lote atual</span>
@@ -236,12 +338,15 @@
   </div>
 
   <div class="wrap">
+
+    <!-- Header -->
     <header class="fade-up">
       <a class="brand-logo" href="#top" aria-label="Baby Skin">
         <img src="assets/logo-sdb.png" alt="Logo SONO DA BELEZA – Baby Skin" width="480" height="517">
       </a>
     </header>
 
+    <!-- HERO -->
     <section class="section center fade-up" id="top">
       <div class="kicker">Ritual Noturno + Água</div>
       <h1 class="lux">Revele <em class="ink-grad">O BRILHO</em> que sua pele merece.</h1>
@@ -255,6 +360,23 @@
         <div class="dots" id="dots" aria-hidden="true"></div>
       </div>
 
+      <div class="ribbon"><div class="ribbon-track">
+        <span class="chip"><i></i> Colágeno + Vitamina C</span>
+        <span class="chip"><i></i> Ácido Hialurônico</span>
+        <span class="chip"><i></i> Trans-Resveratrol</span>
+        <span class="chip"><i></i> Zinco Bisglicinato</span>
+        <span class="chip"><i></i> Astaxantina</span>
+        <span class="chip"><i></i> Frete Grátis (lote atual)</span>
+        <span class="chip"><i></i> 7 dias garantia</span>
+        <span class="chip"><i></i> Colágeno + Vitamina C</span>
+        <span class="chip"><i></i> Ácido Hialurônico</span>
+        <span class="chip"><i></i> Trans-Resveratrol</span>
+        <span class="chip"><i></i> Zinco Bisglicinato</span>
+        <span class="chip"><i></i> Astaxantina</span>
+        <span class="chip"><i></i> Frete Grátis (lote atual)</span>
+        <span class="chip"><i></i> 7 dias garantia</span>
+      </div></div>
+
       <div class="image-slot" aria-label="Imagem principal">
         <picture>
           <source type="image/webp" srcset="assets/baby-skin-hero-768.webp 768w, assets/baby-skin-hero-1280.webp 1280w, assets/baby-skin-hero-1920.webp 1920w" sizes="(max-width: 680px) 100vw, 1060px">
@@ -262,13 +384,14 @@
             src="assets/baby-skin-hero-1280.jpg"
             srcset="assets/baby-skin-hero-768.jpg 768w, assets/baby-skin-hero-1280.jpg 1280w, assets/baby-skin-hero-1920.jpg 1920w"
             sizes="(max-width: 680px) 100vw, 1060px"
-            width="1280" height="698"
+            width="1280" height="576"
             alt="Três frascos do Baby Skin sobre fundo rosa com flores brancas"
             loading="eager" fetchpriority="high" decoding="async"
           />
         </picture>
       </div>
 
+      <!-- HERO botões -->
       <div class="btn-row">
         <a class="btn" href="#porque-funciona">Entenda por que funciona</a>
         <a class="btn" href="#carrossel">Antes & Depois</a>
@@ -278,15 +401,293 @@
       <p class="note" style="margin-top:10px">Resultados melhores com uso contínuo por 30–60 dias.</p>
     </section>
 
-    <!-- Resto da landing mantido igual à versão final anterior -->
-    <section class="section center fade-up">
+    <!-- Por que funciona (resumo) -->
+    <section id="porque-funciona" class="section center fade-up">
       <div class="panel dark">
-        <p class="note">Imagens atualizadas com qualidade e SEO. O restante do conteúdo permanece o mesmo da sua versão final.</p>
+        <h2 class="h2">Por que o Baby Skin é eficaz?</h2>
+        <p class="note" style="max-width:860px;margin:8px auto 18px">
+          Enquanto hidratantes comuns agem só na superfície, o <b>Baby Skin</b> combina <b>peptídeos de colágeno</b>, <b>ácido hialurônico</b>, <b>vitamina C</b>, <b>astaxantina</b>, <b>trans-resveratrol</b> e <b>zinco bisglicinato</b> — ativos que trabalham em sinergia durante o <b>sono</b>, quando a pele está mais receptiva à <b>reparação</b> e à <b>hidratação</b>.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="h2">Produtos comuns do mercado</h3>
+            <p class="note">• Ação superficial<br>• <b>Baixa concentração</b> de ativos<br>• Resultados lentos e pouco consistentes</p>
+          </div>
+          <div class="card">
+            <h3 class="h2">Baby Skin (hidratação noturna)</h3>
+            <p class="note">• <b>Ativos de alta performance</b> de dentro para fora<br>• Sinergia noturna potencializando a <b>reparação</b><br>• Rotina simples: <b>12 gotas</b> em <b>200ml</b> antes de dormir</p>
+          </div>
+        </div>
       </div>
     </section>
-  </div>
+
+    <!-- Entenda como funciona -->
+    <section id="como-funciona" class="section center fade-up">
+      <div class="panel dark">
+        <h2 class="h2">Entenda como funciona</h2>
+        <p class="note" style="max-width:860px;margin:8px auto 18px">
+          Durante o sono, o corpo entra em um estado natural de <b>reparação celular</b> e <b>regeneração dos tecidos</b>. É nesse momento que a pele está mais receptiva à hidratação e à síntese de colágeno. O Baby Skin foi desenvolvido para atuar exatamente nessa janela biológica.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="h2">Sinergia noturna</h3>
+            <p class="note">
+              • <b>Peptídeos de colágeno</b> fornecem blocos para reconstrução da pele.<br>
+              • <b>Ácido hialurônico</b> atrai e retém água, garantindo viço.<br>
+              • <b>Vitamina C</b> participa da síntese de colágeno e combate radicais livres.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="h2">Eficácia do ritual</h3>
+            <p class="note">
+              • Antioxidantes como <b>astaxantina</b> e <b>resveratrol</b> ajudam a reduzir o estresse oxidativo.<br>
+              • <b>Zinco bisglicinato</b> auxilia no equilíbrio cutâneo e em processos inflamatórios.<br>
+              • Resultados visíveis geralmente em <b>30–60 dias</b> de uso contínuo + boa hidratação.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:24px">
+          <h3 class="h2">Benefícios do tratamento</h3>
+          <ul class="note" style="text-align:left;max-width:760px;margin:0 auto;line-height:1.8">
+            <li>Melhora na elasticidade e redução de linhas finas.</li>
+            <li>Mais brilho natural pela maior retenção de água.</li>
+            <li>Suporte a unhas e cabelos com colágeno e zinco.</li>
+            <li>Proteção antioxidante contra poluição e estresse.</li>
+            <li>Rotina simples: 12 gotas em 200ml de água antes de dormir.</li>
+          </ul>
+        </div>
+
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn" href="#carrossel">Ver resultados reais</a>
+          <a class="btn" href="#checkout">Quero começar hoje</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARROSSEL ANTES & DEPOIS (8 slides) -->
+    <section id="carrossel" class="section center fade-up" aria-label="Antes e Depois">
+      <div class="panel dark">
+        <h2 class="h2">Antes & Depois — resultados reais</h2>
+        <p class="note" style="max-width:820px;margin:8px auto 18px">
+          Arraste a barra para comparar. As fotos são ilustrativas e os resultados podem variar.
+        </p>
+
+        <div class="carousel" data-index="0" aria-roledescription="carrossel">
+          <div class="carousel-viewport" id="carouselTrack" tabindex="0">
+            <!-- Slides 1–8 -->
+            <div class="slide" role="group" aria-label="1 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes1.jpg" alt="Foto antes – pele com linhas finas" loading="lazy" width="1920" height="1080">
+                <img class="after" src="/depois1.jpg" alt="Foto depois – pele com aparência mais viçosa" loading="lazy" width="1920" height="1080">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 1">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="2 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes2.jpg" alt="Foto antes – textura irregular" loading="lazy">
+                <img class="after" src="/depois2.jpg" alt="Foto depois – textura mais uniforme" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 2">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="3 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes3.jpg" alt="Foto antes – opacidade" loading="lazy">
+                <img class="after" src="/depois3.jpg" alt="Foto depois – glow natural" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 3">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="4 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes4.jpg" alt="Foto antes – oleosidade" loading="lazy">
+                <img class="after" src="/depois4.jpg" alt="Foto depois – aspecto equilibrado" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 4">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="5 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes5.jpg" alt="Foto antes – ressecamento" loading="lazy">
+                <img class="after" src="/depois5.jpg" alt="Foto depois – hidratação visível" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 5">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="6 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes6.jpg" alt="Foto antes – poros aparentes" loading="lazy">
+                <img class="after" src="/depois6.jpg" alt="Foto depois – poros suavizados" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 6">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="7 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes7.jpg" alt="Foto antes – tom desigual" loading="lazy">
+                <img class="after" src="/depois7.jpg" alt="Foto depois – tom mais uniforme" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 7">
+              </div>
+            </div>
+            <div class="slide" role="group" aria-label="8 de 8">
+              <div class="compare" data-compare>
+                <img src="/antes8.jpg" alt="Foto antes – linhas de expressão" loading="lazy">
+                <img class="after" src="/depois8.jpg" alt="Foto depois – linhas suavizadas" loading="lazy">
+                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 8">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls" aria-label="Controles do carrossel">
+            <button class="nav prev" aria-label="Slide anterior" id="prevBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dots2" id="dots2" aria-hidden="true"></div>
+            <button class="nav next" aria-label="Próximo slide" id="nextBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:18px">
+          <a class="btn" href="#checkout">Quero começar hoje</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section id="checkout" class="section center fade-up">
+      <div class="panel">
+        <h2 class="h2">Escolha o seu tratamento</h2>
+        <div class="plans">
+          <div class="plan" data-link="https://checkout-plano1.com">
+            <div class="title">1 Frasco</div>
+            <div class="bottles">30 dias de uso</div>
+            <div class="price">
+              <div class="price-old">R$ 159,90</div>
+              <div class="price-install">12x de R$ 9,90 <small>no cartão</small></div>
+              <div class="price-cash">ou R$ 99,90 à vista no Pix</div>
+            </div>
+            <p class="note">Para testar o ritual.</p>
+            <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
+          </div>
+          <div class="plan best" data-link="https://checkout-plano2.com">
+            <div class="save">Mais vendido • Economize</div>
+            <div class="title">2 Frascos</div>
+            <div class="bottles">60 dias de uso</div>
+            <div class="price">
+              <div class="price-old">R$ 299,90</div>
+              <div class="price-install">12x de R$ 16,90 <small>no cartão</small></div>
+              <div class="price-cash">ou R$ 179,90 à vista no Pix</div>
+            </div>
+            <p class="note">Resultados consistentes + frete grátis.</p>
+            <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
+          </div>
+          <div class="plan" data-link="https://checkout-plano3.com">
+            <div class="title">3 Frascos</div>
+            <div class="bottles">90 dias de uso</div>
+            <div class="price">
+              <div class="price-old">R$ 429,90</div>
+              <div class="price-install">12x de R$ 21,90 <small>no cartão</small></div>
+              <div class="price-cash">ou R$ 229,90 à vista no Pix</div>
+            </div>
+            <p class="note">Melhor custo por dose.</p>
+            <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
+          </div>
+        </div>
+
+        <!-- Bandeiras logo abaixo dos planos -->
+        <div class="payments">
+          <span class="flag visa">VISA</span>
+          <span class="flag mastercard">MASTERCARD</span>
+          <span class="flag elo">ELO</span>
+          <span class="flag hipercard">HIPERCARD</span>
+          <span class="flag amex">AMEX</span>
+          <span class="flag pix">PIX</span>
+          <span class="flag boleto">BOLETO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMUNIDADE -->
+    <section id="comunidade" class="section center fade-up">
+      <div class="panel dark">
+        <h2 class="h2">Comunidade gratuita de dicas & receitas</h2>
+        <p class="note" style="max-width:820px;margin:8px auto 18px">
+          Entre na nossa comunidade com <b>dicas práticas</b> e <b>receitas gratuitas</b> para pele bonita, cabelos fortes e bem-estar diário. Conteúdos novos toda semana.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-community" href="#comunidade">Entrar na comunidade</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSSA HISTÓRIA -->
+    <section id="historia" class="section center fade-up">
+      <div class="panel dark">
+        <h2 class="h2">Nossa história</h2>
+        <p class="note" style="max-width:860px;margin:8px auto">
+          A <b>SONO DA BELEZA</b> nasceu da ideia simples de que autocuidado real precisa caber na rotina. Unimos ciência e praticidade para criar o <b>Baby Skin</b>, um ritual noturno de fácil adesão, com ingredientes selecionados e experiência minimalista. Seguimos comprometidos com transparência, qualidade e resultados consistentes ao longo do tempo.
+        </p>
+      </div>
+    </section>
+
+    <!-- POLÍTICA DE PRIVACIDADE -->
+    <section id="privacidade" class="section center fade-up" aria-label="Política de Privacidade">
+      <div class="panel">
+        <h2 class="h2">Política de Privacidade</h2>
+        <div class="note" style="max-width:900px;margin:8px auto;text-align:left">
+          <p><b>Resumo:</b> Respeitamos sua privacidade. Coletamos dados mínimos para processar pedidos, suporte e melhorias do site.</p>
+          <p><b>Dados que coletamos:</b> informações de contato (como nome e e-mail), dados de pagamento (processados por provedores seguros), e dados técnicos (cookies, IP, páginas visitadas) para análise e segurança.</p>
+          <p><b>Como usamos:</b> finalizar compras, oferecer suporte, enviar comunicações transacionais e melhorar sua experiência. Só enviamos marketing com seu consentimento, e você pode cancelar quando quiser.</p>
+          <p><b>Compartilhamento:</b> apenas com parceiros essenciais (ex.: gateways de pagamento, logística, analytics) sob contratos e padrões de segurança.</p>
+          <p><b>Seus direitos:</b> acesso, correção, exclusão, portabilidade e revogação de consentimento. Para exercer, fale com nosso suporte em <a href="mailto:suporte@sonodabelezaoficial.com">suporte@sonodabelezaoficial.com</a>.</p>
+          <p><b>Cookies:</b> usamos cookies para autenticação, carrinho e métricas. Você pode gerenciá-los no navegador.</p>
+          <p><b>Segurança:</b> aplicamos medidas técnicas e organizacionais para proteção dos dados.</p>
+          <p><b>Atualizações:</b> podemos atualizar esta política para refletir melhorias. Publicaremos a versão revisada nesta página com a data de vigência.</p>
+          <p class="note">Vigência: 23/08/2025 • Controladora: SONO DA BELEZA</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="#top">Voltar ao topo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="center fade-up">
+      <div class="panel dark" style="margin-bottom:18px">
+        <h2 class="h2">Modo de uso</h2>
+        <p class="note" style="margin-top:6px">Tome <b>12 gotas</b> diluídas em <b>200ml de água</b> <b>à noite</b>, antes de dormir. Use diariamente e mantenha boa hidratação ao longo do dia.</p>
+      </div>
+      <div class="panel dark" style="margin-bottom:18px">
+        <h2 class="h2">Sobre nós — SONO DA BELEZA</h2>
+        <p class="note" style="margin-top:6px">Acreditamos no poder do <b>sono reparador</b> aliado à <b>hidratação inteligente</b>. Desenvolvemos o Baby Skin para simplificar seu ritual noturno com ingredientes premium e uma experiência minimalista — porque beleza começa quando você descansa.</p>
+      </div>
+      <p class="note" style="margin-bottom:8px">
+        <a href="#privacidade">Política de Privacidade</a>
+      </p>
+    </footer>
+
+    <!-- Créditos -->
+    <section class="credit fade-up" aria-label="Crédito do projeto">
+      <div class="credit-title">
+        Um projeto desenvolvido por:<br>
+        <span style="font-size:1.06em">SONO DA BELEZA</span>
+      </div>
+      <span class="credit-logo">
+        <img src="assets/logo-sdb.png?v=9" alt="Logo SONO DA BELEZA">
+      </span>
+    </section>
+
+  </div><!-- /wrap -->
 
   <script>
+    // Reveal on scroll
     const reveal = () => {
       document.querySelectorAll('.fade-up').forEach(el => {
         const r = el.getBoundingClientRect();
@@ -296,6 +697,18 @@
     addEventListener('load', reveal, {once:true});
     addEventListener('scroll', reveal, {passive:true});
 
+    // Vincula links de compra (card todo clicável)
+    document.querySelectorAll('.plan').forEach(p=>{
+      const link=p.getAttribute('data-link');
+      const a=p.querySelector('.buy');
+      if(link&&a){ a.href=link; }
+      p.addEventListener('click', (e)=>{
+        if (!link) return;
+        if (!e.target.closest('.buy')) window.open(link,'_blank','noopener');
+      });
+    });
+
+    // Hero banners (mensagens)
     const banners=[...document.querySelectorAll('.hero-banner')];
     const dotsWrap=document.getElementById('dots');
     banners.forEach((_,i)=>{ const d=document.createElement('span'); d.className='dot'+(i===0?' active':''); dotsWrap.appendChild(d);});
@@ -305,6 +718,109 @@
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches){ start(); }
     const hb=document.getElementById('heroBanners');
     hb.addEventListener('mouseenter',stop); hb.addEventListener('mouseleave',()=>{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){ start(); }});
+
+    // ====== CARROSSEL + COMPARADOR ======
+    (function(){
+      const track = document.getElementById('carouselTrack');
+      const dotsBox = document.getElementById('dots2');
+      const slides = [...track.querySelectorAll('.slide')];
+      let index = 0;
+      const total = slides.length;
+
+      // dots do carrossel
+      slides.forEach((_,i)=>{
+        const d = document.createElement('span');
+        d.className = 'dot2' + (i===0 ? ' active' : '');
+        d.addEventListener('click', ()=> goTo(i));
+        dotsBox.appendChild(d);
+      });
+      const dots = [...dotsBox.children];
+
+      function goTo(i){
+        index = (i+total)%total;
+        track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+        dots.forEach((d,k)=> d.classList.toggle('active', k===index));
+      }
+
+      // prev/next
+      document.getElementById('prevBtn').addEventListener('click', ()=> goTo(index-1));
+      document.getElementById('nextBtn').addEventListener('click', ()=> goTo(index+1));
+
+      // resize (mantém alinhado)
+      addEventListener('resize', ()=> goTo(index));
+
+      // swipe
+      let startX=null, scrollStart=null;
+      track.addEventListener('pointerdown', e=>{
+        startX = e.clientX; scrollStart = track.scrollLeft; track.setPointerCapture(e.pointerId);
+      });
+      track.addEventListener('pointermove', e=>{
+        if(startX===null) return;
+        const dx = e.clientX - startX;
+        track.scrollLeft = scrollStart - dx;
+      });
+      track.addEventListener('pointerup', e=>{
+        if(startX===null) return;
+        const dx = e.clientX - startX;
+        if(Math.abs(dx) > 40) { goTo(index + (dx<0?1:-1)); } else { goTo(index); }
+        startX=null; scrollStart=null;
+      });
+
+      // keyboard
+      track.addEventListener('keydown', e=>{
+        if(e.key==='ArrowRight') goTo(index+1);
+        if(e.key==='ArrowLeft') goTo(index-1);
+      });
+
+      // Comparadores (range controla clip-path)
+      document.querySelectorAll('[data-compare]').forEach((cmp)=>{
+        const after = cmp.querySelector('.after');
+        const range = cmp.querySelector('input[type="range"]');
+        const setClip = (v)=> after.style.clipPath = `inset(0 0 0 ${v}%)`;
+        setClip(50);
+        range.addEventListener('input', e=>{
+          const v = Math.max(0, Math.min(100, Number(e.target.value)||50));
+          setClip(100 - v);
+        });
+
+        // arraste direto na imagem
+        cmp.addEventListener('pointerdown', e=>{
+          cmp.setPointerCapture(e.pointerId);
+          const rect = cmp.getBoundingClientRect();
+          const move = (clientX)=>{
+            const pct = ((clientX - rect.left)/rect.width)*100;
+            const v = Math.max(0, Math.min(100, pct));
+            range.value = v;
+            setClip(100 - v);
+          };
+          move(e.clientX);
+          const onMove = ev => move(ev.clientX);
+          const onUp = () => { cmp.removeEventListener('pointermove', onMove); cmp.removeEventListener('pointerup', onUp); };
+          cmp.addEventListener('pointermove', onMove);
+          cmp.addEventListener('pointerup', onUp);
+        });
+      });
+    })();
+
+    // Fallback universal para âncoras (garante rolagem em visualizadores)
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const hash = a.getAttribute('href');
+      if(!hash || hash.length <= 1) return;
+      const target = document.querySelector(hash);
+      if(!target) return;
+
+      e.preventDefault();
+      try{
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        target.setAttribute('tabindex','-1');
+        target.focus({preventScroll:true});
+        target.removeAttribute('tabindex');
+      }catch(_){
+        location.hash = hash;
+      }
+    }, {passive:false});
   </script>
 </body>
 </html>
