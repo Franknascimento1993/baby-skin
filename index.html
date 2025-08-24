@@ -41,21 +41,39 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0511;--ink:#fff;--muted:#efd7e6;--pink:#e4477a;--pink-soft:rgba(228,71,122,.18);--purple:#833AB4;--lilas:#eec4ff;--stroke:rgba(255,255,255,.12);--glow:rgba(228,71,122,.45)}
+    :root{
+      --bg:#0b0511;--ink:#fff;--muted:#efd7e6;--pink:#e4477a;--pink-soft:rgba(228,71,122,.18);
+      --purple:#833AB4;--lilas:#eec4ff;--stroke:rgba(255,255,255,.12);--glow:rgba(228,71,122,.45)
+    }
     html{scroll-behavior:smooth}*{box-sizing:border-box}
-    html,body{margin:0;color:var(--ink);
+    html,body{
+      margin:0;color:var(--ink);
       background:
         radial-gradient(1200px 650px at 15% 90%, rgba(252,175,69,.12), transparent 62%),
         radial-gradient(1000px 560px at 88% -12%, rgba(131,58,180,.22), transparent 64%),
         var(--bg);
-      font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
-    a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}
+      font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+
     .wrap{max-width:1060px;margin:0 auto;padding:22px}
     header{display:flex;align-items:center;justify-content:center;padding:10px 0}
     .section{padding:clamp(56px,7vw,92px) 0}
-    .center{text-align:center}h1,h2,h3,p,ul{margin:0}
-    .h2{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(22px,3vw,30px);margin-bottom:14px}
+    .center{text-align:center}
+    h1,h2,h3,p,ul{margin:0}
+    .h2{
+      font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(22px,3vw,30px);margin-bottom:14px;position:relative
+    }
+    /* barra rosa elegante sob os h2 */
+    .h2::after{
+      content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;
+      background:linear-gradient(90deg,var(--pink),var(--purple));
+      box-shadow:0 0 16px rgba(228,71,122,.30);
+    }
     .note{color:var(--muted);font-size:15px;line-height:1.7}
+    /* marcadores de listas em rosa */
+    .note li::marker{color:var(--pink)}
 
     /* Logo */
     .brand-logo{display:inline-block;width:56px;opacity:.95;filter:drop-shadow(0 6px 18px rgba(131,58,180,.25))}
@@ -81,7 +99,8 @@
     .hero-banner.active{opacity:1;transform:translateY(0)}
     .hero-text{font-weight:800;font-size:clamp(18px,3.4vw,26px);letter-spacing:.2px}
     .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;pointer-events:none}
-    .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28)}.dot.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
+    .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28)}
+    .dot.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
 
     .ribbon{margin:16px 0;background:rgba(255,255,255,.06);border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
     .ribbon-track{display:flex;gap:22px;align-items:center;white-space:nowrap;animation:scroll 28s linear infinite;padding:12px}
@@ -90,8 +109,9 @@
     .image-slot{width:100%;aspect-ratio:16/9;border:1px dashed var(--stroke);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));box-shadow:0 30px 90px rgba(0,0,0,.38);margin:18px 0}
     .image-slot img{width:100%;height:100%;object-fit:cover}
 
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px;margin-bottom:clamp(28px,4vw,44px)}
-    .panel.dark{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border-color:var(--stroke)}
+    /* painéis com um toque rosa sutil */
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px;margin-bottom:clamp(28px,4vw,44px);box-shadow:0 0 0 1px rgba(228,71,122,.06) inset, 0 20px 60px rgba(0,0,0,.18)}
+    .panel.dark{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border-color:var(--stroke);box-shadow:0 0 0 1px rgba(228,71,122,.08) inset, 0 20px 60px rgba(0,0,0,.24)}
     .grid-3{display:grid;gap:clamp(16px,3vw,26px);grid-template-columns:repeat(3,1fr)}
     .grid-2{display:grid;gap:clamp(16px,3vw,26px);grid-template-columns:repeat(2,1fr)}
     .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px;transition:transform .35s,border-color .35s}
@@ -100,15 +120,46 @@
     .ingredients{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
     .ing{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px;text-align:left;transition:transform .3s ease,border-color .3s}
     .ing:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
-    .ing .name{font-weight:900;margin-bottom:6px}.ing .desc{color:#efd7e6;font-size:14px;line-height:1.7}
+    .ing .name{font-weight:900;margin-bottom:6px}
+    .ing .desc{color:#efd7e6;font-size:14px;line-height:1.7}
 
     .plans{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
     .plan{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border:1px solid var(--stroke);border-radius:22px;padding:22px;text-align:center;transition:transform .35s,box-shadow .35s;cursor:pointer}
     .plan:hover{transform:translateY(-6px);box-shadow:0 22px 80px rgba(131,58,180,.25)}
-    .plan.best{border-color:rgba(225,48,108,.5)}.title{font-weight:900;letter-spacing:.3px;margin-bottom:4px}
-    .bottles{font-size:13px;color:#efd7e6}.save{display:inline-block;background:rgba(225,48,108,.18);border:1px solid rgba(225,48,108,.45);color:#ffe9f3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:6px}
-    .price{display:grid;gap:6px;justify-items:center;margin:10px 0}.price-old{color:rgba(255,255,255,.6);text-decoration:line-through;font-weight:700}
-    .price-install{font-size:28px;font-weight:900}.price-cash{font-size:14px;color:#ffe2ef}
+    .plan.best{border-color:rgba(225,48,108,.5)}
+    .title{font-weight:900;letter-spacing:.3px;margin-bottom:4px}
+    .bottles{font-size:13px;color:#efd7e6}
+    .save{display:inline-block;background:rgba(225,48,108,.18);border:1px solid rgba(225,48,108,.45);color:#ffe9f3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:6px}
+    .price{display:grid;gap:6px;justify-items:center;margin:10px 0}
+    .price-old{color:rgba(255,255,255,.6);text-decoration:line-through;font-weight:700}
+    .price-install{font-size:28px;font-weight:900}
+    .price-cash{font-size:14px;color:#ffe2ef}
+
+    /* Badge "Sem açúcar adicionado" (animado) */
+    .micro-badge{
+      position:relative; display:inline-flex; align-items:center; gap:8px;
+      padding:6px 12px; border-radius:999px;
+      font-size:12px; font-weight:900; letter-spacing:.2px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 6px 18px var(--pink-soft);
+      overflow:hidden;
+      animation:sugar-pulse 3.8s ease-in-out infinite;
+      margin-top:6px;
+    }
+    .micro-badge i{
+      width:16px;height:16px;border-radius:50%;
+      display:inline-grid;place-items:center;font-style:normal;font-size:12px;
+      background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-weight:900
+    }
+    .micro-badge::after{
+      content:""; position:absolute; top:0; left:-120%; width:120%; height:100%;
+      background:linear-gradient(100deg,transparent 0 60%,rgba(255,255,255,.22) 75%,transparent 95%);
+      transform:skewX(-12deg);
+      animation:sugar-shine 6.2s linear infinite;
+    }
+    @keyframes sugar-pulse{0%,100%{transform:translateY(0);box-shadow:0 6px 18px var(--pink-soft)}50%{transform:translateY(-1px);box-shadow:0 10px 26px rgba(228,71,122,.32)}}
+    @keyframes sugar-shine{0%{left:-120%}100%{left:120%}}
 
     /* Pagamentos */
     .payments{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:14px}
@@ -138,7 +189,9 @@
     .slide{min-width:100%;scroll-snap-align:center;display:grid;place-items:center;padding:6px}
     .carousel-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px}
     .nav{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);cursor:pointer}
-    .dots2{display:flex;gap:8px;align-items:center}.dot2{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.28)}.dot2.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
+    .dots2{display:flex;gap:8px;align-items:center}
+    .dot2{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.28)}
+    .dot2.active{background:linear-gradient(135deg,var(--purple),var(--pink));transform:scale(1.2)}
     .compare{position:relative;width:100%;max-width:1060px;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:#0e0a13;border:1.5px solid var(--stroke);box-shadow:0 30px 90px rgba(0,0,0,.38)}
     .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .compare .after{clip-path:inset(0 0 0 50%);transition:clip-path .1s linear}
@@ -160,7 +213,12 @@
       .panel{padding:18px}.hero-banners{padding:18px;min-height:76px}
       .compare{aspect-ratio:3/4}
     }
-    @media (max-width:520px){.announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}body{padding-top:48px}.btn-row{flex-direction:column;gap:12px;align-items:stretch}.btn-row a{width:100%;padding:12px 14px}.brand-logo{width:44px}.credit-logo img{width:56px}}
+    @media (max-width:520px){
+      .announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}
+      body{padding-top:48px}
+      .btn-row{flex-direction:column;gap:12px;align-items:stretch}.btn-row a{width:100%;padding:12px 14px}
+      .brand-logo{width:44px}.credit-logo img{width:56px}
+    }
     @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -205,9 +263,12 @@
       </div>
 
       <div class="ribbon"><div class="ribbon-track">
-        <span class="chip"><i></i> Colágeno + Vitamina C</span><span class="chip"><i></i> Ácido Hialurônico</span>
-        <span class="chip"><i></i> Passo com água</span><span class="chip"><i></i> Sabor maracujá relaxante</span>
-        <span class="chip"><i></i> Antioxidantes premium</span><span class="chip"><i></i> Frete Grátis (lote atual)</span>
+        <span class="chip"><i></i> Colágeno + Vitamina C</span>
+        <span class="chip"><i></i> Ácido Hialurônico</span>
+        <span class="chip"><i></i> Passo com água</span>
+        <span class="chip"><i></i> Sabor maracujá relaxante</span>
+        <span class="chip"><i></i> Antioxidantes premium</span>
+        <span class="chip"><i></i> Frete Grátis (lote atual)</span>
       </div></div>
 
       <!-- HERO IMAGE com fallback inteligente -->
@@ -238,13 +299,13 @@
         </p>
 
         <div class="grid-2">
-          <div class="card"><h3 class="h2">Produtos comuns do mercado</h3><p class="note">• Ação superficial<br>• <b>Baixa concentração</b> de ativos<br>• Resultados lentos e pouco consistentes</p></div>
-          <div class="card"><h3 class="h2">Baby Skin (hidratação noturna)</h3><p class="note">• <b>Ativos de alta performance</b> de dentro para fora<br>• Sinergia noturna potencializando a <b>reparação</b><br>• Rotina simples: <b>12 gotas</b> em <b>200ml</b> antes de dormir</p></div>
+          <div class="card"><h2 class="h2">Produtos comuns do mercado</h2><p class="note">• Ação superficial<br>• <b>Baixa concentração</b> de ativos<br>• Resultados lentos e pouco consistentes</p></div>
+          <div class="card"><h2 class="h2">Baby Skin (hidratação noturna)</h2><p class="note">• <b>Ativos de alta performance</b> de dentro para fora<br>• Sinergia noturna potencializando a <b>reparação</b><br>• Rotina simples: <b>12 gotas</b> em <b>200ml</b> antes de dormir</p></div>
         </div>
 
-        <!-- DIFERENCIAIS ATUALIZADOS -->
+        <!-- DIFERENCIAIS (6 cards com toques de rosa) -->
         <div class="panel" style="margin-top:24px">
-          <h3 class="h2">Diferenciais do Baby Skin</h3>
+          <h2 class="h2">Diferenciais do Baby Skin</h2>
           <div class="grid-3">
             <div class="card">
               <h3 class="h2">Sabor maracujá relaxante</h3>
@@ -259,10 +320,6 @@
               <p class="note">À noite, o corpo prioriza <b>reparo cutâneo</b> e equilíbrio da barreira. O ritual sincroniza com esse ritmo biológico.</p>
             </div>
             <div class="card">
-              <h3 class="h2">Dose líquida precisa</h3>
-              <p class="note">Gotas <b>microdosadas</b> para ajuste fino da rotina. Mistura instantânea, sem shaker.</p>
-            </div>
-            <div class="card">
               <h3 class="h2">Fórmula limpa & transparente</h3>
               <p class="note">Sem açúcares adicionados nem corantes artificiais. Rótulo claro sobre cada ativo.</p>
             </div>
@@ -271,19 +328,15 @@
               <p class="note">Sabor agradável + passo com água = <b>hábito mais simples</b>, base para resultados em 30–60 dias.</p>
             </div>
             <div class="card">
-              <h3 class="h2">Embalagem âmbar</h3>
-              <p class="note">Protege os ingredientes da luz, preservando a <b>estabilidade</b> dos antioxidantes.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Ritual minimalista</h3>
-              <p class="note">Apenas <b>12 gotas</b> antes de dormir. Complementa sua rotina tópica sem complicar.</p>
+              <h3 class="h2">Peptídeos bioativos (baixo peso)</h3>
+              <p class="note">Peptídeos de <b>baixo peso molecular</b> são mais facilmente absorvidos e fornecem <b>blocos</b> para a síntese de colágeno, apoiando <b>firmeza</b> e <b>elasticidade</b>.</p>
             </div>
           </div>
         </div>
 
-        <!-- BASE CIENTÍFICA (resumo acessível) -->
+        <!-- BASE CIENTÍFICA -->
         <div class="panel" style="margin-top:12px">
-          <h3 class="h2">Base científica — por que à noite + água + maracujá</h3>
+          <h2 class="h2">Base científica — por que à noite + água + maracujá</h2>
           <ul class="note" style="text-align:left;max-width:860px;margin:0 auto;line-height:1.85">
             <li><b>Janela noturna:</b> durante o sono, o organismo favorece processos de <b>reparação tecidual</b> e equilíbrio da <b>barreira cutânea</b>, cenário propício para suporte nutricional.</li>
             <li><b>Água potencializa:</b> a hidratação sistêmica contribui para o <b>turgor</b> e a <b>homeostase</b> da pele; moléculas como o <b>ácido hialurônico</b> atuam melhor em ambiente com água disponível.</li>
@@ -294,7 +347,7 @@
 
         <!-- Benefícios -->
         <div class="panel" style="margin-top:12px">
-          <h3 class="h2">Benefícios do tratamento</h3>
+          <h2 class="h2">Benefícios do tratamento</h2>
           <ul class="note" style="text-align:left;max-width:860px;margin:0 auto;line-height:1.85">
             <li>Hidratação profunda e melhora do <b>viço</b> e da <b>maciez</b>.</li>
             <li>Suporte à <b>elasticidade</b> e <b>firmeza</b> da pele.</li>
@@ -320,7 +373,7 @@
 
         <div class="carousel" data-index="0" aria-roledescription="carrossel">
           <div class="carousel-viewport" id="carouselTrack" tabindex="0">
-            <!-- Slides 1–8 (mantidos) -->
+            <!-- Slides 1–8 -->
             <div class="slide" role="group" aria-label="1 de 8">
               <div class="compare" data-compare>
                 <img src="/antes1.jpg" alt="Foto antes – pele com linhas finas" loading="lazy" width="1920" height="1440">
@@ -417,9 +470,11 @@
               <div class="price-install">12x de R$ 9,90 <small>no cartão</small></div>
               <div class="price-cash">ou R$ 99,90 à vista no Pix</div>
             </div>
+            <div class="micro-badge" aria-label="Sem açúcar adicionado"><i>✓</i> Sem açúcar adicionado</div>
             <p class="note">Para testar o ritual.</p>
             <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
           </div>
+
           <div class="plan best" data-link="https://checkout-plano2.com">
             <div class="save">Mais vendido • Economize</div>
             <div class="title">2 Frascos</div>
@@ -429,9 +484,11 @@
               <div class="price-install">12x de R$ 16,90 <small>no cartão</small></div>
               <div class="price-cash">ou R$ 179,90 à vista no Pix</div>
             </div>
+            <div class="micro-badge" aria-label="Sem açúcar adicionado"><i>✓</i> Sem açúcar adicionado</div>
             <p class="note">Resultados consistentes + frete grátis.</p>
             <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
           </div>
+
           <div class="plan" data-link="https://checkout-plano3.com">
             <div class="title">3 Frascos</div>
             <div class="bottles">90 dias de uso</div>
@@ -440,6 +497,7 @@
               <div class="price-install">12x de R$ 21,90 <small>no cartão</small></div>
               <div class="price-cash">ou R$ 229,90 à vista no Pix</div>
             </div>
+            <div class="micro-badge" aria-label="Sem açúcar adicionado"><i>✓</i> Sem açúcar adicionado</div>
             <p class="note">Melhor custo por dose.</p>
             <a class="btn buy" href="#" target="_blank" rel="noopener">Comprar agora</a>
           </div>
@@ -570,11 +628,10 @@
     // Fallback para imagens (hero + outros com data-fallbacks)
     (function(){
       document.querySelectorAll('img[data-fallbacks]').forEach(function(img){
-        const list = (img.getAttribute('data-fallbacks')||'').split(',').map(s=>s.trim()).filter(Boolean);
-        let i = 0;
-        img.addEventListener('error', function handler(){
-          if(i < list.length){ img.src = list[i++]; }
-          else { img.removeEventListener('error', handler); }
+        const list=(img.getAttribute('data-fallbacks')||'').split(',').map(s=>s.trim()).filter(Boolean);
+        let i=0;
+        img.addEventListener('error',function handler(){
+          if(i<list.length){img.src=list[i++];}else{img.removeEventListener('error',handler);}
         });
       });
     })();
@@ -586,9 +643,13 @@
     // Hero ticker
     const banners=[...document.querySelectorAll('.hero-banner')],dotsWrap=document.getElementById('dots');
     banners.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d)});
-    const dots=[...dotsWrap.children];let i=0;const next=()=>{banners[i].classList.remove('active');dots[i].classList.remove('active');i=(i+1)%banners.length;banners[i].classList.add('active');dots[i].classList.add('active')};
-    let t;const start=()=>t=setInterval(next,3000);const stop=()=>clearInterval(t);if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}
-    const hb=document.getElementById('heroBanners');hb.addEventListener('mouseenter',stop);hb.addEventListener('mouseleave',()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}})
+    const dots=[...dotsWrap.children];let i=0;
+    const next=()=>{banners[i].classList.remove('active');dots[i].classList.remove('active');i=(i+1)%banners.length;banners[i].classList.add('active');dots[i].classList.add('active')};
+    let t;const start=()=>t=setInterval(next,3000);const stop=()=>clearInterval(t);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}
+    const hb=document.getElementById('heroBanners');
+    hb.addEventListener('mouseenter',stop);
+    hb.addEventListener('mouseleave',()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}})
 
     // FAQ toggle
     document.querySelectorAll('.faq-item .faq-q').forEach(btn=>{
@@ -617,7 +678,7 @@
       document.querySelectorAll('[data-compare]').forEach(cmp=>{const after=cmp.querySelector('.after');const range=cmp.querySelector('input[type="range"]');const setClip=v=>after.style.clipPath=`inset(0 0 0 ${v}%)`;setClip(50);range.addEventListener('input',e=>{const v=Math.max(0,Math.min(100,Number(e.target.value)||50));setClip(100-v)});cmp.addEventListener('pointerdown',e=>{cmp.setPointerCapture(e.pointerId);const r=cmp.getBoundingClientRect();const move=x=>{const pct=((x-r.left)/r.width)*100;const v=Math.max(0,Math.min(100,pct));range.value=v;setClip(100-v)};move(e.clientX);const mv=ev=>move(ev.clientX);const up=()=>{cmp.removeEventListener('pointermove',mv);cmp.removeEventListener('pointerup',up)};cmp.addEventListener('pointermove',mv);cmp.addEventListener('pointerup',up)})});
     })();
 
-    // Âncoras com fallback (útil em pré-visualizadores)
+    // Âncoras com fallback
     document.addEventListener('click',function(e){
       const a=e.target.closest('a[href^="#"]');if(!a)return;const hash=a.getAttribute('href');if(!hash||hash.length<=1)return;
       const target=document.querySelector(hash);if(!target)return;e.preventDefault();
