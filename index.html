@@ -20,14 +20,14 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:image" content="https://sonodabelezaoficial.com/og-image.jpg"/>
 
-  <!-- Google Tag Manager -->
+  <!-- GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TPHSWFDQ');</script>
 
-  <!-- Google Analytics 4 -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DSPK6S3YM9"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
   gtag('js',new Date()); gtag('config','G-DSPK6S3YM9',{anonymize_ip:true});</script>
@@ -66,9 +66,13 @@
     .h2{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(22px,3vw,30px);margin-bottom:14px;position:relative}
     .h2::after{content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 16px rgba(228,71,122,.30)}
     .note{color:var(--muted);font-size:15px;line-height:1.7}
-    .note li::marker{color:var(--pink)}
 
-    /* --- Quebra de cores | NOVO --- */
+    /* ===== Centralização global de textos ===== */
+    .center-all, .center-all *:not(code):not(pre){ text-align:center; }
+    .panel .note, .panel p, .panel ul, .panel li, .faq .faq-a, .faq .faq-q span, .company-info{ text-align:center !important; }
+    ul{ list-style-position: inside; padding-left:0; }
+
+    /* --- Quebra de cores | alternância de tons --- */
     .section.tone-a{
       background:
         linear-gradient(180deg,rgba(22,12,30,.66),rgba(22,12,30,.38)),
@@ -95,7 +99,6 @@
       background:linear-gradient(0deg,rgba(131,58,180,.25),rgba(225,48,108,0));
       opacity:.35;pointer-events:none
     }
-    .section-break{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);margin:8px 0}
 
     /* Logo */
     .brand-logo{display:inline-block;width:56px;opacity:.95;filter:drop-shadow(0 6px 18px rgba(131,58,180,.25))}
@@ -118,7 +121,7 @@
     .headline-wrap{position:relative;z-index:2}
     .sub{color:var(--muted);font-size:18px;line-height:1.75;max-width:820px;margin:0 auto clamp(18px,3vw,26px)}
 
-    /* Corações elegantes — gerados aleatoriamente */
+    /* Corações */
     .hearts-field{position:absolute;left:-10px;right:-10px;top:-30px;height:160px;pointer-events:none;z-index:1;overflow:visible}
     .hearts-field .heart{
       position:absolute;transform:translate(-50%,-50%);
@@ -137,7 +140,7 @@
     @keyframes heart-glow{0%{text-shadow:0 6px 16px rgba(228,71,122,.22)}100%{text-shadow:0 10px 26px rgba(228,71,122,.42)}}
     @keyframes heart-sway{0%{margin-left:-8px}100%{margin-left:8px}}
 
-    /* Headline banner rotativo */
+    /* Banners */
     .hero-banners{position:relative;background:linear-gradient(180deg,rgba(131,58,180,.22),rgba(225,48,108,.18));border:1px solid var(--stroke);border-radius:20px;padding:26px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);margin:16px 0;min-height:84px}
     .hero-banner{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease}
     .hero-banner.active{opacity:1;transform:translateY(0)}
@@ -196,7 +199,7 @@
     .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
     .flag.boleto{background:linear-gradient(180deg,#444,#222)}
 
-    /* --- Selo de garantia | NOVO --- */
+    /* --- Selo de garantia --- */
     .guarantee{
       display:flex;align-items:center;gap:16px;
       border:1.5px solid rgba(255,255,255,.18);
@@ -214,7 +217,7 @@
     .guarantee .title{font-weight:900;font-size:16px;margin-bottom:4px}
     .guarantee .sub{font-size:13px;color:#ffe2ef}
 
-    /* --- Selos de segurança | NOVO --- */
+    /* --- Selos de segurança --- */
     .trust-seals{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
     .seal{
       display:inline-flex;align-items:center;gap:10px;
@@ -233,10 +236,53 @@
     .seal:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.28)}
 
     /* Bloco editável da empresa */
-    .company-info{max-width:900px;margin:12px auto 0;padding:14px 16px;border:1px dashed rgba(255,255,255,.24);border-radius:12px;background:rgba(255,255,255,.04);color:var(--muted);font-size:14px;text-align:left}
+    .company-info{max-width:900px;margin:12px auto 0;padding:14px 16px;border:1px dashed rgba(255,255,255,.24);border-radius:12px;background:rgba(255,255,255,.04);color:var(--muted);font-size:14px}
     .company-info[contenteditable="true"]:focus{outline:2px solid rgba(228,71,122,.5);background:rgba(255,255,255,.06);color:#fff}
 
-    /* Botões animados */
+    /* ===== Avaliações / Comentários ===== */
+    .reviews{margin-top:22px}
+    .review-form{max-width:860px;margin:12px auto;display:grid;gap:10px;justify-items:center}
+    .review-form input[type="text"], .review-form textarea{
+      width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+      color:#fff;border-radius:12px;padding:12px 14px;font-size:14px
+    }
+    .review-form textarea{min-height:120px;resize:vertical}
+    .review-form input::placeholder, .review-form textarea::placeholder{color:rgba(255,255,255,.65)}
+    .review-list{display:grid;gap:12px;max-width:900px;margin:16px auto}
+    .review{border:1px solid var(--stroke);background:rgba(255,255,255,.04);border-radius:16px;padding:14px}
+    .review .meta{font-weight:900;margin-bottom:6px}
+    .review .msg{color:var(--muted)}
+    .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
+    .review .admin-actions .btn{padding:8px 12px;font-size:12px;text-transform:none}
+    .review-stars{display:inline-flex;flex-direction:row-reverse;gap:8px}
+    .review-stars input{display:none}
+    .review-stars label{cursor:pointer;display:grid;place-items:center}
+    .review-stars svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2}
+    .review-stars label:hover svg,
+    .review-stars label:hover ~ label svg{fill:#FFD166;stroke:#FFD166}
+    .review-stars input:checked ~ label svg{fill:#FFD166;stroke:#FFD166}
+
+    /* Fotos na avaliação */
+    .photo-input-hint{font-size:12px;color:rgba(255,255,255,.75)}
+    .photo-previews{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+    .thumb{width:96px;height:96px;border-radius:10px;border:1px solid rgba(255,255,255,.18);overflow:hidden;background:rgba(255,255,255,.06)}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+
+    .photo-grid{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .photo-grid .thumb{width:90px;height:90px;cursor:pointer}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:92vw;max-height:88vh;border-radius:12px}
+    .lightbox .close{position:absolute;top:16px;right:16px}
+
+    /* Admin bar */
+    .admin-bar{display:none;gap:10px;justify-content:center;align-items:center;margin:6px 0 12px}
+    .admin-bar.active{display:flex}
+    .admin-bar .info{font-size:12px;color:#ffe2ef}
+
+    /* Botões */
     .btn,.buy{position:relative;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-weight:900;padding:12px 20px;border-radius:999px;box-shadow:0 6px 18px var(--pink-soft);text-transform:uppercase;letter-spacing:.4px;font-size:14px;line-height:1.2;white-space:nowrap;display:inline-block;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;transition:transform .18s ease,box-shadow .25s ease,filter .25s ease;animation:btn-float 4.5s ease-in-out infinite;overflow:hidden}
     .btn::before,.buy::before{content:"";position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 var(--glow),0 0 24px 6px rgba(131,58,180,.18);animation:btn-glow 3.6s ease-in-out infinite}
     .btn::after,.buy::after{content:"";position:absolute;top:0;left:-120%;width:120%;height:100%;background:linear-gradient(100deg,transparent 0 60%,rgba(255,255,255,.25) 75%,transparent 95%);transform:skewX(-12deg);animation:btn-shine 8s linear infinite}
@@ -247,7 +293,7 @@
     @keyframes btn-shine{0%{left:-120%}100%{left:120%}}
     .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
 
-    /* Carrossel e comparador */
+    /* Carrossel & compare */
     .carousel{position:relative;margin-top:18px}
     .carousel-viewport{display:flex;gap:16px;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;border:1.5px solid var(--stroke);border-radius:22px;padding:18px;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25))}
     .slide{min-width:100%;scroll-snap-align:center;display:grid;place-items:center;padding:6px}
@@ -271,7 +317,7 @@
     .in-view{opacity:1;transform:translateY(0)}
 
     /* Política (minimizada) */
-    details.pp{max-width:900px;margin:8px auto;text-align:left}
+    details.pp{max-width:900px;margin:8px auto}
     details.pp > summary.pp-summary{list-style:none;cursor:pointer;user-select:none;margin:10px 0 12px;display:inline-block;border:0;background:transparent;padding:0}
     details.pp > summary.pp-summary::-webkit-details-marker{display:none}
 
@@ -315,7 +361,7 @@
     </div>
   </div>
 
-  <div class="wrap">
+  <div class="wrap center-all">
 
     <!-- Header -->
     <header class="fade-up">
@@ -327,15 +373,12 @@
 
     <!-- HERO -->
     <section class="section center fade-up hero" id="top">
-      <!-- Campo de corações gerados via JS -->
       <div class="hearts-field" id="heartsField" aria-hidden="true"></div>
-
       <div class="kicker">Ritual Noturno + Água</div>
 
       <div class="headline-wrap">
         <h1 class="lux">Revele <em class="ink-grad">O BRILHO</em> que sua pele merece.</h1>
       </div>
-
       <p class="sub">Hidratação inteligente e profunda enquanto você dorme — simples, consistente e com ativos premium que trabalham a favor da sua pele.</p>
 
       <div class="hero-banners" id="heroBanners" aria-live="polite">
@@ -357,12 +400,8 @@
         <span class="chip"><i></i> Frete Grátis (lote atual)</span>
       </div></div>
 
-      <!-- HERO IMAGE com fallback -->
       <div class="image-slot" aria-label="Imagem principal">
-        <img id="heroImg"
-             src="baby-skin-hero.webp"
-             width="1280" height="576"
-             alt="Três frascos do Baby Skin sobre fundo rosa com flores brancas"
+        <img id="heroImg" src="baby-skin-hero.webp" width="1280" height="576" alt="Três frascos do Baby Skin sobre fundo rosa com flores brancas"
              loading="eager" fetchpriority="high" decoding="async"
              data-fallbacks="assets/baby-skin-hero.webp,/baby-skin-hero.webp,baby-skin-hero.jpg,assets/baby-skin-hero.jpg,/baby-skin-hero.jpg,/baby-skin-hero.webp?v=1,/baby-skin-hero.jpg?v=1">
       </div>
@@ -402,7 +441,7 @@
 
         <div class="panel" style="margin-top:12px">
           <h2 class="h2">Base científica — por que à noite + água + maracujá</h2>
-          <ul class="note" style="text-align:left;max-width:860px;margin:0 auto;line-height:1.85">
+          <ul class="note" style="max-width:860px;margin:0 auto;line-height:1.85">
             <li><b>Janela noturna:</b> durante o sono, o organismo favorece processos de <b>reparação tecidual</b> e equilíbrio da <b>barreira cutânea</b>.</li>
             <li><b>Água potencializa:</b> a hidratação sistêmica contribui para o <b>turgor</b> e a <b>homeostase</b> da pele; moléculas como o <b>ácido hialurônico</b> atuam melhor com água disponível.</li>
             <li><b>Ritual & maracujá:</b> o <b>sabor/aroma</b> de maracujá é culturalmente associado ao relaxamento; ancorar o hábito perto do horário de dormir ajuda na <b>consistência</b>.</li>
@@ -411,7 +450,7 @@
 
         <div class="panel" style="margin-top:12px">
           <h2 class="h2">Benefícios do tratamento</h2>
-          <ul class="note" style="text-align:left;max-width:860px;margin:0 auto;line-height:1.85">
+          <ul class="note" style="max-width:860px;margin:0 auto;line-height:1.85">
             <li>Hidratação profunda e melhora do <b>viço</b> e da <b>maciez</b>.</li>
             <li>Suporte à <b>elasticidade</b> e <b>firmeza</b> da pele.</li>
             <li>Aparência de <b>linhas finas</b> suavizada com uso contínuo.</li>
@@ -436,8 +475,8 @@
 
         <div class="carousel" data-index="0" aria-roledescription="carrossel">
           <div class="carousel-viewport" id="carouselTrack" tabindex="0">
-            <!-- Slides 1–8 -->
-            <div class="slide" role="group" aria-label="1 de 8">
+            <!-- Slides (exemplo) -->
+            <div class="slide" role="group" aria-label="1 de 2">
               <div class="compare" data-compare>
                 <img src="/antes1.jpg" alt="Foto antes – pele com linhas finas" loading="lazy" width="1920" height="1440">
                 <img class="after" src="/depois1.jpg" alt="Foto depois – pele com aparência mais viçosa" loading="lazy" width="1920" height="1440">
@@ -445,60 +484,12 @@
                 <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 1">
               </div>
             </div>
-            <div class="slide" role="group" aria-label="2 de 8">
+            <div class="slide" role="group" aria-label="2 de 2">
               <div class="compare" data-compare>
                 <img src="/antes2.jpg" alt="Foto antes – textura irregular" loading="lazy">
                 <img class="after" src="/depois2.jpg" alt="Foto depois – textura mais uniforme" loading="lazy">
                 <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
                 <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 2">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="3 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes3.jpg" alt="Foto antes – opacidade" loading="lazy">
-                <img class="after" src="/depois3.jpg" alt="Foto depois – glow natural" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 3">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="4 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes4.jpg" alt="Foto antes – oleosidade" loading="lazy">
-                <img class="after" src="/depois4.jpg" alt="Foto depois – aspecto equilibrado" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 4">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="5 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes5.jpg" alt="Foto antes – ressecamento" loading="lazy">
-                <img class="after" src="/depois5.jpg" alt="Foto depois – hidratação visível" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 5">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="6 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes6.jpg" alt="Foto antes – poros aparentes" loading="lazy">
-                <img class="after" src="/depois6.jpg" alt="Foto depois – poros suavizados" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 6">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="7 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes7.jpg" alt="Foto antes – tom desigual" loading="lazy">
-                <img class="after" src="/depois7.jpg" alt="Foto depois – tom mais uniforme" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 7">
-              </div>
-            </div>
-            <div class="slide" role="group" aria-label="8 de 8">
-              <div class="compare" data-compare>
-                <img src="/antes8.jpg" alt="Foto antes – linhas de expressão" loading="lazy">
-                <img class="after" src="/depois8.jpg" alt="Foto depois – linhas suavizadas" loading="lazy">
-                <span class="label">Antes</span><span class="label right">Depois</span><div class="handle" aria-hidden="true"></div>
-                <input type="range" min="0" max="100" value="50" aria-label="Controle de comparação do slide 8">
               </div>
             </div>
           </div>
@@ -564,10 +555,9 @@
           </div>
         </div>
 
-        <!-- Selo de garantia (substituído e melhorado) -->
+        <!-- Selo de garantia -->
         <div class="guarantee" id="garantia" aria-label="Garantia de satisfação de 15 dias">
           <div class="badge" aria-hidden="true">
-            <!-- Escudo + check -->
             <svg viewBox="0 0 24 24">
               <path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/>
               <path d="M8 12l3 3 5-5"/>
@@ -589,6 +579,69 @@
           <span class="flag pix">PIX</span>
           <span class="flag boleto">BOLETO</span>
         </div>
+
+        <!-- ===== Avaliações / Comentários (abaixo dos planos) ===== -->
+        <div class="reviews" id="avaliacoes">
+          <h2 class="h2">Avaliações</h2>
+          <p class="note" style="max-width:860px;margin:6px auto 12px">Compartilhe sua experiência com o Baby Skin 💬</p>
+
+          <!-- Admin bar (aparece no modo admin) -->
+          <div class="admin-bar" id="adminBar">
+            <span class="info">Modo admin ativo • Aprove ou remova avaliações</span>
+            <button class="btn" id="logoutAdmin" type="button">Sair do modo admin</button>
+          </div>
+
+          <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações">
+            <!-- Estrelas -->
+            <div class="review-stars" role="radiogroup" aria-label="Nota">
+              <input type="radio" id="star5" name="rating" value="5" checked>
+              <label for="star5" aria-label="5 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
+              <input type="radio" id="star4" name="rating" value="4">
+              <label for="star4" aria-label="4 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
+              <input type="radio" id="star3" name="rating" value="3">
+              <label for="star3" aria-label="3 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
+              <input type="radio" id="star2" name="rating" value="2">
+              <label for="star2" aria-label="2 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
+              <input type="radio" id="star1" name="rating" value="1">
+              <label for="star1" aria-label="1 estrela">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
+            </div>
+
+            <input type="text" name="nome" id="nome" placeholder="Seu nome (opcional)">
+            <textarea name="comentario" id="comentario" placeholder="Escreva sua avaliação..." required></textarea>
+
+            <!-- Upload de fotos -->
+            <div class="photo-upload">
+              <input type="file" id="fotos" accept="image/*" multiple>
+              <div class="photo-input-hint">Envie até 3 fotos (PNG/JPG). Otimizamos automaticamente para o site.</div>
+              <div class="photo-previews" id="previewFotos" aria-live="polite"></div>
+            </div>
+
+            <button class="btn" type="submit">Enviar para aprovação</button>
+            <div class="note" style="margin-top:6px">Sua avaliação aparecerá após aprovação do time.</div>
+          </form>
+
+          <!-- Listas -->
+          <div id="pendingWrap" style="display:none">
+            <h3 class="h2" style="margin-top:10px">Pendentes de aprovação</h3>
+            <div class="review-list" id="pendingList"></div>
+          </div>
+
+          <div style="margin-top:10px">
+            <h3 class="h2">Aprovadas</h3>
+            <div class="review-list" id="approvedList" aria-live="polite"></div>
+          </div>
+        </div>
+        <!-- /Avaliações -->
       </div>
     </section>
 
@@ -620,7 +673,7 @@
         <div class="faq" role="list" style="display:grid;gap:14px">
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
-              <span style="flex:1;text-align:left">Em quanto tempo vejo resultados?</span>
+              <span style="flex:1">Em quanto tempo vejo resultados?</span>
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#fff" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
             </button>
             <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;color:var(--muted);padding:0 18px">
@@ -629,7 +682,7 @@
           </div>
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
-              <span style="flex:1;text-align:left">Posso usar junto com minha rotina de skincare?</span>
+              <span style="flex:1">Posso usar junto com minha rotina de skincare?</span>
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#fff" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
             </button>
             <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;color:var(--muted);padding:0 18px">
@@ -638,7 +691,7 @@
           </div>
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
-              <span style="flex:1;text-align:left">Tem contraindicações?</span>
+              <span style="flex:1">Tem contraindicações?</span>
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#fff" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
             </button>
             <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;color:var(--muted);padding:0 18px">
@@ -647,7 +700,7 @@
           </div>
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
-              <span style="flex:1;text-align:left">Como potencializar os resultados?</span>
+              <span style="flex:1">Como potencializar os resultados?</span>
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#fff" d="M11 4h2v16h-2zM4 11h16v2H4z"/></svg>
             </button>
             <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;color:var(--muted);padding:0 18px">
@@ -658,13 +711,11 @@
       </div>
     </section>
 
-    <!-- POLÍTICA DE PRIVACIDADE (minimizada) -->
+    <!-- POLÍTICA -->
     <section id="privacidade" class="section center fade-up tone-a" aria-label="Política de Privacidade">
       <div class="panel">
         <h2 class="h2">Política de Privacidade</h2>
-        <p class="note" style="max-width:900px;margin:6px auto 10px;text-align:left">
-          <b>Resumo:</b> Respeitamos sua privacidade. Coletamos dados mínimos para processar pedidos, suporte e melhorias do site.
-        </p>
+        <p class="note" style="max-width:900px;margin:6px auto 10px"><b>Resumo:</b> Respeitamos sua privacidade. Coletamos dados mínimos para processar pedidos, suporte e melhorias do site.</p>
         <details class="pp" id="pp-details">
           <summary class="pp-summary btn">Ler política completa</summary>
           <div class="pp-content note">
@@ -693,39 +744,35 @@
         <p class="note" style="margin-top:6px">Acreditamos no poder do <b>sono reparador</b> aliado à <b>hidratação inteligente</b>. Desenvolvemos o Baby Skin para simplificar seu ritual noturno com ingredientes premium e uma experiência minimalista — porque beleza começa quando você descansa.</p>
       </div>
 
-      <!-- Selos de segurança (substituídos e melhorados) -->
+      <!-- Selos de segurança -->
       <div class="trust-seals" aria-label="Selos de segurança do site">
         <span class="seal">
           <span class="ico" aria-hidden="true">
-            <!-- Cadeado -->
             <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
           </span> SITE SEGURO • SSL
         </span>
 
         <span class="seal">
           <span class="ico" aria-hidden="true">
-            <!-- Escudo + check -->
             <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
           </span> PAGAMENTO PROTEGIDO
         </span>
 
         <span class="seal">
           <span class="ico" aria-hidden="true">
-            <!-- Cartão -->
             <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3"/></svg>
           </span> CARTÕES & PIX
         </span>
 
         <span class="seal">
           <span class="ico" aria-hidden="true">
-            <!-- Privacidade (cofre genérico) -->
             <svg viewBox="0 0 24 24"><path d="M12 5c4 0 7 2 7 5v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5c0-3 3-5 7-5z"/><path d="M9 12h6"/></svg>
           </span> PRIVACIDADE • LGPD
         </span>
       </div>
 
       <!-- Espaço editável para informações da empresa -->
-      <div 
+      <div class="company-info" contenteditable="true" aria-label="Informações da empresa editáveis">
         <strong>Informações da empresa (edite este bloco):</strong><br>
         Razão social • CNPJ • Endereço • E-mail de suporte • Horário de atendimento
       </div>
@@ -746,6 +793,12 @@
     </section>
 
   </div><!-- /wrap -->
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Visualização da foto">
+    <button class="btn close" id="lbClose" aria-label="Fechar">Fechar</button>
+    <img id="lbImg" alt="Foto da avaliação">
+  </div>
 
   <script>
     // Fallback para imagens com data-fallbacks
@@ -829,12 +882,12 @@
       for(let k=0;k<COUNT;k++){
         const el = document.createElement('span');
         el.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
-        const x = rnd(4,96);            // % esquerda
-        const y = rnd(12, H-12);        // px topo dentro do campo
-        const fs = rnd(isMobile?16:18, isMobile?26:32); // font-size
-        const d1 = rnd(7.5, 11.5);      // duração 1
-        const d2 = rnd(6.0, 10.0);      // duração 2
-        const delay1 = rnd(0, 2.5);     // delays diferentes p/ descasar
+        const x = rnd(4,96);
+        const y = rnd(12, H-12);
+        const fs = rnd(isMobile?16:18, isMobile?26:32);
+        const d1 = rnd(7.5, 11.5);
+        const d2 = rnd(6.0, 10.0);
+        const delay1 = rnd(0, 2.5);
         const delay2 = rnd(0, 2.0);
         const delay3 = rnd(0, 1.6);
         const blur = rnd(1.5, 3.5);
@@ -845,20 +898,15 @@
         el.style.setProperty('--dur', d1 + 's');
         el.style.setProperty('--dur2', d2 + 's');
         if(el.classList.contains('soft')) el.style.setProperty('--blur', blur + 'px');
-
-        // Aplica 3 delays (um para cada animação definida em CSS)
         el.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
-
         field.appendChild(el);
       }
 
-      // Regenera ao redimensionar (debounce leve)
       let to;
       window.addEventListener('resize', ()=>{
         clearTimeout(to);
         to = setTimeout(()=>{
           field.innerHTML = '';
-          // atualiza altura
           const HH = parseInt(getComputedStyle(field).height,10) || (window.matchMedia('(max-width: 680px)').matches?130:160);
           const C = window.matchMedia('(max-width: 680px)').matches ? 10 : 16;
           for(let k=0;k<C;k++){
@@ -874,6 +922,270 @@
           }
         }, 160);
       }, {passive:true});
+    })();
+
+    // ===== Avaliações: aprovação manual + fotos (localStorage) =====
+    (function(){
+      const form = document.getElementById('reviewForm');
+      const approvedList = document.getElementById('approvedList');
+      const pendingList = document.getElementById('pendingList');
+      const pendingWrap = document.getElementById('pendingWrap');
+      const adminBar = document.getElementById('adminBar');
+      const logoutAdmin = document.getElementById('logoutAdmin');
+      const fileInput = document.getElementById('fotos');
+      const previewBox = document.getElementById('previewFotos');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbClose = document.getElementById('lbClose');
+
+      const KEY = 'sdb_reviews_v2';
+      const ADMIN_KEY = 'sdb_admin_on';
+      const ADMIN_PIN = '4321'; // <<< altere o PIN aqui se quiser
+
+      function isAdmin(){ return localStorage.getItem(ADMIN_KEY) === '1'; }
+      function enableAdmin(){
+        localStorage.setItem(ADMIN_KEY, '1');
+        render();
+      }
+      function disableAdmin(){
+        localStorage.removeItem(ADMIN_KEY);
+        render();
+      }
+
+      // Entrar em admin via query/hash ou atalho
+      function tryAdminFromURL(){
+        const qp = new URLSearchParams(location.search);
+        if (qp.get('admin') === '1' || location.hash === '#admin') {
+          const pin = prompt('Digite o PIN do admin:');
+          if (pin === ADMIN_PIN) enableAdmin();
+          else alert('PIN incorreto');
+        }
+      }
+      // Atalho: Ctrl+Shift+A
+      window.addEventListener('keydown', (e)=>{
+        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
+          const pin = prompt('PIN admin:');
+          if (pin === ADMIN_PIN) enableAdmin();
+          else alert('PIN incorreto');
+        }
+      });
+
+      // Lightbox
+      function openLB(src){ lbImg.src = src; lightbox.classList.add('open'); }
+      function closeLB(){ lightbox.classList.remove('open'); lbImg.removeAttribute('src'); }
+      lbClose.addEventListener('click', closeLB);
+      lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLB(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
+
+      // Helpers
+      function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+      function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+      function fmtDate(d){ return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
+      function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+
+      function starSVG(filled){
+        return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" ${filled?'fill="#FFD166" stroke="#FFD166"':'fill="none" stroke="#fff"'} stroke-width="2"/></svg>`;
+      }
+
+      // Renderização
+      function render(){
+        const data = load();
+        const admin = isAdmin();
+
+        // Admin bar
+        adminBar.classList.toggle('active', admin);
+        pendingWrap.style.display = admin ? '' : 'none';
+
+        // Limpa listas
+        approvedList.innerHTML = '';
+        pendingList.innerHTML = '';
+
+        // Separa pendentes/aprovadas
+        const approved = data.filter(x=>x.approved);
+        const pending = data.filter(x=>!x.approved);
+
+        // PENDENTES
+        if(admin){
+          if(!pending.length){ pendingList.innerHTML = `<p class="note">Sem itens pendentes.</p>`; }
+          pending.slice().reverse().forEach(item=>{
+            const card = reviewCard(item, true);
+            pendingList.appendChild(card);
+          });
+        }
+
+        // APROVADAS
+        if(!approved.length){
+          approvedList.innerHTML = `<p class="note">Ainda não há avaliações aprovadas.</p>`;
+        } else {
+          approved.slice().reverse().forEach(item=>{
+            const card = reviewCard(item, false);
+            approvedList.appendChild(card);
+          });
+        }
+      }
+
+      // Card de avaliação
+      function reviewCard(item, isPending){
+        const card = document.createElement('div');
+        card.className = 'review';
+        const stars = Array.from({length:5}, (_,i)=> starSVG(i < item.rating));
+        const fotos = (item.photos||[]);
+        const nameSafe = escapeHTML(item.name || 'Cliente');
+        const msgSafe = escapeHTML(item.comment || '');
+
+        let fotosHTML = '';
+        if(fotos.length){
+          fotosHTML = `<div class="photo-grid">` +
+            fotos.map(src=>`<div class="thumb"><img alt="Foto enviada" src="${src}"></div>`).join('') +
+            `</div>`;
+        }
+
+        card.innerHTML = `
+          <div class="meta">${nameSafe} • ${fmtDate(new Date(item.date))}</div>
+          <div class="stars" aria-label="${item.rating} de 5 estrelas" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
+            ${stars.reverse().join('')}
+          </div>
+          <div class="msg">${msgSafe}</div>
+          ${fotosHTML}
+        `;
+
+        // Lightbox para thumbs
+        card.querySelectorAll('.photo-grid img').forEach(img=>{
+          img.addEventListener('click', ()=> openLB(img.src));
+        });
+
+        // Ações do admin
+        if(isAdmin()){
+          const actions = document.createElement('div');
+          actions.className = 'admin-actions';
+          if(isPending){
+            const approveBtn = document.createElement('button');
+            approveBtn.className = 'btn';
+            approveBtn.type = 'button';
+            approveBtn.textContent = 'Aprovar';
+            approveBtn.addEventListener('click', ()=> approve(item.id));
+            actions.appendChild(approveBtn);
+          } else {
+            const unapproveBtn = document.createElement('button');
+            unapproveBtn.className = 'btn';
+            unapproveBtn.type = 'button';
+            unapproveBtn.textContent = 'Retirar aprovação';
+            unapproveBtn.addEventListener('click', ()=> unapprove(item.id));
+            actions.appendChild(unapproveBtn);
+          }
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn';
+          delBtn.type = 'button';
+          delBtn.textContent = 'Excluir';
+          delBtn.addEventListener('click', ()=> remove(item.id));
+          actions.appendChild(delBtn);
+
+          card.appendChild(actions);
+        }
+
+        return card;
+      }
+
+      // Ações admin
+      function approve(id){
+        const data = load();
+        const item = data.find(x=>x.id===id); if(!item) return;
+        item.approved = true; save(data); render();
+      }
+      function unapprove(id){
+        const data = load();
+        const item = data.find(x=>x.id===id); if(!item) return;
+        item.approved = false; save(data); render();
+      }
+      function remove(id){
+        if(!confirm('Excluir esta avaliação?')) return;
+        const data = load().filter(x=>x.id!==id);
+        save(data); render();
+      }
+
+      // Compressão de imagens (para caber no localStorage)
+      async function compressImage(file, maxDim=1200, quality=0.8){
+        const dataUrl = await new Promise((res,rej)=>{
+          const fr = new FileReader();
+          fr.onload = ()=> res(fr.result);
+          fr.onerror = rej;
+          fr.readAsDataURL(file);
+        });
+        const img = await new Promise((res,rej)=>{
+          const im = new Image();
+          im.onload = ()=> res(im);
+          im.onerror = rej;
+          im.src = dataUrl;
+        });
+        const canvas = document.createElement('canvas');
+        let {width, height} = img;
+        const ratio = width/height;
+        if(width > height && width > maxDim){ width = maxDim; height = Math.round(width/ratio); }
+        else if(height >= width && height > maxDim){ height = maxDim; width = Math.round(height*ratio); }
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        return canvas.toDataURL('image/jpeg', quality);
+      }
+
+      // Pré-visualização das fotos
+      let selectedFiles = [];
+      fileInput.addEventListener('change', ()=>{
+        selectedFiles = Array.from(fileInput.files||[]).slice(0,3);
+        previewBox.innerHTML = '';
+        selectedFiles.forEach(f=>{
+          const p = document.createElement('div'); p.className='thumb';
+          const img = document.createElement('img'); img.alt = f.name; img.src = URL.createObjectURL(f);
+          p.appendChild(img); previewBox.appendChild(p);
+        });
+      });
+
+      // Submit
+      if(form){
+        form.addEventListener('submit', async (e)=>{
+          e.preventDefault();
+          const rating = Number((form.querySelector('input[name="rating"]:checked')||{}).value||5);
+          const name = (document.getElementById('nome')||{}).value?.trim();
+          const comment = (document.getElementById('comentario')||{}).value?.trim();
+          if(!comment){ alert('Por favor, escreva sua avaliação.'); return; }
+
+          // Processa fotos (compress)
+          let photos = [];
+          try{
+            for(const f of selectedFiles.slice(0,3)){
+              // evita encher o localStorage: ignora arquivos > 8MB
+              if(f.size > 8*1024*1024) continue;
+              const dataURL = await compressImage(f, 1200, 0.82);
+              photos.push(dataURL);
+            }
+          }catch(_){ /* ignora erros de compressão */ }
+
+          const data = load();
+          const item = {
+            id: Date.now().toString(36)+Math.random().toString(36).slice(2,8),
+            rating, name, comment, photos,
+            date: new Date().toISOString(),
+            approved: false
+          };
+          data.push(item);
+          try{ save(data); }catch(err){
+            alert('Não foi possível salvar sua avaliação (armazenamento cheio). Remova algumas avaliações como admin ou envie menos fotos.');
+            return;
+          }
+
+          form.reset(); selectedFiles = []; previewBox.innerHTML='';
+          const defaultStar = document.getElementById('star5'); if(defaultStar) defaultStar.checked = true;
+          alert('Avaliação enviada para aprovação. Obrigado!');
+          render();
+        });
+      }
+
+      // Logout admin
+      logoutAdmin.addEventListener('click', disableAdmin);
+
+      tryAdminFromURL();
+      render();
     })();
   </script>
 </body>
