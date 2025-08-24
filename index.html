@@ -67,12 +67,12 @@
     .h2::after{content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 16px rgba(228,71,122,.30)}
     .note{color:var(--muted);font-size:15px;line-height:1.7}
 
-    /* ===== Centralização global ===== */
+    /* ===== Centralização global de textos ===== */
     .center-all, .center-all *:not(code):not(pre){ text-align:center; }
     .panel .note, .panel p, .panel ul, .panel li, .faq .faq-a, .faq .faq-q span, .company-info{ text-align:center !important; }
     ul{ list-style-position: inside; padding-left:0; }
 
-    /* --- Quebra de cores (tons alternados) --- */
+    /* --- Quebra de cores | alternância de tons --- */
     .section.tone-a{
       background:
         linear-gradient(180deg,rgba(22,12,30,.66),rgba(22,12,30,.38)),
@@ -199,7 +199,25 @@
     .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
     .flag.boleto{background:linear-gradient(180deg,#444,#222)}
 
-    /* --- Selos de segurança (rodapé) --- */
+    /* --- Selo de garantia (já usado) --- */
+    .guarantee{
+      display:flex;align-items:center;gap:16px;
+      border:1.5px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg,rgba(25,18,33,.75),rgba(25,18,33,.45));
+      border-radius:18px;padding:16px 18px;margin-top:14px;
+      box-shadow:0 12px 36px rgba(131,58,180,.18)
+    }
+    .guarantee .badge{
+      min-width:88px;aspect-ratio:1/1;border-radius:16px;display:grid;place-items:center;
+      background:radial-gradient(70% 70% at 30% 30%,rgba(225,48,108,.22),rgba(131,58,180,.24));
+      border:1.5px solid rgba(255,255,255,.22)
+    }
+    .guarantee .badge svg{width:42px;height:42px;stroke:#fff;stroke-width:2;fill:none;
+      filter:drop-shadow(0 6px 18px rgba(228,71,122,.35))}
+    .guarantee .title{font-weight:900;font-size:16px;margin-bottom:4px}
+    .guarantee .sub{font-size:13px;color:#ffe2ef}
+
+    /* --- Selos de segurança --- */
     .trust-seals{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
     .seal{
       display:inline-flex;align-items:center;gap:10px;
@@ -236,17 +254,25 @@
     .review .msg{color:var(--muted)}
     .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
     .review .admin-actions .btn{padding:8px 12px;font-size:12px;text-transform:none}
+    .review .stars{display:flex;gap:6px;justify-content:center;margin-bottom:6px}
+    .review .stars svg{width:20px;height:20px;fill:#FFD166;stroke:#FFD166}
 
-    /* Estrelas – menores no mobile */
-    .review-stars{display:inline-flex;flex-direction:row-reverse;gap:8px}
-    .review-stars input{display:none}
-    .review-stars label{cursor:pointer;display:grid;place-items:center}
-    .review-stars svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2}
+    /* Estrelas do formulário — iOS friendly (inputs invisíveis, não display:none) */
+    .review-stars{
+      display:inline-flex;flex-direction:row-reverse;gap:8px;
+      align-items:center;justify-content:center;position:relative;user-select:none
+    }
+    .review-stars input{
+      position:absolute;opacity:0;pointer-events:none;width:0;height:0;margin:0;padding:0
+    }
+    .review-stars label{cursor:pointer;display:grid;place-items:center;line-height:1}
+    .review-stars svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;transition:transform .12s ease}
     .review-stars label:hover svg,
     .review-stars label:hover ~ label svg{fill:#FFD166;stroke:#FFD166}
     .review-stars input:checked ~ label svg{fill:#FFD166;stroke:#FFD166}
-    @media (max-width:680px){
+    @media (max-width:480px){
       .review-stars svg{width:18px;height:18px}
+      .review .stars svg{width:18px;height:18px}
     }
 
     /* Fotos na avaliação */
@@ -314,6 +340,7 @@
       .panel{padding:18px}.hero-banners{padding:18px;min-height:76px}
       .compare{aspect-ratio:3/4}
       .hearts-field{height:130px}
+      .guarantee{flex-direction:column;align-items:flex-start}
     }
     @media (max-width:520px){
       .announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}
@@ -325,24 +352,13 @@
       *{animation:none!important;transition:none!important}
     }
 
-    /* --- Selo de Qualidade/15 dias (abaixo das avaliações) --- */
-    .qualidade{
-      display:flex;align-items:center;gap:16px;justify-content:center;
-      border:1.5px solid rgba(255,255,255,.18);
-      background:linear-gradient(180deg,rgba(25,18,33,.75),rgba(25,18,33,.45));
-      border-radius:18px;padding:16px 18px;margin:16px auto 0;
-      box-shadow:0 12px 36px rgba(131,58,180,.18);max-width:900px
-    }
-    .qualidade .badge{
-      min-width:88px;aspect-ratio:1/1;border-radius:16px;display:grid;place-items:center;
-      background:radial-gradient(70% 70% at 30% 30%,rgba(225,48,108,.22),rgba(131,58,180,.24));
-      border:1.5px solid rgba(255,255,255,.22)
-    }
-    .qualidade .badge svg{width:42px;height:42px;stroke:#fff;stroke-width:2;fill:none;
-      filter:drop-shadow(0 6px 18px rgba(228,71,122,.35))}
-    .qualidade .title{font-weight:900;font-size:16px;margin-bottom:4px}
-    .qualidade .sub{font-size:13px;color:#ffe2ef}
-    @media(max-width:680px){.qualidade{flex-direction:column}}
+    /* Selo Qualidade + 15 dias (abaixo das avaliações) */
+    .quality15{max-width:920px;margin:20px auto 0;border:1.5px solid rgba(255,255,255,.18);background:linear-gradient(180deg,rgba(25,18,33,.78),rgba(25,18,33,.45));border-radius:18px;padding:18px;box-shadow:0 16px 40px rgba(131,58,180,.20)}
+    .quality15 .row{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .quality15 .emblem{width:84px;height:84px;border-radius:18px;display:grid;place-items:center;background:radial-gradient(60% 60% at 30% 30%,rgba(131,58,180,.35),rgba(225,48,108,.22));border:1.5px solid rgba(255,255,255,.22)}
+    .quality15 .emblem svg{width:40px;height:40px;stroke:#fff;stroke-width:2;fill:none}
+    .quality15 .title{font-weight:900;font-size:18px;margin-bottom:4px}
+    .quality15 .sub{font-size:14px;color:#ffe2ef}
   </style>
 </head>
 <body>
@@ -395,8 +411,8 @@
 
       <div class="ribbon"><div class="ribbon-track">
         <span class="chip"><i></i> Frete Grátis (lote atual)</span>
-        <span class="chip"><i></i> Colágeno hidrolisado + Vitamina C</span>
-        <span class="chip"><i></i> Trans-resveratrol</span>
+        <span class="chip"><i></i> Colágeno hidrlisado + Vitamina C</span>
+        <span class="chip"><i></i> Trans resveratrol</span>
         <span class="chip"><i></i> Ácido Hialurônico</span>
         <span class="chip"><i></i> Uso com água</span>
         <span class="chip"><i></i> Sabor maracujá relaxante</span>
@@ -558,7 +574,7 @@
           </div>
         </div>
 
-        <!-- Formas de pagamento -->
+        <!-- Bandeiras -->
         <div class="payments" aria-label="Formas de pagamento aceitas">
           <span class="flag visa">VISA</span>
           <span class="flag mastercard">MASTERCARD</span>
@@ -574,7 +590,7 @@
           <h2 class="h2">Avaliações</h2>
           <p class="note" style="max-width:860px;margin:6px auto 12px">Compartilhe sua experiência com o Baby Skin 💬</p>
 
-          <!-- Admin bar (só no modo admin) -->
+          <!-- Admin bar -->
           <div class="admin-bar" id="adminBar">
             <span class="info">Modo admin ativo • Aprove ou remova avaliações</span>
             <button class="btn" id="logoutAdmin" type="button">Sair do modo admin</button>
@@ -582,30 +598,25 @@
 
           <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações" novalidate>
             <!-- Estrelas -->
-            <div class="review-stars" role="radiogroup" aria-label="Nota">
+            <div class="review-stars" id="starBox" role="radiogroup" aria-label="Nota" tabindex="0">
               <input type="radio" id="star5" name="rating" value="5" checked>
-              <label for="star5" aria-label="5 estrelas">
-                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
-              </label>
-              <input type="radio" id="star4" name="rating" value="4">
-              <label for="star4" aria-label="4 estrelas">
-                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
-              </label>
-              <input type="radio" id="star3" name="rating" value="3">
-              <label for="star3" aria-label="3 estrelas">
-                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
-              </label>
-              <input type="radio" id="star2" name="rating" value="2">
-              <label for="star2" aria-label="2 estrelas">
-                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
-              </label>
-              <input type="radio" id="star1" name="rating" value="1">
-              <label for="star1" aria-label="1 estrela">
-                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
-              </label>
-            </div>
+              <label for="star5" aria-label="5 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
 
-            <input type="text" name="nome" id="nome" placeholder="Seu nome (opcional)">
+              <input type="radio" id="star4" name="rating" value="4">
+              <label for="star4" aria-label="4 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
+
+              <input type="radio" id="star3" name="rating" value="3">
+              <label for="star3" aria-label="3 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
+
+              <input type="radio" id="star2" name="rating" value="2">
+              <label for="star2" aria-label="2 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
+
+              <input type="radio" id="star1" name="rating" value="1">
+              <label for="star1" aria-label="1 estrela"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
+            </div>
+            <div class="note" aria-live="polite">Nota: <strong id="ratingValue">5</strong> de 5</div>
+
+            <input type="text" name="nome" id="nome" placeholder="Seu nome (opcional)" inputmode="text" autocomplete="name">
             <textarea name="comentario" id="comentario" placeholder="Escreva sua avaliação..." required></textarea>
 
             <!-- Upload de fotos -->
@@ -618,25 +629,28 @@
             <button class="btn" type="submit">Enviar</button>
           </form>
 
-          <!-- Listas -->
+          <!-- Pendentes (só no admin) -->
           <div id="pendingWrap" style="display:none">
             <h3 class="h2" style="margin-top:10px">Pendentes de aprovação</h3>
             <div class="review-list" id="pendingList"></div>
           </div>
 
+          <!-- Aprovadas -->
           <div style="margin-top:10px">
             <h3 class="h2">Avaliações dos clientes</h3>
             <div class="review-list" id="approvedList" aria-live="polite"></div>
           </div>
 
-          <!-- Selo de Qualidade / 15 dias -->
-          <div class="qualidade" aria-label="Selo de Qualidade">
-            <div class="badge">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
-            </div>
-            <div>
-              <div class="title">Selo de Qualidade • Sono da Beleza</div>
-              <div class="sub">Experimente por <b>15 dias</b>. Não amou? Fale com a gente e <b>ajudamos com a devolução</b>.</div>
+          <!-- Selo Qualidade + 15 dias -->
+          <div class="quality15" aria-label="Selo de Qualidade e período de teste">
+            <div class="row">
+              <div class="emblem" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L12 14.9 7.2 16.6l.9-5.3-3.8-3.7 5.3-.8L12 2z"/></svg>
+              </div>
+              <div>
+                <div class="title">Selo de Qualidade • Sono da Beleza</div>
+                <div class="sub">Experimente por <b>15 dias</b>. Não amou? Fale com a gente e ajudamos com a devolução.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -745,21 +759,29 @@
 
       <!-- Selos de segurança -->
       <div class="trust-seals" aria-label="Selos de segurança do site">
-        <span class="seal"><span class="ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-        </span> SITE SEGURO • SSL</span>
+        <span class="seal">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          </span> SITE SEGURO • SSL
+        </span>
 
-        <span class="seal"><span class="ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
-        </span> PAGAMENTO PROTEGIDO</span>
+        <span class="seal">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
+          </span> PAGAMENTO PROTEGIDO
+        </span>
 
-        <span class="seal"><span class="ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3"/></svg>
-        </span> CARTÕES & PIX</span>
+        <span class="seal">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3"/></svg>
+          </span> CARTÕES & PIX
+        </span>
 
-        <span class="seal"><span class="ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 5c4 0 7 2 7 5v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5c0-3 3-5 7-5z"/><path d="M9 12h6"/></svg>
-        </span> PRIVACIDADE • LGPD</span>
+        <span class="seal">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 5c4 0 7 2 7 5v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4v-5c0-3 3-5 7-5z"/><path d="M9 12h6"/></svg>
+          </span> PRIVACIDADE • LGPD
+        </span>
       </div>
 
       <!-- Espaço editável para informações da empresa -->
@@ -792,14 +814,7 @@
   </div>
 
   <script>
-    // ====== CONFIG STATICMAN (para PRs no GitHub) ======
-    // Ajuste se quiser usar sua própria instância/branch:
-    const GH_USER   = 'Franknascimento1993';
-    const GH_REPO   = 'baby-skin';
-    const GH_BRANCH = 'main';
-    const STATICMAN_BASE = 'https://staticman3.onrender.com'; // instância pública (pode oscilar)
-
-    // ===== Fallback para imagens com data-fallbacks
+    // Fallback para imagens com data-fallbacks
     (function(){
       document.querySelectorAll('img[data-fallbacks]').forEach(function(img){
         const list=(img.getAttribute('data-fallbacks')||'').split(',').map(s=>s.trim()).filter(Boolean);
@@ -874,26 +889,51 @@
       const isMobile = window.matchMedia('(max-width: 680px)').matches;
       const COUNT = isMobile ? 10 : 16;
       const H = parseInt(getComputedStyle(field).height,10) || (isMobile?130:160);
+
       function rnd(min,max){ return Math.random()*(max-min)+min; }
 
-      function generate(N,HH){
-        field.innerHTML='';
-        for(let k=0;k<N;k++){
-          const el=document.createElement('span');
-          el.className='heart'+(Math.random()<0.38?' soft':'');
-          const x=rnd(4,96), y=rnd(12,HH-12), fs=rnd(isMobile?16:18,isMobile?26:32);
-          const d1=rnd(7.5,11.5), d2=rnd(6.0,10.0), delay1=rnd(0,2.5), delay2=rnd(0,2.0), delay3=rnd(0,1.6), blur=rnd(1.5,3.5);
-          el.style.left=x+'%'; el.style.top=y+'px'; el.style.setProperty('--fs',fs+'px'); el.style.setProperty('--dur',d1+'s'); el.style.setProperty('--dur2',d2+'s');
-          if(el.classList.contains('soft')) el.style.setProperty('--blur',blur+'px');
-          el.style.animationDelay=`${delay1}s, ${delay2}s, ${delay3}s`;
-          field.appendChild(el);
-        }
+      for(let k=0;k<COUNT;k++){
+        const el = document.createElement('span');
+        el.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
+        const x = rnd(4,96), y = rnd(12, H-12);
+        const fs = rnd(isMobile?16:18, isMobile?26:32);
+        const d1 = rnd(7.5, 11.5), d2 = rnd(6.0, 10.0);
+        const delay1 = rnd(0, 2.5), delay2 = rnd(0, 2.0), delay3 = rnd(0, 1.6);
+        const blur = rnd(1.5, 3.5);
+
+        el.style.left = x + '%';
+        el.style.top = y + 'px';
+        el.style.setProperty('--fs', fs + 'px');
+        el.style.setProperty('--dur', d1 + 's');
+        el.style.setProperty('--dur2', d2 + 's');
+        if(el.classList.contains('soft')) el.style.setProperty('--blur', blur + 'px');
+        el.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
+        field.appendChild(el);
       }
-      generate(COUNT,H);
-      let to; addEventListener('resize',()=>{ clearTimeout(to); to=setTimeout(()=>{ const mob=matchMedia('(max-width:680px)').matches; generate(mob?10:16, parseInt(getComputedStyle(field).height,10)||(mob?130:160)); },160) },{passive:true});
+
+      let to;
+      window.addEventListener('resize', ()=>{
+        clearTimeout(to);
+        to = setTimeout(()=>{
+          field.innerHTML = '';
+          const HH = parseInt(getComputedStyle(field).height,10) || (window.matchMedia('(max-width: 680px)').matches?130:160);
+          const C = window.matchMedia('(max-width: 680px)').matches ? 10 : 16;
+          for(let k=0;k<C;k++){
+            const h = document.createElement('span');
+            h.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
+            const x = rnd(4,96), y = rnd(12, HH-12), fs = rnd(window.matchMedia('(max-width: 680px)').matches?16:18, window.matchMedia('(max-width: 680px)').matches?26:32);
+            const d1 = rnd(7.5,11.5), d2 = rnd(6.0,10.0), delay1 = rnd(0,2.5), delay2 = rnd(0,2.0), delay3 = rnd(0,1.6), blur = rnd(1.5,3.5);
+            h.style.left = x+'%'; h.style.top = y+'px';
+            h.style.setProperty('--fs', fs+'px'); h.style.setProperty('--dur', d1+'s'); h.style.setProperty('--dur2', d2+'s');
+            if(h.classList.contains('soft')) h.style.setProperty('--blur', blur+'px');
+            h.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
+            field.appendChild(h);
+          }
+        }, 160);
+      }, {passive:true});
     })();
 
-    // ===== Avaliações: aprovação manual + fotos + fila offline =====
+    // ===== Avaliações: aprovação manual + fotos (localStorage) =====
     (function(){
       const form = document.getElementById('reviewForm');
       const approvedList = document.getElementById('approvedList');
@@ -908,249 +948,299 @@
       const lbClose = document.getElementById('lbClose');
 
       const KEY = 'sdb_reviews_v2';
-      const QUEUE_KEY = 'sdb_reviews_queue_v1';
       const ADMIN_KEY = 'sdb_admin_on';
-      const ADMIN_PIN = '4321'; // <<< altere se quiser
+      const ADMIN_PIN = '4321';
 
-      // --- Admin helpers ---
       function isAdmin(){ return localStorage.getItem(ADMIN_KEY) === '1'; }
-      function enableAdmin(){ localStorage.setItem(ADMIN_KEY,'1'); render(); }
+      function enableAdmin(){ localStorage.setItem(ADMIN_KEY, '1'); render(); }
       function disableAdmin(){ localStorage.removeItem(ADMIN_KEY); render(); }
 
-      // Entrar em admin via URL ou atalho
+      // Entrar em admin via query (desktop, com PIN) ou hash (mobile, sem prompt)
       function tryAdminFromURL(){
         const qp = new URLSearchParams(location.search);
-        if (qp.get('admin') === '1' || location.hash === '#admin') {
+        if (qp.get('admin') === '1') {
           const pin = prompt('Digite o PIN do admin:');
           if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
         }
       }
-      window.addEventListener('keydown',(e)=>{
-        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='a'){
-          const pin = prompt('PIN admin:'); if(pin===ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
+      function tryAdminFromHash(){
+        const h = (location.hash||'').toLowerCase();
+        const m = h.match(/#admin[-=](\d+)/);
+        if(m && m[1] === ADMIN_PIN){ enableAdmin(); }
+        if(h === '#admin'){ // compat antigo
+          const pin = prompt('PIN admin:');
+          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
         }
-      });
+      }
+      window.addEventListener('hashchange', tryAdminFromHash, {passive:true});
 
       // Lightbox
-      function openLB(src){ lbImg.src=src; lightbox.classList.add('open'); }
+      function openLB(src){ lbImg.src = src; lightbox.classList.add('open'); }
       function closeLB(){ lightbox.classList.remove('open'); lbImg.removeAttribute('src'); }
       lbClose.addEventListener('click', closeLB);
-      lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) closeLB(); });
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
+      lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLB(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
 
-      // Storage
+      // Helpers
       function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
-      function save(arr){ try{ localStorage.setItem(KEY, JSON.stringify(arr)); return true; }catch(e){ console.warn('localStorage cheio/negado', e); return false; } }
-
-      function loadQueue(){ try{ return JSON.parse(localStorage.getItem(QUEUE_KEY)||'[]'); }catch(e){ return []; } }
-      function saveQueue(arr){ try{ localStorage.setItem(QUEUE_KEY, JSON.stringify(arr)); return true; }catch(e){ return false; } }
-
-      function fmtDate(d){ return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'}); }
+      function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+      function fmtDate(d){ return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
       function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
 
       function starSVG(filled){
         return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" ${filled?'fill="#FFD166" stroke="#FFD166"':'fill="none" stroke="#fff"'} stroke-width="2"/></svg>`;
       }
 
-      // Remote (Staticman) — resiliente a CORS
-      async function remoteAppend(item){
-        const url = `${STATICMAN_BASE}/v3/entry/github/${GH_USER}/${GH_REPO}/${GH_BRANCH}/comments`;
-        const form = new FormData();
-        form.append('options[redirect]', location.href);
-        form.append('options[slug]', 'comments');
-        form.append('fields[id]', item.id);
-        form.append('fields[rating]', String(item.rating));
-        form.append('fields[name]', item.name || '');
-        form.append('fields[comment]', item.comment || '');
-        form.append('fields[photos]', JSON.stringify(item.photos || []));
-        form.append('fields[date]', item.date);
-        form.append('fields[approved]', 'false');
-
-        // 1) tenta CORS normal
-        try{
-          const res = await fetch(url, { method:'POST', body:form, mode:'cors', redirect:'follow' });
-          if(res.ok) return true;
-          console.warn('[Staticman] HTTP', res.status, await res.text());
-        }catch(err){ console.warn('[Staticman] erro CORS', err); }
-
-        // 2) fallback: no-cors (não há status; tratamos como sucesso)
-        try{
-          await fetch(url, { method:'POST', body:form, mode:'no-cors' });
-          console.info('[Staticman] fallback no-cors acionado');
-          return true;
-        }catch(err){ console.error('[Staticman] fallback no-cors falhou', err); return false; }
-      }
-
-      // Sincroniza fila offline
-      async function syncQueue(){
-        let q = loadQueue(); if(!q.length) return;
-        const keep=[];
-        for(const it of q){
-          const ok = await remoteAppend(it);
-          if(!ok) keep.push(it);
-        }
-        saveQueue(keep);
-        if(q.length!==keep.length) console.info('[reviews] fila sincronizada:', q.length-keep.length,'itens enviados');
-      }
-      addEventListener('online', syncQueue);
-      setTimeout(syncQueue, 2000);
-
-      // Render
+      // Renderização
       function render(){
         const data = load();
         const admin = isAdmin();
+
         adminBar.classList.toggle('active', admin);
         pendingWrap.style.display = admin ? '' : 'none';
-        approvedList.innerHTML=''; pendingList.innerHTML='';
+
+        approvedList.innerHTML = '';
+        pendingList.innerHTML = '';
 
         const approved = data.filter(x=>x.approved);
-        const pending  = data.filter(x=>!x.approved);
+        const pending = data.filter(x=>!x.approved);
 
         if(admin){
           if(!pending.length){ pendingList.innerHTML = `<p class="note">Sem itens pendentes.</p>`; }
-          pending.slice().reverse().forEach(item=> pendingList.appendChild(reviewCard(item,true)));
+          pending.slice().reverse().forEach(item=>{
+            pendingList.appendChild(reviewCard(item, true));
+          });
         }
+
         if(!approved.length){
           approvedList.innerHTML = `<p class="note">Ainda não há avaliações.</p>`;
-        }else{
-          approved.slice().reverse().forEach(item=> approvedList.appendChild(reviewCard(item,false)));
+        } else {
+          approved.slice().reverse().forEach(item=>{
+            approvedList.appendChild(reviewCard(item, false));
+          });
         }
       }
 
+      // Card de avaliação
       function reviewCard(item, isPending){
-        const card=document.createElement('div');
-        card.className='review';
-        const stars = Array.from({length:5},(_,i)=>starSVG(i<item.rating));
-        const fotos = item.photos||[];
-        const nameSafe = escapeHTML(item.name||'Cliente');
-        const msgSafe = escapeHTML(item.comment||'');
+        const card = document.createElement('div');
+        card.className = 'review';
+        const stars = Array.from({length:5}, (_,i)=> starSVG(i < item.rating));
+        const fotos = (item.photos||[]);
+        const nameSafe = escapeHTML(item.name || 'Cliente');
+        const msgSafe = escapeHTML(item.comment || '');
 
-        let fotosHTML='';
+        let fotosHTML = '';
         if(fotos.length){
-          fotosHTML = `<div class="photo-grid">`+
-            fotos.map(src=>`<div class="thumb"><img alt="Foto enviada" src="${src}"></div>`).join('')+
+          fotosHTML = `<div class="photo-grid">` +
+            fotos.map(src=>`<div class="thumb"><img alt="Foto enviada" src="${src}"></div>`).join('') +
             `</div>`;
         }
+
         card.innerHTML = `
           <div class="meta">${nameSafe} • ${fmtDate(new Date(item.date))}</div>
-          <div class="stars" aria-label="${item.rating} de 5 estrelas" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
+          <div class="stars" aria-label="${item.rating} de 5 estrelas">
             ${stars.reverse().join('')}
           </div>
           <div class="msg">${msgSafe}</div>
           ${fotosHTML}
         `;
-        card.querySelectorAll('.photo-grid img').forEach(img=> img.addEventListener('click',()=>openLB(img.src)));
+
+        card.querySelectorAll('.photo-grid img').forEach(img=>{
+          img.addEventListener('click', ()=> openLB(img.src));
+        });
 
         if(isAdmin()){
-          const actions=document.createElement('div'); actions.className='admin-actions';
+          const actions = document.createElement('div');
+          actions.className = 'admin-actions';
           if(isPending){
-            const approveBtn=document.createElement('button'); approveBtn.className='btn'; approveBtn.type='button'; approveBtn.textContent='Aprovar';
-            approveBtn.addEventListener('click',()=>approve(item.id)); actions.appendChild(approveBtn);
-          }else{
-            const unBtn=document.createElement('button'); unBtn.className='btn'; unBtn.type='button'; unBtn.textContent='Retirar aprovação';
-            unBtn.addEventListener('click',()=>unapprove(item.id)); actions.appendChild(unBtn);
+            const approveBtn = document.createElement('button');
+            approveBtn.className = 'btn';
+            approveBtn.type = 'button';
+            approveBtn.textContent = 'Aprovar';
+            approveBtn.addEventListener('click', ()=> approve(item.id));
+            actions.appendChild(approveBtn);
+          } else {
+            const unapproveBtn = document.createElement('button');
+            unapproveBtn.className = 'btn';
+            unapproveBtn.type = 'button';
+            unapproveBtn.textContent = 'Retirar aprovação';
+            unapproveBtn.addEventListener('click', ()=> unapprove(item.id));
+            actions.appendChild(unapproveBtn);
           }
-          const delBtn=document.createElement('button'); delBtn.className='btn'; delBtn.type='button'; delBtn.textContent='Excluir';
-          delBtn.addEventListener('click',()=>remove(item.id)); actions.appendChild(delBtn);
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn';
+          delBtn.type = 'button';
+          delBtn.textContent = 'Excluir';
+          delBtn.addEventListener('click', ()=> remove(item.id));
+          actions.appendChild(delBtn);
+
           card.appendChild(actions);
         }
+
         return card;
       }
 
+      // Ações admin
       function approve(id){
-        const data=load(); const it=data.find(x=>x.id===id); if(!it) return;
-        it.approved=true; save(data); render();
+        const data = load();
+        const item = data.find(x=>x.id===id); if(!item) return;
+        item.approved = true; save(data); render();
       }
       function unapprove(id){
-        const data=load(); const it=data.find(x=>x.id===id); if(!it) return;
-        it.approved=false; save(data); render();
+        const data = load();
+        const item = data.find(x=>x.id===id); if(!item) return;
+        item.approved = false; save(data); render();
       }
       function remove(id){
         if(!confirm('Excluir esta avaliação?')) return;
-        const data=load().filter(x=>x.id!==id); save(data); render();
+        const data = load().filter(x=>x.id!==id);
+        save(data); render();
       }
 
-      // Compressão de imagens
-      async function compressImage(file, maxDim=1200, quality=0.8){
-        const dataUrl = await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file); });
-        const img = await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=dataUrl; });
-        const canvas=document.createElement('canvas'); let {width,height}=img; const ratio=width/height;
-        if(width>height && width>maxDim){ width=maxDim; height=Math.round(width/ratio); }
-        else if(height>=width && height>maxDim){ height=maxDim; width=Math.round(height*ratio); }
-        canvas.width=width; canvas.height=height;
-        const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,width,height);
-        return canvas.toDataURL('image/jpeg',quality);
+      // Compressão de imagens (para caber no localStorage)
+      async function compressImage(file, maxDim=1200, quality=0.82){
+        const dataUrl = await new Promise((res,rej)=>{
+          const fr = new FileReader();
+          fr.onload = ()=> res(fr.result);
+          fr.onerror = rej;
+          fr.readAsDataURL(file);
+        });
+        const img = await new Promise((res,rej)=>{
+          const im = new Image();
+          im.onload = ()=> res(im);
+          im.onerror = rej;
+          im.src = dataUrl;
+        });
+        const canvas = document.createElement('canvas');
+        let {width, height} = img;
+        const ratio = width/height;
+        if(width > height && width > maxDim){ width = maxDim; height = Math.round(width/ratio); }
+        else if(height >= width && height > maxDim){ height = maxDim; width = Math.round(height*ratio); }
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        return canvas.toDataURL('image/jpeg', quality);
       }
 
       // Pré-visualização das fotos
-      let selectedFiles=[];
-      fileInput.addEventListener('change', ()=>{
-        selectedFiles = Array.from(fileInput.files||[]).slice(0,3);
-        previewBox.innerHTML=''; selectedFiles.forEach(f=>{ const p=document.createElement('div'); p.className='thumb'; const im=document.createElement('img'); im.alt=f.name; im.src=URL.createObjectURL(f); p.appendChild(im); previewBox.appendChild(p); });
-      });
+      let selectedFiles = [];
+      if(fileInput){
+        fileInput.addEventListener('change', ()=>{
+          selectedFiles = Array.from(fileInput.files||[]).slice(0,3);
+          previewBox.innerHTML = '';
+          selectedFiles.forEach(f=>{
+            const p = document.createElement('div'); p.className='thumb';
+            const img = document.createElement('img'); img.alt = f.name; img.src = URL.createObjectURL(f);
+            p.appendChild(img); previewBox.appendChild(p);
+          });
+        });
+      }
 
-      // Submissão
+      // ---------- NOVO: controle de ESTRELAS (clique/toque/arraste/teclado) ----------
+      const starBox = document.getElementById('starBox');
+      const ratingValueEl = document.getElementById('ratingValue');
+
+      function getChecked(){
+        const c = document.querySelector('input[name="rating"]:checked');
+        return Math.max(1, Math.min(5, Number(c?.value || 5)));
+      }
+      function checkRadio(n){
+        const r = document.getElementById('star'+n);
+        if(r){ r.checked = true; }
+      }
+      function setRating(n){
+        n = Math.max(1, Math.min(5, Number(n)||5));
+        checkRadio(n);
+        if(ratingValueEl) ratingValueEl.textContent = String(n);
+        if(starBox) starBox.setAttribute('aria-label', `Nota ${n} de 5`);
+      }
+      if(starBox){
+        starBox.addEventListener('change', ()=> setRating(getChecked()));
+
+        let dragging = false;
+        function pickByPos(clientX){
+          const r = starBox.getBoundingClientRect();
+          const rel = (clientX - r.left) / r.width; // 0..1 esquerda→direita
+          let fromLeft = Math.max(0, Math.min(1, rel));
+          let bucket = Math.ceil(fromLeft * 5); // 1..5
+          let n = 6 - bucket; // row-reverse
+          setRating(n);
+        }
+        starBox.addEventListener('pointerdown', (e)=>{
+          dragging = true;
+          starBox.setPointerCapture(e.pointerId);
+          pickByPos(e.clientX);
+        });
+        starBox.addEventListener('pointermove', (e)=>{
+          if(!dragging) return;
+          pickByPos(e.clientX);
+        });
+        starBox.addEventListener('pointerup', ()=> dragging=false);
+        starBox.addEventListener('pointercancel', ()=> dragging=false);
+
+        starBox.addEventListener('keydown', (e)=>{
+          let n = getChecked();
+          if(e.key==='ArrowLeft' || e.key==='ArrowDown'){ e.preventDefault(); setRating(n-1); }
+          if(e.key==='ArrowRight'|| e.key==='ArrowUp'){ e.preventDefault(); setRating(n+1); }
+          if(e.key>='1' && e.key<='5'){ e.preventDefault(); setRating(Number(e.key)); }
+        });
+
+        setRating(getChecked());
+      }
+
+      // Submit
       if(form){
         form.addEventListener('submit', async (e)=>{
           e.preventDefault();
           const rating = Number((form.querySelector('input[name="rating"]:checked')||{}).value||5);
-          const name   = (document.getElementById('nome')||{}).value?.trim();
-          const comment= (document.getElementById('comentario')||{}).value?.trim();
+          const name = (document.getElementById('nome')||{}).value?.trim();
+          const comment = (document.getElementById('comentario')||{}).value?.trim();
           if(!comment){ alert('Por favor, escreva sua avaliação.'); return; }
 
-          // Fotos
-          let photos=[]; try{
+          // Processa fotos (compress)
+          let photos = [];
+          try{
             for(const f of selectedFiles.slice(0,3)){
               if(f.size > 8*1024*1024) continue;
               const dataURL = await compressImage(f, 1200, 0.82);
               photos.push(dataURL);
             }
-          }catch(_){}
+          }catch(_){ /* ignora */ }
 
+          const data = load();
           const item = {
             id: Date.now().toString(36)+Math.random().toString(36).slice(2,8),
             rating, name, comment, photos,
             date: new Date().toISOString(),
             approved: false
           };
-
-          // Salva local (pendente) para o modo admin do próprio site
-          const db = load(); db.push(item); save(db);
-
-          // Cartão fantasma “enviado para aprovação”
-          const ghost=document.createElement('div');
-          ghost.className='review';
-          ghost.innerHTML=`
-            <div class="meta">${escapeHTML(name||'Cliente')} • ${fmtDate(new Date())}</div>
-            <div class="stars" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
-              ${Array.from({length:5},(_,i)=> i<rating
-                ? '<svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" fill="#FFD166" stroke="#FFD166" stroke-width="2"/></svg>'
-                : '<svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z" fill="none" stroke="#fff" stroke-width="2"/></svg>'
-              ).reverse().join('')}
-            </div>
-            <div class="msg">${escapeHTML(comment)}</div>
-            <p class="note" style="margin-top:6px">✅ Enviado para aprovação</p>`;
-          approvedList.prepend(ghost);
-
-          // Enfileira para envio remoto e tenta enviar agora
-          let ok=false;
-          try{ ok = await remoteAppend(item); }catch(_){ ok=false; }
-          if(!ok){
-            const q=loadQueue(); q.push(item); saveQueue(q);
-            console.warn('[reviews] não foi possível enviar agora, item enfileirado');
+          data.push(item);
+          try{ save(data); }catch(err){
+            alert('Não foi possível salvar sua avaliação (armazenamento cheio). Remova algumas avaliações como admin ou envie menos fotos.');
+            return;
           }
 
-          // Limpa UI
-          form.reset(); selectedFiles=[]; previewBox.innerHTML='';
-          const defaultStar=document.getElementById('star5'); if(defaultStar) defaultStar.checked=true;
+          form.reset(); selectedFiles = []; previewBox.innerHTML='';
+          const defaultStar = document.getElementById('star5'); if(defaultStar) defaultStar.checked = true;
+          setRating(5);
+          alert('Avaliação enviada. Obrigado! Ela entrará para aprovação.');
+
           render();
         });
       }
 
-      // Logout admin
-      logoutAdmin.addEventListener('click', disableAdmin);
+      // Atalhos admin
+      window.addEventListener('keydown', (e)=>{
+        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
+          const pin = prompt('PIN admin:');
+          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
+        }
+      });
+      if(logoutAdmin) logoutAdmin.addEventListener('click', disableAdmin);
 
       tryAdminFromURL();
+      tryAdminFromHash();
       render();
     })();
   </script>
