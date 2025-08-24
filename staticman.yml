@@ -1,0 +1,14 @@
+comments:
+  allowedFields: ["id","rating","name","comment","photos","date","approved"]
+  requiredFields: ["rating","comment","date"]
+  branch: "main"
+  format: "json"
+  path: "reviews"
+  filename: "rev-{@timestamp}"
+  moderation: true
+  transforms:
+    comment: "trim"
+  generatedFields:
+    approved:
+      type: "boolean"
+      value: false
