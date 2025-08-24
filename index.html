@@ -8,10 +8,13 @@
   <!-- SEO -->
   <meta name="description" content="Baby Skin do Sono da Beleza Oficial: hidratação noturna inteligente com colágeno, ácido hialurônico, vitamina C e antioxidantes. Resultados em até 60 dias." />
   <link rel="canonical" href="https://sonodabelezaoficial.com/"/>
+  <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0b0511" />
   <meta name="author" content="Sono da Beleza Oficial" />
+  <link rel="alternate" hreflang="pt-BR" href="https://sonodabelezaoficial.com/" />
+  <link rel="icon" href="assets/favicon.ico" />
 
-  <!-- OG/Twitter -->
+  <!-- OpenGraph / Twitter -->
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://sonodabelezaoficial.com/"/>
   <meta property="og:title" content="Baby Skin – Sono da Beleza Oficial"/>
@@ -20,32 +23,46 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:image" content="https://sonodabelezaoficial.com/og-image.jpg"/>
 
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <!-- GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TPHSWFDQ');</script>
+
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DSPK6S3YM9"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
-  gtag('js',new Date()); gtag('config','G-DSPK6S3YM9',{anonymize_ip:true});</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config', 'G-DSPK6S3YM9', { anonymize_ip: true });
+  </script>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">{
-    "@context":"https://schema.org","@type":"Organization",
-    "name":"Sono da Beleza Oficial","url":"https://sonodabelezaoficial.com/",
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Sono da Beleza Oficial",
+    "url":"https://sonodabelezaoficial.com/",
     "logo":"https://sonodabelezaoficial.com/logo-sdb.png",
     "contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"suporte@sonodabelezaoficial.com","areaServed":"BR","availableLanguage":["pt-BR"]}]
   }</script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0511;--ink:#fff;--muted:#efd7e6;--pink:#e4477a;--pink-soft:rgba(228,71,122,.18);
       --purple:#833AB4;--lilas:#eec4ff;--stroke:rgba(255,255,255,.12);--glow:rgba(228,71,122,.45)
     }
-    html{scroll-behavior:smooth}*{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
     html,body{
       margin:0;color:var(--ink);
       background:
@@ -65,21 +82,16 @@
     .h2{
       font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(22px,3vw,30px);margin-bottom:14px;position:relative
     }
-    /* barra rosa elegante sob os h2 */
-    .h2::after{
-      content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;
-      background:linear-gradient(90deg,var(--pink),var(--purple));
-      box-shadow:0 0 16px rgba(228,71,122,.30);
-    }
+    .h2::after{content:"";display:block;width:72px;height:4px;margin:10px auto 0;border-radius:999px;
+      background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 16px rgba(228,71,122,.30)}
     .note{color:var(--muted);font-size:15px;line-height:1.7}
-    /* marcadores de listas em rosa */
     .note li::marker{color:var(--pink)}
 
     /* Logo */
     .brand-logo{display:inline-block;width:56px;opacity:.95;filter:drop-shadow(0 6px 18px rgba(131,58,180,.25))}
     .brand-logo img{width:100%;border-radius:10px}
 
-    /* Banner chips topo */
+    /* Banner topo */
     .announce{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border-bottom:1px solid var(--stroke);padding:10px 12px;overflow:hidden;backdrop-filter:blur(12px) saturate(140%)}
     .ann-track{display:flex;gap:24px;align-items:center;flex:1 1 auto;white-space:nowrap;animation:annScroll 40s linear infinite}
     .announce .chip{white-space:nowrap}
@@ -106,10 +118,18 @@
     .ribbon-track{display:flex;gap:22px;align-items:center;white-space:nowrap;animation:scroll 28s linear infinite;padding:12px}
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    .image-slot{width:100%;aspect-ratio:16/9;border:1px dashed var(--stroke);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));box-shadow:0 30px 90px rgba(0,0,0,.38);margin:18px 0}
+    /* HERO image com borda gradiente rosa */
+    .image-slot{
+      width:100%;aspect-ratio:16/9;border:1.5px solid transparent;border-radius:22px;overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25)) padding-box,
+        linear-gradient(135deg,var(--pink),var(--purple)) border-box;
+      box-shadow:0 30px 90px rgba(0,0,0,.38), 0 0 24px rgba(228,71,122,.20);
+      margin:18px 0
+    }
     .image-slot img{width:100%;height:100%;object-fit:cover}
 
-    /* painéis com um toque rosa sutil */
+    /* painéis */
     .panel{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px;margin-bottom:clamp(28px,4vw,44px);box-shadow:0 0 0 1px rgba(228,71,122,.06) inset, 0 20px 60px rgba(0,0,0,.18)}
     .panel.dark{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border-color:var(--stroke);box-shadow:0 0 0 1px rgba(228,71,122,.08) inset, 0 20px 60px rgba(0,0,0,.24)}
     .grid-3{display:grid;gap:clamp(16px,3vw,26px);grid-template-columns:repeat(3,1fr)}
@@ -117,16 +137,19 @@
     .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px;transition:transform .35s,border-color .35s}
     .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
 
+    /* Ingredientes */
     .ingredients{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
     .ing{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px;text-align:left;transition:transform .3s ease,border-color .3s}
     .ing:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
     .ing .name{font-weight:900;margin-bottom:6px}
     .ing .desc{color:#efd7e6;font-size:14px;line-height:1.7}
 
+    /* Planos */
     .plans{display:grid;gap:clamp(14px,3vw,22px);grid-template-columns:repeat(3,1fr)}
-    .plan{background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border:1px solid var(--stroke);border-radius:22px;padding:22px;text-align:center;transition:transform .35s,box-shadow .35s;cursor:pointer}
+    .plan{position:relative;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25));border:1px solid var(--stroke);border-radius:22px;padding:22px;text-align:center;transition:transform .35s,box-shadow .35s;cursor:pointer}
     .plan:hover{transform:translateY(-6px);box-shadow:0 22px 80px rgba(131,58,180,.25)}
     .plan.best{border-color:rgba(225,48,108,.5)}
+    .plan::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:22px 22px 0 0;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 2px 12px rgba(228,71,122,.35)}
     .title{font-weight:900;letter-spacing:.3px;margin-bottom:4px}
     .bottles{font-size:13px;color:#efd7e6}
     .save{display:inline-block;background:rgba(225,48,108,.18);border:1px solid rgba(225,48,108,.45);color:#ffe9f3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:6px}
@@ -135,29 +158,10 @@
     .price-install{font-size:28px;font-weight:900}
     .price-cash{font-size:14px;color:#ffe2ef}
 
-    /* Badge "Sem açúcar adicionado" (animado) */
-    .micro-badge{
-      position:relative; display:inline-flex; align-items:center; gap:8px;
-      padding:6px 12px; border-radius:999px;
-      font-size:12px; font-weight:900; letter-spacing:.2px;
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow:0 6px 18px var(--pink-soft);
-      overflow:hidden;
-      animation:sugar-pulse 3.8s ease-in-out infinite;
-      margin-top:6px;
-    }
-    .micro-badge i{
-      width:16px;height:16px;border-radius:50%;
-      display:inline-grid;place-items:center;font-style:normal;font-size:12px;
-      background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-weight:900
-    }
-    .micro-badge::after{
-      content:""; position:absolute; top:0; left:-120%; width:120%; height:100%;
-      background:linear-gradient(100deg,transparent 0 60%,rgba(255,255,255,.22) 75%,transparent 95%);
-      transform:skewX(-12deg);
-      animation:sugar-shine 6.2s linear infinite;
-    }
+    /* Badge info */
+    .micro-badge{position:relative;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.2px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 18px var(--pink-soft);overflow:hidden;animation:sugar-pulse 3.8s ease-in-out infinite;margin-top:6px}
+    .micro-badge i{width:16px;height:16px;border-radius:50%;display:inline-grid;place-items:center;font-style:normal;font-size:12px;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-weight:900}
+    .micro-badge::after{content:"";position:absolute;top:0;left:-120%;width:120%;height:100%;background:linear-gradient(100deg,transparent 0 60%,rgba(255,255,255,.22) 75%,transparent 95%);transform:skewX(-12deg);animation:sugar-shine 6.2s linear infinite}
     @keyframes sugar-pulse{0%,100%{transform:translateY(0);box-shadow:0 6px 18px var(--pink-soft)}50%{transform:translateY(-1px);box-shadow:0 10px 26px rgba(228,71,122,.32)}}
     @keyframes sugar-shine{0%{left:-120%}100%{left:120%}}
 
@@ -183,7 +187,7 @@
     @keyframes btn-shine{0%{left:-120%}100%{left:120%}}
     .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
 
-    /* Carrossel e comparador */
+    /* Carrossel / Comparador */
     .carousel{position:relative;margin-top:18px}
     .carousel-viewport{display:flex;gap:16px;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;border:1.5px solid var(--stroke);border-radius:22px;padding:18px;background:linear-gradient(180deg,rgba(35,17,51,.55),rgba(35,17,51,.25))}
     .slide{min-width:100%;scroll-snap-align:center;display:grid;place-items:center;padding:6px}
@@ -200,6 +204,24 @@
     .compare .handle{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.5%,rgba(255,255,255,.65) 50%,transparent 50.5%)}
     .compare input[type="range"]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
 
+    /* Corações */
+    .hearts{position:fixed;inset:0;pointer-events:none;z-index:5}
+    .heart{
+      position:absolute;width:16px;height:16px;transform:rotate(45deg);
+      background:radial-gradient(circle at 30% 30%, #ff9ac0, var(--pink) 60%);
+      opacity:.15;filter:drop-shadow(0 0 10px rgba(228,71,122,.35));
+      animation:floatUp var(--dur,16s) linear infinite;will-change:transform,opacity
+    }
+    .heart::before,.heart::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:inherit}
+    .heart::before{left:-8px;top:0}.heart::after{left:0;top:-8px}
+    @keyframes floatUp{0%{transform:translateY(10vh) rotate(45deg) scale(var(--scale,1));opacity:0}10%{opacity:.18}90%{opacity:.12}100%{transform:translateY(-120vh) rotate(45deg) scale(var(--scale,1));opacity:0}}
+    .heart:nth-child(1){left:5%;--dur:18s;--scale:.9}.heart:nth-child(2){left:15%;--dur:21s;--scale:1.1}
+    .heart:nth-child(3){left:25%;--dur:17s;--scale:.8}.heart:nth-child(4){left:35%;--dur:23s;--scale:1}
+    .heart:nth-child(5){left:45%;--dur:19s;--scale:1.2}.heart:nth-child(6){left:55%;--dur:22s;--scale:.95}
+    .heart:nth-child(7){left:65%;--dur:18s;--scale:1.05}.heart:nth-child(8){left:75%;--dur:20s;--scale:.85}
+    .heart:nth-child(9){left:85%;--dur:24s;--scale:1.15}.heart:nth-child(10){left:92%;--dur:26s;--scale:.9}
+    .heart:nth-child(11){left:50%;--dur:28s;--scale:1.25}.heart:nth-child(12){left:8%;--dur:25s;--scale:.8}
+
     .credit{display:grid;place-items:center;gap:6px;margin:16px 0 28px}
     .credit .credit-title{font-family:"Playfair Display",serif;font-weight:800;letter-spacing:.4px;line-height:1.25;text-align:center}
     .credit-logo img{width:64px;border-radius:10px;filter:drop-shadow(0 10px 30px rgba(131,58,180,.25))}
@@ -211,7 +233,7 @@
       .grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}
       .ingredients,.plans{grid-template-columns:1fr}
       .panel{padding:18px}.hero-banners{padding:18px;min-height:76px}
-      .compare{aspect-ratio:3/4}
+      .compare{aspect-ratio:3/4}.heart{opacity:.12}
     }
     @media (max-width:520px){
       .announce{padding:6px 8px;font-size:12px}.chip{padding:4px 10px;font-size:12px}
@@ -225,6 +247,13 @@
 <body>
   <!-- GTM noscript -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPHSWFDQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Corações -->
+  <div class="hearts" aria-hidden="true">
+    <span class="heart"></span><span class="heart"></span><span class="heart"></span><span class="heart"></span>
+    <span class="heart"></span><span class="heart"></span><span class="heart"></span><span class="heart"></span>
+    <span class="heart"></span><span class="heart"></span><span class="heart"></span><span class="heart"></span>
+  </div>
 
   <!-- Banner rotativo fixo -->
   <div class="announce" aria-label="Mensagens e destaques">
@@ -241,10 +270,14 @@
   </div>
 
   <div class="wrap">
+    <!-- Header -->
     <header class="fade-up">
       <a class="brand-logo" href="#top" aria-label="Baby Skin">
-        <img src="logo-sdb.png" width="480" height="517" alt="Logo SONO DA BELEZA – Baby Skin"
-             onerror="if(this.dataset.fbk==='1'){this.onerror=null;this.src='/logo-sdb.png'}else{this.dataset.fbk='1';this.src='assets/logo-sdb.png'}">
+        <img
+          src="assets/logo-sdb.png"
+          width="480" height="517"
+          alt="Logo SONO DA BELEZA – Baby Skin"
+          onerror="this.onerror=null;this.src='/logo-sdb.png'">
       </a>
     </header>
 
@@ -271,14 +304,19 @@
         <span class="chip"><i></i> Frete Grátis (lote atual)</span>
       </div></div>
 
-      <!-- HERO IMAGE com fallback inteligente -->
+      <!-- HERO IMAGE com fallbacks robustos -->
       <div class="image-slot" aria-label="Imagem principal">
-        <img id="heroImg"
-             src="baby-skin-hero.webp"
-             width="1280" height="576"
-             alt="Três frascos do Baby Skin sobre fundo rosa com flores brancas"
-             loading="eager" fetchpriority="high" decoding="async"
-             data-fallbacks="assets/baby-skin-hero.webp,/baby-skin-hero.webp,baby-skin-hero.jpg,assets/baby-skin-hero.jpg,/baby-skin-hero.jpg,/baby-skin-hero.webp?v=1,/baby-skin-hero.jpg?v=1">
+        <picture>
+          <source srcset="assets/baby-skin-hero.webp" type="image/webp">
+          <source srcset="/assets/baby-skin-hero.webp" type="image/webp">
+          <source srcset="assets/baby-skin-hero.jpg" type="image/jpeg">
+          <img id="heroImg"
+               src="baby-skin-hero.webp"
+               width="1280" height="576"
+               alt="Três frascos do Baby Skin sobre fundo rosa com flores brancas"
+               loading="eager" fetchpriority="high" decoding="async"
+               data-fallbacks="assets/baby-skin-hero.webp,/assets/baby-skin-hero.webp,baby-skin-hero.jpg,assets/baby-skin-hero.jpg,/baby-skin-hero.jpg,/baby-skin-hero.webp,/baby-skin-hero.jpg?v=1">
+        </picture>
       </div>
 
       <div class="btn-row">
@@ -303,42 +341,24 @@
           <div class="card"><h2 class="h2">Baby Skin (hidratação noturna)</h2><p class="note">• <b>Ativos de alta performance</b> de dentro para fora<br>• Sinergia noturna potencializando a <b>reparação</b><br>• Rotina simples: <b>12 gotas</b> em <b>200ml</b> antes de dormir</p></div>
         </div>
 
-        <!-- DIFERENCIAIS (6 cards com toques de rosa) -->
+        <!-- DIFERENCIAIS -->
         <div class="panel" style="margin-top:24px">
           <h2 class="h2">Diferenciais do Baby Skin</h2>
           <div class="grid-3">
-            <div class="card">
-              <h3 class="h2">Sabor maracujá relaxante</h3>
-              <p class="note">Perfil aromático associado à <b>sensação de calma</b>, facilitando um ritual noturno consistente. Sem sedativos — apenas experiência e adesão melhores.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Sinergia com água</h3>
-              <p class="note">Tomado com <b>200–300 ml de água</b>, favorece a <b>hidratação sistêmica</b>; o ácido hialurônico depende de <b>água livre</b> para promover viço.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Janela noturna</h3>
-              <p class="note">À noite, o corpo prioriza <b>reparo cutâneo</b> e equilíbrio da barreira. O ritual sincroniza com esse ritmo biológico.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Fórmula limpa & transparente</h3>
-              <p class="note">Sem açúcares adicionados nem corantes artificiais. Rótulo claro sobre cada ativo.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Adesão fácil</h3>
-              <p class="note">Sabor agradável + passo com água = <b>hábito mais simples</b>, base para resultados em 30–60 dias.</p>
-            </div>
-            <div class="card">
-              <h3 class="h2">Peptídeos bioativos (baixo peso)</h3>
-              <p class="note">Peptídeos de <b>baixo peso molecular</b> são mais facilmente absorvidos e fornecem <b>blocos</b> para a síntese de colágeno, apoiando <b>firmeza</b> e <b>elasticidade</b>.</p>
-            </div>
+            <div class="card"><h3 class="h2">Sabor maracujá relaxante</h3><p class="note">Perfil aromático associado à <b>sensação de calma</b>, facilitando um ritual noturno consistente. Sem sedativos — apenas experiência e adesão melhores.</p></div>
+            <div class="card"><h3 class="h2">Sinergia com água</h3><p class="note">Tomado com <b>200–300 ml de água</b>, favorece a <b>hidratação sistêmica</b>; o ácido hialurônico depende de <b>água livre</b> para promover viço.</p></div>
+            <div class="card"><h3 class="h2">Janela noturna</h3><p class="note">À noite, o corpo prioriza <b>reparo cutâneo</b> e equilíbrio da barreira. O ritual sincroniza com esse ritmo biológico.</p></div>
+            <div class="card"><h3 class="h2">Fórmula limpa & transparente</h3><p class="note">Sem açúcares adicionados nem corantes artificiais. Rótulo claro sobre cada ativo.</p></div>
+            <div class="card"><h3 class="h2">Adesão fácil</h3><p class="note">Sabor agradável + passo com água = <b>hábito mais simples</b>, base para resultados em 30–60 dias.</p></div>
+            <div class="card"><h3 class="h2">Peptídeos bioativos (baixo peso)</h3><p class="note">Peptídeos de <b>baixo peso molecular</b> são mais facilmente absorvidos e fornecem <b>blocos</b> para a síntese de colágeno, apoiando <b>firmeza</b> e <b>elasticidade</b>.</p></div>
           </div>
         </div>
 
-        <!-- BASE CIENTÍFICA -->
+        <!-- Base científica -->
         <div class="panel" style="margin-top:12px">
           <h2 class="h2">Base científica — por que à noite + água + maracujá</h2>
           <ul class="note" style="text-align:left;max-width:860px;margin:0 auto;line-height:1.85">
-            <li><b>Janela noturna:</b> durante o sono, o organismo favorece processos de <b>reparação tecidual</b> e equilíbrio da <b>barreira cutânea</b>, cenário propício para suporte nutricional.</li>
+            <li><b>Janela noturna:</b> durante o sono, o organismo favorece <b>reparação tecidual</b> e equilíbrio da <b>barreira cutânea</b>, cenário propício para suporte nutricional.</li>
             <li><b>Água potencializa:</b> a hidratação sistêmica contribui para o <b>turgor</b> e a <b>homeostase</b> da pele; moléculas como o <b>ácido hialurônico</b> atuam melhor em ambiente com água disponível.</li>
             <li><b>Ritual & maracujá:</b> o <b>sabor/aroma</b> de maracujá é culturalmente associado ao relaxamento; ao ancorar o hábito próximo do horário de dormir, ajuda a <b>condicionar</b> o corpo/mente ao ciclo de sono.</li>
           </ul>
@@ -525,7 +545,7 @@
       </div>
     </section>
 
-    <!-- HISTÓRIA DA MARCA -->
+    <!-- HISTÓRIA -->
     <section id="historia" class="section center fade-up">
       <div class="panel">
         <h2 class="h2">Nossa história</h2>
@@ -551,6 +571,7 @@
               <p>Geralmente entre <b>30 e 60 dias</b> de uso contínuo, combinado com boa hidratação e sono.</p>
             </div>
           </div>
+
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
               <span style="flex:1;text-align:left">Posso usar junto com minha rotina de skincare?</span>
@@ -560,6 +581,7 @@
               <p>Sim. O Baby Skin atua <b>de dentro para fora</b>, complementando séruns e cremes tópicos.</p>
             </div>
           </div>
+
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
               <span style="flex:1;text-align:left">Tem contraindicações?</span>
@@ -569,6 +591,7 @@
               <p>Se estiver grávida, amamentando ou em tratamento, consulte seu profissional de saúde antes de usar.</p>
             </div>
           </div>
+
           <div class="faq-item" role="listitem" style="border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.04);overflow:hidden">
             <button class="faq-q" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;font-weight:800;width:100%;background:transparent;color:#fff;border:0">
               <span style="flex:1;text-align:left">Como potencializar os resultados?</span>
@@ -582,19 +605,27 @@
       </div>
     </section>
 
-    <!-- POLÍTICA DE PRIVACIDADE -->
+    <!-- PRIVACIDADE -->
     <section id="privacidade" class="section center fade-up" aria-label="Política de Privacidade">
       <div class="panel">
         <h2 class="h2">Política de Privacidade</h2>
-        <div class="note" style="max-width:900px;margin:8px auto;text-align:left">
+        <div class="btn-row" style="margin:10px 0 0">
+          <button class="btn" type="button" id="togglePriv">Mostrar/Esconder</button>
+        </div>
+        <div class="note" id="privBox" style="max-width:900px;margin:14px auto;text-align:left">
           <p><b>Resumo:</b> Respeitamos sua privacidade. Coletamos dados mínimos para processar pedidos, suporte e melhorias do site.</p>
-          <p><b>Dados que coletamos:</b> informações de contato, dados de pagamento (processados por provedores seguros) e dados técnicos (cookies, IP, páginas visitadas) para análise e segurança.</p>
-          <p><b>Como usamos:</b> finalizar compras, oferecer suporte, enviar comunicações transacionais e melhorar sua experiência.</p>
-          <p><b>Compartilhamento:</b> apenas com parceiros essenciais (pagamentos, logística, analytics) sob padrões de segurança.</p>
-          <p><b>Seus direitos:</b> acesso, correção, exclusão, portabilidade e revogação de consentimento. Contato: <a href="mailto:suporte@sonodabelezaoficial.com">suporte@sonodabelezaoficial.com</a>.</p>
+          <p><b>Dados que coletamos:</b> informações de contato (como nome e e-mail), dados de pagamento (processados por provedores seguros), e dados técnicos (cookies, IP, páginas visitadas) para análise e segurança.</p>
+          <p><b>Como usamos:</b> finalizar compras, oferecer suporte, enviar comunicações transacionais e melhorar sua experiência. Só enviamos marketing com seu consentimento, e você pode cancelar quando quiser.</p>
+          <p><b>Compartilhamento:</b> apenas com parceiros essenciais (ex.: gateways de pagamento, logística, analytics) sob contratos e padrões de segurança.</p>
+          <p><b>Seus direitos:</b> acesso, correção, exclusão, portabilidade e revogação de consentimento. Para exercer, fale com nosso suporte em <a href="mailto:suporte@sonodabelezaoficial.com">suporte@sonodabelezaoficial.com</a>.</p>
+          <p><b>Cookies:</b> usamos cookies para autenticação, carrinho e métricas. Você pode gerenciá-los no navegador.</p>
+          <p><b>Segurança:</b> aplicamos medidas técnicas e organizacionais para proteção dos dados.</p>
+          <p><b>Atualizações:</b> podemos atualizar esta política para refletir melhorias. Publicaremos a versão revisada nesta página com a data de vigência.</p>
           <p class="note">Vigência: 23/08/2025 • Controladora: SONO DA BELEZA</p>
         </div>
-        <div class="btn-row"><a class="btn" href="#top">Voltar ao topo</a></div>
+        <div class="btn-row">
+          <a class="btn" href="#top">Voltar ao topo</a>
+        </div>
       </div>
     </section>
 
@@ -613,76 +644,108 @@
 
     <!-- Créditos -->
     <section class="credit fade-up" aria-label="Crédito do projeto">
-      <div class="credit-title">
-        Um projeto desenvolvido por:<br>
-        <span style="font-size:1.06em">SONO DA BELEZA</span>
-      </div>
-      <span class="credit-logo">
-        <img src="logo-sdb.png?v=9" alt="Logo SONO DA BELEZA"
-             onerror="if(this.dataset.fbk==='1'){this.onerror=null;this.src='/logo-sdb.png?v=9'}else{this.dataset.fbk='1';this.src='assets/logo-sdb.png?v=9'}">
-      </span>
+      <div class="credit-title">Um projeto desenvolvido por:<br><span style="font-size:1.06em">SONO DA BELEZA</span></div>
+      <span class="credit-logo"><img src="assets/logo-sdb.png" alt="Logo SONO DA BELEZA" onerror="this.onerror=null;this.src='/logo-sdb.png'"></span>
     </section>
   </div><!-- /wrap -->
 
   <script>
-    // Fallback para imagens (hero + outros com data-fallbacks)
+    // Reveal
+    function reveal(){document.querySelectorAll('.fade-up').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*0.9)el.classList.add('in-view')})}
+    addEventListener('load',reveal,{once:true}); addEventListener('scroll',reveal,{passive:true});
+
+    // Vincula links compra
+    document.querySelectorAll('.plan').forEach(p=>{
+      const link=p.getAttribute('data-link'); const a=p.querySelector('.buy');
+      if(link&&a)a.href=link;
+      p.addEventListener('click',e=>{if(link && !e.target.closest('.buy')) window.open(link,'_blank','noopener')});
+    });
+
+    // Hero banners
     (function(){
-      document.querySelectorAll('img[data-fallbacks]').forEach(function(img){
-        const list=(img.getAttribute('data-fallbacks')||'').split(',').map(s=>s.trim()).filter(Boolean);
-        let i=0;
-        img.addEventListener('error',function handler(){
-          if(i<list.length){img.src=list[i++];}else{img.removeEventListener('error',handler);}
-        });
-      });
+      const banners=[...document.querySelectorAll('.hero-banner')];
+      const dotsWrap=document.getElementById('dots');
+      banners.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d)});
+      const dots=[...dotsWrap.children]; let i=0;
+      const next=()=>{banners[i].classList.remove('active');dots[i].classList.remove('active');i=(i+1)%banners.length;banners[i].classList.add('active');dots[i].classList.add('active')};
+      let t; const start=()=>t=setInterval(next,3000); const stop=()=>clearInterval(t);
+      if(!matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+      const hb=document.getElementById('heroBanners'); hb.addEventListener('mouseenter',stop); hb.addEventListener('mouseleave',()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches) start()});
     })();
 
-    // Reveal
-    const reveal=()=>{document.querySelectorAll('.fade-up').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*0.9)el.classList.add('in-view')})}
-    addEventListener('load',reveal,{once:true});addEventListener('scroll',reveal,{passive:true});
-
-    // Hero ticker
-    const banners=[...document.querySelectorAll('.hero-banner')],dotsWrap=document.getElementById('dots');
-    banners.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d)});
-    const dots=[...dotsWrap.children];let i=0;
-    const next=()=>{banners[i].classList.remove('active');dots[i].classList.remove('active');i=(i+1)%banners.length;banners[i].classList.add('active');dots[i].classList.add('active')};
-    let t;const start=()=>t=setInterval(next,3000);const stop=()=>clearInterval(t);
-    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}
-    const hb=document.getElementById('heroBanners');
-    hb.addEventListener('mouseenter',stop);
-    hb.addEventListener('mouseleave',()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}})
-
-    // FAQ toggle
-    document.querySelectorAll('.faq-item .faq-q').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const item=btn.closest('.faq-item');const ans=item.querySelector('.faq-a');const open=item.classList.toggle('open');
-        btn.setAttribute('aria-expanded',open?'true':'false');ans.style.maxHeight=open?ans.scrollHeight+'px':'0';ans.style.paddingBottom=open?'16px':'0';
-      })
-    });
-
-    // Planos clicáveis + href do botão
-    document.querySelectorAll('.plan').forEach(p=>{
-      const link=p.getAttribute('data-link');const a=p.querySelector('.buy');if(link&&a){a.href=link}
-      p.addEventListener('click',e=>{if(!link)return;if(!e.target.closest('.buy'))window.open(link,'_blank','noopener')})
-    });
+    // Fallback robusto para imagem do herói (tenta várias URLs)
+    (function(){
+      const img = document.getElementById('heroImg');
+      if(!img) return;
+      const list = (img.dataset.fallbacks || '').split(',').map(s=>s.trim()).filter(Boolean);
+      let idx = 0;
+      img.addEventListener('error', function(){
+        if(idx < list.length){
+          img.src = list[idx++];
+        }
+      }, {once:false});
+      // Se a primeira falhar imediatamente (404 síncrono), força um tick
+      if(!img.complete){ /* noop */ }
+    })();
 
     // Carrossel + comparador
     (function(){
       const track=document.getElementById('carouselTrack'); if(!track) return;
-      const dotsBox=document.getElementById('dots2');const slides=[...track.querySelectorAll('.slide')];let index=0;const total=slides.length;
+      const dotsBox=document.getElementById('dots2'); const slides=[...track.querySelectorAll('.slide')];
+      let index=0; const total=slides.length;
       slides.forEach((_,i)=>{const d=document.createElement('span');d.className='dot2'+(i===0?' active':'');d.addEventListener('click',()=>goTo(i));dotsBox.appendChild(d)});
-      const dots2=[...dotsBox.children];
-      function goTo(n){index=(n+total)%total;track.scrollTo({left:index*track.clientWidth,behavior:'smooth'});dots2.forEach((d,k)=>d.classList.toggle('active',k===index))}
-      const prev=document.getElementById('prevBtn'),next=document.getElementById('nextBtn'); if(prev&&next){prev.addEventListener('click',()=>goTo(index-1));next.addEventListener('click',()=>goTo(index+1))}
+      const dots=[...dotsBox.children];
+      function goTo(i){index=(i+total)%total; track.scrollTo({left:index*track.clientWidth,behavior:'smooth'}); dots.forEach((d,k)=>d.classList.toggle('active',k===index))}
+      document.getElementById('prevBtn').addEventListener('click',()=>goTo(index-1));
+      document.getElementById('nextBtn').addEventListener('click',()=>goTo(index+1));
       addEventListener('resize',()=>goTo(index));
-      let sx=null,sl=null;track.addEventListener('pointerdown',e=>{sx=e.clientX;sl=track.scrollLeft;track.setPointerCapture(e.pointerId)});track.addEventListener('pointermove',e=>{if(sx===null)return;track.scrollLeft=sl-(e.clientX-sx)});track.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;Math.abs(dx)>40?goTo(index+(dx<0?1:-1)):goTo(index);sx=null;sl=null});
-      document.querySelectorAll('[data-compare]').forEach(cmp=>{const after=cmp.querySelector('.after');const range=cmp.querySelector('input[type="range"]');const setClip=v=>after.style.clipPath=`inset(0 0 0 ${v}%)`;setClip(50);range.addEventListener('input',e=>{const v=Math.max(0,Math.min(100,Number(e.target.value)||50));setClip(100-v)});cmp.addEventListener('pointerdown',e=>{cmp.setPointerCapture(e.pointerId);const r=cmp.getBoundingClientRect();const move=x=>{const pct=((x-r.left)/r.width)*100;const v=Math.max(0,Math.min(100,pct));range.value=v;setClip(100-v)};move(e.clientX);const mv=ev=>move(ev.clientX);const up=()=>{cmp.removeEventListener('pointermove',mv);cmp.removeEventListener('pointerup',up)};cmp.addEventListener('pointermove',mv);cmp.addEventListener('pointerup',up)})});
+      let startX=null,scrollStart=null;
+      track.addEventListener('pointerdown',e=>{startX=e.clientX;scrollStart=track.scrollLeft;track.setPointerCapture(e.pointerId)});
+      track.addEventListener('pointermove',e=>{if(startX===null) return;const dx=e.clientX-startX;track.scrollLeft=scrollStart-dx});
+      track.addEventListener('pointerup',e=>{if(startX===null)return;const dx=e.clientX-startX;if(Math.abs(dx)>40){goTo(index+(dx<0?1:-1))}else{goTo(index)}startX=null;scrollStart=null});
+      track.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(index+1); if(e.key==='ArrowLeft')goTo(index-1)});
+
+      document.querySelectorAll('[data-compare]').forEach(cmp=>{
+        const after=cmp.querySelector('.after'); const range=cmp.querySelector('input[type="range"]');
+        const setClip=v=>after.style.clipPath=`inset(0 0 0 ${v}%)`; setClip(50);
+        range.addEventListener('input',e=>{const v=Math.max(0,Math.min(100,Number(e.target.value)||50)); setClip(100-v)});
+        cmp.addEventListener('pointerdown',e=>{
+          cmp.setPointerCapture(e.pointerId); const rect=cmp.getBoundingClientRect();
+          const move=clientX=>{const pct=((clientX-rect.left)/rect.width)*100; const v=Math.max(0,Math.min(100,pct)); range.value=v; setClip(100-v)};
+          move(e.clientX); const onMove=ev=>move(ev.clientX); const onUp=()=>{cmp.removeEventListener('pointermove',onMove);cmp.removeEventListener('pointerup',onUp)};
+          cmp.addEventListener('pointermove',onMove); cmp.addEventListener('pointerup',onUp);
+        });
+      });
     })();
 
-    // Âncoras com fallback
+    // FAQ toggle
+    document.querySelectorAll('.faq-item .faq-q').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item=btn.parentElement;
+        const open=item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open?'true':'false');
+        const ans=item.querySelector('.faq-a');
+        ans.style.maxHeight = open ? ans.scrollHeight + 'px' : '0';
+        ans.style.paddingBottom = open ? '16px' : '0';
+      });
+    });
+
+    // Toggle privacidade
+    (function(){
+      const box=document.getElementById('privBox'); const btn=document.getElementById('togglePriv');
+      if(btn && box){
+        let visible=true;
+        btn.addEventListener('click',()=>{visible=!visible; box.style.display=visible?'block':'none'; btn.textContent = visible?'Esconder':'Mostrar';});
+      }
+    })();
+
+    // Âncoras: fallback universal
     document.addEventListener('click',function(e){
-      const a=e.target.closest('a[href^="#"]');if(!a)return;const hash=a.getAttribute('href');if(!hash||hash.length<=1)return;
-      const target=document.querySelector(hash);if(!target)return;e.preventDefault();
-      try{target.scrollIntoView({behavior:'smooth',block:'start'});target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.removeAttribute('tabindex')}catch(_){location.hash=hash}
+      const a=e.target.closest('a[href^="#"]'); if(!a) return;
+      const hash=a.getAttribute('href'); if(!hash||hash.length<=1) return;
+      const t=document.querySelector(hash); if(!t) return; e.preventDefault();
+      try{ t.scrollIntoView({behavior:'smooth',block:'start'}); t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); t.removeAttribute('tabindex');}
+      catch(_){ location.hash=hash;}
     },{passive:false});
   </script>
 </body>
