@@ -199,7 +199,7 @@
     .flag.pix{background:linear-gradient(135deg,#36c996,#25a57e);color:#052d22}
     .flag.boleto{background:linear-gradient(180deg,#444,#222)}
 
-    /* --- Selo de garantia (já usado) --- */
+    /* --- Selo de garantia (usado mais abaixo também) --- */
     .guarantee{
       display:flex;align-items:center;gap:16px;
       border:1.5px solid rgba(255,255,255,.18);
@@ -252,34 +252,25 @@
     .review{border:1px solid var(--stroke);background:rgba(255,255,255,.04);border-radius:16px;padding:14px}
     .review .meta{font-weight:900;margin-bottom:6px}
     .review .msg{color:var(--muted)}
-    .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
+    .review .admin-actions{display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap}
     .review .admin-actions .btn{padding:8px 12px;font-size:12px;text-transform:none}
-    .review .stars{display:flex;gap:6px;justify-content:center;margin-bottom:6px}
-    .review .stars svg{width:20px;height:20px;fill:#FFD166;stroke:#FFD166}
+    .review .stars svg{width:20px;height:20px} /* exibição nas cards */
 
-    /* Estrelas do formulário — iOS friendly (inputs invisíveis, não display:none) */
-    .review-stars{
-      display:inline-flex;flex-direction:row-reverse;gap:8px;
-      align-items:center;justify-content:center;position:relative;user-select:none
-    }
-    .review-stars input{
-      position:absolute;opacity:0;pointer-events:none;width:0;height:0;margin:0;padding:0
-    }
-    .review-stars label{cursor:pointer;display:grid;place-items:center;line-height:1}
-    .review-stars svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;transition:transform .12s ease}
+    /* Seleção de estrelas (formulário) — tamanho reduzido + alvo de toque */
+    .review-stars{display:inline-flex;flex-direction:row-reverse;gap:6px;align-items:center}
+    .review-stars input{display:none}
+    .review-stars label{cursor:pointer;display:grid;place-items:center;padding:6px} /* aumenta alvo de toque */
+    .review-stars svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2}
     .review-stars label:hover svg,
     .review-stars label:hover ~ label svg{fill:#FFD166;stroke:#FFD166}
     .review-stars input:checked ~ label svg{fill:#FFD166;stroke:#FFD166}
-    @media (max-width:480px){
-      .review-stars svg{width:18px;height:18px}
-      .review .stars svg{width:18px;height:18px}
-    }
 
     /* Fotos na avaliação */
     .photo-input-hint{font-size:12px;color:rgba(255,255,255,.75)}
     .photo-previews{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
     .thumb{width:96px;height:96px;border-radius:10px;border:1px solid rgba(255,255,255,.18);overflow:hidden;background:rgba(255,255,255,.06)}
     .thumb img{width:100%;height:100%;object-fit:cover}
+
     .photo-grid{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
     .photo-grid .thumb{width:90px;height:90px;cursor:pointer}
 
@@ -290,7 +281,7 @@
     .lightbox .close{position:absolute;top:16px;right:16px}
 
     /* Admin bar */
-    .admin-bar{display:none;gap:10px;justify-content:center;align-items:center;margin:6px 0 12px}
+    .admin-bar{display:none;gap:10px;justify-content:center;align-items:center;margin:6px 0 12px;flex-wrap:wrap}
     .admin-bar.active{display:flex}
     .admin-bar .info{font-size:12px;color:#ffe2ef}
 
@@ -333,7 +324,7 @@
     details.pp > summary.pp-summary{list-style:none;cursor:pointer;user-select:none;margin:10px 0 12px;display:inline-block;border:0;background:transparent;padding:0}
     details.pp > summary.pp-summary::-webkit-details-marker{display:none}
 
-    @media (max-width:1024px){.grid-3{grid-template-columns:repeat(2,1fr)}.ingredients,.plans{grid-template-columns:repeat(2,1fr)}}
+    /* Mobile ajustes extras */
     @media (max-width:680px){
       .grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}
       .ingredients,.plans{grid-template-columns:1fr}
@@ -347,18 +338,17 @@
       body{padding-top:48px}
       .btn-row{flex-direction:column;gap:12px;align-items:stretch}.btn-row a{width:100%;padding:12px 14px}
       .brand-logo{width:44px}.credit-logo img{width:56px}
+      .admin-bar .btn{padding:10px 14px}
     }
+    /* Estrelas ainda menores em telas muito pequenas */
+    @media (max-width:480px){
+      .review-stars svg{width:18px;height:18px}
+      .review .stars svg{width:18px;height:18px}
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important;transition:none!important}
     }
-
-    /* Selo Qualidade + 15 dias (abaixo das avaliações) */
-    .quality15{max-width:920px;margin:20px auto 0;border:1.5px solid rgba(255,255,255,.18);background:linear-gradient(180deg,rgba(25,18,33,.78),rgba(25,18,33,.45));border-radius:18px;padding:18px;box-shadow:0 16px 40px rgba(131,58,180,.20)}
-    .quality15 .row{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
-    .quality15 .emblem{width:84px;height:84px;border-radius:18px;display:grid;place-items:center;background:radial-gradient(60% 60% at 30% 30%,rgba(131,58,180,.35),rgba(225,48,108,.22));border:1.5px solid rgba(255,255,255,.22)}
-    .quality15 .emblem svg{width:40px;height:40px;stroke:#fff;stroke-width:2;fill:none}
-    .quality15 .title{font-weight:900;font-size:18px;margin-bottom:4px}
-    .quality15 .sub{font-size:14px;color:#ffe2ef}
   </style>
 </head>
 <body>
@@ -585,38 +575,46 @@
           <span class="flag boleto">BOLETO</span>
         </div>
 
-        <!-- ===== Avaliações / Comentários ===== -->
+        <!-- ===== Avaliações / Comentários (abaixo dos planos) ===== -->
         <div class="reviews" id="avaliacoes">
           <h2 class="h2">Avaliações</h2>
           <p class="note" style="max-width:860px;margin:6px auto 12px">Compartilhe sua experiência com o Baby Skin 💬</p>
 
-          <!-- Admin bar -->
+          <!-- Admin bar (aparece no modo admin) -->
           <div class="admin-bar" id="adminBar">
-            <span class="info">Modo admin ativo • Aprove ou remova avaliações</span>
+            <span class="info">Modo admin ativo • Aprove/Remova • Sincronize</span>
+            <button class="btn" id="exportReviews" type="button">Exportar avaliações</button>
+            <input type="file" id="importFile" accept="application/json" hidden>
+            <button class="btn" id="importReviewsBtn" type="button">Importar</button>
             <button class="btn" id="logoutAdmin" type="button">Sair do modo admin</button>
           </div>
 
-          <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações" novalidate>
-            <!-- Estrelas -->
-            <div class="review-stars" id="starBox" role="radiogroup" aria-label="Nota" tabindex="0">
+          <form class="review-form" id="reviewForm" aria-label="Formulário de avaliações">
+            <!-- Seleção de estrelas (funciona por toque/teclado) -->
+            <div class="review-stars" role="radiogroup" aria-label="Nota">
               <input type="radio" id="star5" name="rating" value="5" checked>
-              <label for="star5" aria-label="5 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
-
+              <label for="star5" aria-label="5 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
               <input type="radio" id="star4" name="rating" value="4">
-              <label for="star4" aria-label="4 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
-
+              <label for="star4" aria-label="4 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
               <input type="radio" id="star3" name="rating" value="3">
-              <label for="star3" aria-label="3 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
-
+              <label for="star3" aria-label="3 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
               <input type="radio" id="star2" name="rating" value="2">
-              <label for="star2" aria-label="2 estrelas"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
-
+              <label for="star2" aria-label="2 estrelas">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
               <input type="radio" id="star1" name="rating" value="1">
-              <label for="star1" aria-label="1 estrela"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></label>
+              <label for="star1" aria-label="1 estrela">
+                <svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.9 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg>
+              </label>
             </div>
-            <div class="note" aria-live="polite">Nota: <strong id="ratingValue">5</strong> de 5</div>
 
-            <input type="text" name="nome" id="nome" placeholder="Seu nome (opcional)" inputmode="text" autocomplete="name">
+            <input type="text" name="nome" id="nome" placeholder="Seu nome (opcional)">
             <textarea name="comentario" id="comentario" placeholder="Escreva sua avaliação..." required></textarea>
 
             <!-- Upload de fotos -->
@@ -629,7 +627,7 @@
             <button class="btn" type="submit">Enviar</button>
           </form>
 
-          <!-- Pendentes (só no admin) -->
+          <!-- Pendentes (apenas admin) -->
           <div id="pendingWrap" style="display:none">
             <h3 class="h2" style="margin-top:10px">Pendentes de aprovação</h3>
             <div class="review-list" id="pendingList"></div>
@@ -640,21 +638,20 @@
             <h3 class="h2">Avaliações dos clientes</h3>
             <div class="review-list" id="approvedList" aria-live="polite"></div>
           </div>
-
-          <!-- Selo Qualidade + 15 dias -->
-          <div class="quality15" aria-label="Selo de Qualidade e período de teste">
-            <div class="row">
-              <div class="emblem" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L12 14.9 7.2 16.6l.9-5.3-3.8-3.7 5.3-.8L12 2z"/></svg>
-              </div>
-              <div>
-                <div class="title">Selo de Qualidade • Sono da Beleza</div>
-                <div class="sub">Experimente por <b>15 dias</b>. Não amou? Fale com a gente e ajudamos com a devolução.</div>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /Avaliações -->
+
+        <!-- Selo de Qualidade + 15 dias (abaixo das avaliações) -->
+        <div class="guarantee" style="margin-top:18px;justify-content:center">
+          <div class="badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z"/><path d="M8 12l3 3 5-5"/></svg>
+          </div>
+          <div>
+            <div class="title">Selo de Qualidade • Teste por 15 dias</div>
+            <div class="sub">Se não amar a experiência, entre em contato em até 15 dias. Queremos que você teste com calma.</div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -892,48 +889,46 @@
 
       function rnd(min,max){ return Math.random()*(max-min)+min; }
 
-      for(let k=0;k<COUNT;k++){
-        const el = document.createElement('span');
-        el.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
-        const x = rnd(4,96), y = rnd(12, H-12);
-        const fs = rnd(isMobile?16:18, isMobile?26:32);
-        const d1 = rnd(7.5, 11.5), d2 = rnd(6.0, 10.0);
-        const delay1 = rnd(0, 2.5), delay2 = rnd(0, 2.0), delay3 = rnd(0, 1.6);
-        const blur = rnd(1.5, 3.5);
+      function spawn(count,height){
+        for(let k=0;k<count;k++){
+          const el = document.createElement('span');
+          el.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
+          const x = rnd(4,96);
+          const y = rnd(12, height-12);
+          const fs = rnd(isMobile?16:18, isMobile?26:32);
+          const d1 = rnd(7.5, 11.5);
+          const d2 = rnd(6.0, 10.0);
+          const delay1 = rnd(0, 2.5);
+          const delay2 = rnd(0, 2.0);
+          const delay3 = rnd(0, 1.6);
+          const blur = rnd(1.5, 3.5);
 
-        el.style.left = x + '%';
-        el.style.top = y + 'px';
-        el.style.setProperty('--fs', fs + 'px');
-        el.style.setProperty('--dur', d1 + 's');
-        el.style.setProperty('--dur2', d2 + 's');
-        if(el.classList.contains('soft')) el.style.setProperty('--blur', blur + 'px');
-        el.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
-        field.appendChild(el);
+          el.style.left = x + '%';
+          el.style.top = y + 'px';
+          el.style.setProperty('--fs', fs + 'px');
+          el.style.setProperty('--dur', d1 + 's');
+          el.style.setProperty('--dur2', d2 + 's');
+          if(el.classList.contains('soft')) el.style.setProperty('--blur', blur + 'px');
+          el.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
+          field.appendChild(el);
+        }
       }
+      spawn(COUNT, H);
 
       let to;
       window.addEventListener('resize', ()=>{
         clearTimeout(to);
         to = setTimeout(()=>{
           field.innerHTML = '';
-          const HH = parseInt(getComputedStyle(field).height,10) || (window.matchMedia('(max-width: 680px)').matches?130:160);
-          const C = window.matchMedia('(max-width: 680px)').matches ? 10 : 16;
-          for(let k=0;k<C;k++){
-            const h = document.createElement('span');
-            h.className = 'heart' + (Math.random()<0.38 ? ' soft' : '');
-            const x = rnd(4,96), y = rnd(12, HH-12), fs = rnd(window.matchMedia('(max-width: 680px)').matches?16:18, window.matchMedia('(max-width: 680px)').matches?26:32);
-            const d1 = rnd(7.5,11.5), d2 = rnd(6.0,10.0), delay1 = rnd(0,2.5), delay2 = rnd(0,2.0), delay3 = rnd(0,1.6), blur = rnd(1.5,3.5);
-            h.style.left = x+'%'; h.style.top = y+'px';
-            h.style.setProperty('--fs', fs+'px'); h.style.setProperty('--dur', d1+'s'); h.style.setProperty('--dur2', d2+'s');
-            if(h.classList.contains('soft')) h.style.setProperty('--blur', blur+'px');
-            h.style.animationDelay = `${delay1}s, ${delay2}s, ${delay3}s`;
-            field.appendChild(h);
-          }
+          const mobile = window.matchMedia('(max-width: 680px)').matches;
+          const HH = parseInt(getComputedStyle(field).height,10) || (mobile?130:160);
+          const C = mobile ? 10 : 16;
+          spawn(C, HH);
         }, 160);
       }, {passive:true});
     })();
 
-    // ===== Avaliações: aprovação manual + fotos (localStorage) =====
+    // ===== Avaliações: aprovação manual + fotos (localStorage) + Sync =====
     (function(){
       const form = document.getElementById('reviewForm');
       const approvedList = document.getElementById('approvedList');
@@ -947,32 +942,49 @@
       const lbImg = document.getElementById('lbImg');
       const lbClose = document.getElementById('lbClose');
 
+      const exportBtn = document.getElementById('exportReviews');
+      const importBtn = document.getElementById('importReviewsBtn');
+      const importFile = document.getElementById('importFile');
+
       const KEY = 'sdb_reviews_v2';
       const ADMIN_KEY = 'sdb_admin_on';
-      const ADMIN_PIN = '4321';
+      const ADMIN_PIN = '4321'; // <<< altere o PIN aqui se quiser
 
       function isAdmin(){ return localStorage.getItem(ADMIN_KEY) === '1'; }
-      function enableAdmin(){ localStorage.setItem(ADMIN_KEY, '1'); render(); }
-      function disableAdmin(){ localStorage.removeItem(ADMIN_KEY); render(); }
+      function enableAdmin(){
+        localStorage.setItem(ADMIN_KEY, '1');
+        render();
+      }
+      function disableAdmin(){
+        localStorage.removeItem(ADMIN_KEY);
+        render();
+      }
 
-      // Entrar em admin via query (desktop, com PIN) ou hash (mobile, sem prompt)
+      // Entrar em admin via URL:
+      //  - ?admin=1  -> pede PIN
+      //  - #admin    -> pede PIN
+      //  - #admin-4321 -> entra direto sem prompt (prático no celular)
       function tryAdminFromURL(){
+        const hash = (location.hash||'').toLowerCase();
         const qp = new URLSearchParams(location.search);
-        if (qp.get('admin') === '1') {
+        if (hash === '#admin-4321') {
+          enableAdmin();
+          return;
+        }
+        if (qp.get('admin') === '1' || hash === '#admin') {
           const pin = prompt('Digite o PIN do admin:');
-          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
+          if (pin === ADMIN_PIN) enableAdmin();
+          else alert('PIN incorreto');
         }
       }
-      function tryAdminFromHash(){
-        const h = (location.hash||'').toLowerCase();
-        const m = h.match(/#admin[-=](\d+)/);
-        if(m && m[1] === ADMIN_PIN){ enableAdmin(); }
-        if(h === '#admin'){ // compat antigo
+      // Atalho: Ctrl+Shift+A (desktop)
+      window.addEventListener('keydown', (e)=>{
+        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
           const pin = prompt('PIN admin:');
-          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
+          if (pin === ADMIN_PIN) enableAdmin();
+          else alert('PIN incorreto');
         }
-      }
-      window.addEventListener('hashchange', tryAdminFromHash, {passive:true});
+      });
 
       // Lightbox
       function openLB(src){ lbImg.src = src; lightbox.classList.add('open'); }
@@ -984,6 +996,7 @@
       // Helpers
       function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
       function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
       function fmtDate(d){ return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
       function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
 
@@ -996,27 +1009,33 @@
         const data = load();
         const admin = isAdmin();
 
+        // Admin bar e pendentes
         adminBar.classList.toggle('active', admin);
         pendingWrap.style.display = admin ? '' : 'none';
 
+        // Limpa listas
         approvedList.innerHTML = '';
         pendingList.innerHTML = '';
 
         const approved = data.filter(x=>x.approved);
         const pending = data.filter(x=>!x.approved);
 
+        // Pendentes
         if(admin){
           if(!pending.length){ pendingList.innerHTML = `<p class="note">Sem itens pendentes.</p>`; }
           pending.slice().reverse().forEach(item=>{
-            pendingList.appendChild(reviewCard(item, true));
+            const card = reviewCard(item, true);
+            pendingList.appendChild(card);
           });
         }
 
+        // Aprovadas
         if(!approved.length){
           approvedList.innerHTML = `<p class="note">Ainda não há avaliações.</p>`;
         } else {
           approved.slice().reverse().forEach(item=>{
-            approvedList.appendChild(reviewCard(item, false));
+            const card = reviewCard(item, false);
+            approvedList.appendChild(card);
           });
         }
       }
@@ -1039,17 +1058,19 @@
 
         card.innerHTML = `
           <div class="meta">${nameSafe} • ${fmtDate(new Date(item.date))}</div>
-          <div class="stars" aria-label="${item.rating} de 5 estrelas">
+          <div class="stars" aria-label="${item.rating} de 5 estrelas" style="display:flex;gap:6px;justify-content:center;margin-bottom:6px">
             ${stars.reverse().join('')}
           </div>
           <div class="msg">${msgSafe}</div>
           ${fotosHTML}
         `;
 
+        // Lightbox para thumbs
         card.querySelectorAll('.photo-grid img').forEach(img=>{
           img.addEventListener('click', ()=> openLB(img.src));
         });
 
+        // Ações do admin
         if(isAdmin()){
           const actions = document.createElement('div');
           actions.className = 'admin-actions';
@@ -1099,7 +1120,7 @@
       }
 
       // Compressão de imagens (para caber no localStorage)
-      async function compressImage(file, maxDim=1200, quality=0.82){
+      async function compressImage(file, maxDim=1200, quality=0.8){
         const dataUrl = await new Promise((res,rej)=>{
           const fr = new FileReader();
           fr.onload = ()=> res(fr.result);
@@ -1137,58 +1158,6 @@
         });
       }
 
-      // ---------- NOVO: controle de ESTRELAS (clique/toque/arraste/teclado) ----------
-      const starBox = document.getElementById('starBox');
-      const ratingValueEl = document.getElementById('ratingValue');
-
-      function getChecked(){
-        const c = document.querySelector('input[name="rating"]:checked');
-        return Math.max(1, Math.min(5, Number(c?.value || 5)));
-      }
-      function checkRadio(n){
-        const r = document.getElementById('star'+n);
-        if(r){ r.checked = true; }
-      }
-      function setRating(n){
-        n = Math.max(1, Math.min(5, Number(n)||5));
-        checkRadio(n);
-        if(ratingValueEl) ratingValueEl.textContent = String(n);
-        if(starBox) starBox.setAttribute('aria-label', `Nota ${n} de 5`);
-      }
-      if(starBox){
-        starBox.addEventListener('change', ()=> setRating(getChecked()));
-
-        let dragging = false;
-        function pickByPos(clientX){
-          const r = starBox.getBoundingClientRect();
-          const rel = (clientX - r.left) / r.width; // 0..1 esquerda→direita
-          let fromLeft = Math.max(0, Math.min(1, rel));
-          let bucket = Math.ceil(fromLeft * 5); // 1..5
-          let n = 6 - bucket; // row-reverse
-          setRating(n);
-        }
-        starBox.addEventListener('pointerdown', (e)=>{
-          dragging = true;
-          starBox.setPointerCapture(e.pointerId);
-          pickByPos(e.clientX);
-        });
-        starBox.addEventListener('pointermove', (e)=>{
-          if(!dragging) return;
-          pickByPos(e.clientX);
-        });
-        starBox.addEventListener('pointerup', ()=> dragging=false);
-        starBox.addEventListener('pointercancel', ()=> dragging=false);
-
-        starBox.addEventListener('keydown', (e)=>{
-          let n = getChecked();
-          if(e.key==='ArrowLeft' || e.key==='ArrowDown'){ e.preventDefault(); setRating(n-1); }
-          if(e.key==='ArrowRight'|| e.key==='ArrowUp'){ e.preventDefault(); setRating(n+1); }
-          if(e.key>='1' && e.key<='5'){ e.preventDefault(); setRating(Number(e.key)); }
-        });
-
-        setRating(getChecked());
-      }
-
       // Submit
       if(form){
         form.addEventListener('submit', async (e)=>{
@@ -1206,7 +1175,7 @@
               const dataURL = await compressImage(f, 1200, 0.82);
               photos.push(dataURL);
             }
-          }catch(_){ /* ignora */ }
+          }catch(_){ /* ignora erros de compressão */ }
 
           const data = load();
           const item = {
@@ -1223,24 +1192,67 @@
 
           form.reset(); selectedFiles = []; previewBox.innerHTML='';
           const defaultStar = document.getElementById('star5'); if(defaultStar) defaultStar.checked = true;
-          setRating(5);
-          alert('Avaliação enviada. Obrigado! Ela entrará para aprovação.');
-
+          alert('Avaliação enviada. Obrigado!');
           render();
         });
       }
 
-      // Atalhos admin
-      window.addEventListener('keydown', (e)=>{
-        if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a'){
-          const pin = prompt('PIN admin:');
-          if (pin === ADMIN_PIN) enableAdmin(); else alert('PIN incorreto');
+      // ===== Exportar / Importar avaliações (sincronização manual) =====
+      function exportReviews(){
+        const data = load();
+        try{
+          const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'avaliacoes-sdb.json';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        }catch(err){
+          alert('Não foi possível exportar.');
         }
-      });
-      if(logoutAdmin) logoutAdmin.addEventListener('click', disableAdmin);
+      }
+      function setupSyncUI(){
+        if(exportBtn) exportBtn.addEventListener('click', exportReviews);
+        if(importBtn && importFile){
+          importBtn.addEventListener('click', ()=> importFile.click());
+          importFile.addEventListener('change', async (e)=>{
+            const file = e.target.files && e.target.files[0];
+            if(!file) return;
+            try{
+              const txt = await file.text();
+              const incoming = JSON.parse(txt);
+              if(!Array.isArray(incoming)) throw new Error('Formato inválido');
+              // Merge por id (sem duplicar), preservando alterações locais
+              const map = new Map(load().map(x => [x.id, x]));
+              for(const it of incoming){
+                if(it && it.id){
+                  const existing = map.get(it.id) || {};
+                  map.set(it.id, {...existing, ...it});
+                }
+              }
+              save([...map.values()]);
+              alert('Avaliações importadas com sucesso.');
+              render();
+            }catch(err){
+              console.error(err);
+              alert('Arquivo inválido de importação.');
+            }finally{
+              e.target.value = '';
+            }
+          });
+        }
+      }
+
+      // Logout admin
+      if(logoutAdmin){
+        logoutAdmin.addEventListener('click', disableAdmin);
+      }
 
       tryAdminFromURL();
-      tryAdminFromHash();
+      setupSyncUI();
       render();
     })();
   </script>
