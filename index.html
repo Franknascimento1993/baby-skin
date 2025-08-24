@@ -1015,7 +1015,7 @@
 
         // APROVADAS
         if(!approved.length){
-          approvedList.innerHTML = `<p class="note">Ainda não há avaliações aprovadas.</p>`;
+          approvedList.innerHTML = `<p class="note">Ainda não há avaliações.</p>`;
         } else {
           approved.slice().reverse().forEach(item=>{
             const card = reviewCard(item, false);
